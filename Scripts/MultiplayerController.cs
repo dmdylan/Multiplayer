@@ -51,6 +51,8 @@ public partial class MultiplayerController : Control
 		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
 		
 		Multiplayer.MultiplayerPeer = peer;
+		
+		
 		GD.Print("Waiting for players...");
 	}
 
@@ -65,6 +67,23 @@ public partial class MultiplayerController : Control
 		GD.Print("Joining game...");
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void SendPlayerInfo(string name, int id)
+	{
+		PlayerInfo playerInfo = new(id, name, false);
+		
+		if(!GameManager.Players.Contains(playerInfo))
+			GameManager.Players.Add(playerInfo);
+			
+		if(Multiplayer.IsServer())
+		{
+			foreach (var player in GameManager.Players)
+			{
+				Rpc(nameof(SendPlayerInfo), player.Name, player.ID, player.IsReady);
+			}
+		}
+	}
+
 	#region Mutliplayer Callbacks
 	
 	private void OnConnectionFailed()
@@ -73,6 +92,7 @@ public partial class MultiplayerController : Control
 
 	private void OnConnectedToServer()
 	{
+		
 	}
 
 	private void OnPeerDisconnceted(long id)
@@ -81,6 +101,8 @@ public partial class MultiplayerController : Control
 
 	private void OnPeerConnected(long id)
 	{
+		if(id == 1)
+			GD.Print("Is Host");
 	}
 	
 	#endregion Multiplayer Callbacks

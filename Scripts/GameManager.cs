@@ -1,6 +1,7 @@
-using Godot;
-using System;
+using System.Collections.Generic;
 
-public partial class GameManager : Node
+public static class GameManager
 {
+	private static readonly List<PlayerInfo> players = new();
+	public static List<PlayerInfo> Players => players;
 }

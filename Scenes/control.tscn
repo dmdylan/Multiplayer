@@ -61,6 +61,7 @@ text = "Ready"
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Start"
 
 [node name="Panel" type="Panel" parent="."]
