@@ -52,6 +52,7 @@ public partial class MultiplayerController : Control
 		
 		Multiplayer.MultiplayerPeer = peer;
 		
+		startButton.Visible = true;	
 		
 		GD.Print("Waiting for players...");
 	}
@@ -67,7 +68,7 @@ public partial class MultiplayerController : Control
 		GD.Print("Joining game...");
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
 	private void SendPlayerInfo(string name, int id)
 	{
 		PlayerInfo playerInfo = new(id, name, false);
@@ -79,7 +80,7 @@ public partial class MultiplayerController : Control
 		{
 			foreach (var player in GameManager.Players)
 			{
-				Rpc(nameof(SendPlayerInfo), player.Name, player.ID, player.IsReady);
+				Rpc(nameof(SendPlayerInfo), player.Name, player.ID);
 			}
 		}
 	}
@@ -92,7 +93,7 @@ public partial class MultiplayerController : Control
 
 	private void OnConnectedToServer()
 	{
-		
+		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());	
 	}
 
 	private void OnPeerDisconnceted(long id)
@@ -101,8 +102,6 @@ public partial class MultiplayerController : Control
 
 	private void OnPeerConnected(long id)
 	{
-		if(id == 1)
-			GD.Print("Is Host");
 	}
 	
 	#endregion Multiplayer Callbacks
@@ -112,7 +111,8 @@ public partial class MultiplayerController : Control
 	private void OnHostButtonPressed()
 	{
 		HostGame();
-		
+		SendPlayerInfo(nameInput.Text, 1);
+				
 		hostButton.Visible = false;
 		joinButton.Visible = false;
 		nameInput.Visible = false;
@@ -135,12 +135,15 @@ public partial class MultiplayerController : Control
 	
 	private void OnStartButtonPressed()
 	{
-		throw new NotImplementedException();
+		
 	}
 
 	private void OnReadyButtonPressed()
 	{
-		throw new NotImplementedException();
+		foreach (var player in GameManager.Players)
+		{
+			GD.Print($"Player: ID: {player.ID} /n Name: {player.Name} /n Ready: {player.IsReady}");
+		}
 	}
 
 	private void OnLeaveButtonPressed()
