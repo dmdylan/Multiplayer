@@ -5,21 +5,14 @@ public class PlayerInfo
 {
 	private readonly int id;
 	private readonly string name;
-	private bool isReady;
 
 	public int ID => id;
 	public string Name => name;
-	public bool IsReady => isReady;
 
-	public PlayerInfo(int id, string name, bool isReady)
+	public PlayerInfo(int id, string name)
 	{
-		this.id = ID;
+		this.id = id;
 		this.name = name;
-		this.isReady = isReady;
-	}
-	
-	public void ChangeReadyStatus()
-	{
-		isReady = !isReady;
+
 	}
 }

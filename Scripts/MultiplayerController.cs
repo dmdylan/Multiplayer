@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class MultiplayerController : Control
 {
@@ -21,6 +23,8 @@ public partial class MultiplayerController : Control
 	[Export] private Control playerLobbyParentNode;
 
 	ENetMultiplayerPeer peer;
+	
+	private Dictionary<int, PlayerLobbyController> playerLobbyNameplates = new();
 
 	public override void _Ready()
 	{	
@@ -28,6 +32,7 @@ public partial class MultiplayerController : Control
 		Multiplayer.PeerDisconnected += OnPeerDisconnceted;
 		Multiplayer.ConnectedToServer += OnConnectedToServer;
 		Multiplayer.ConnectionFailed += OnConnectionFailed;
+		Multiplayer.ServerDisconnected += OnServerDisconnected;
 		
 		hostButton.Pressed += OnHostButtonPressed;
 		joinButton.Pressed += OnJoinButtonPressed;
@@ -36,6 +41,21 @@ public partial class MultiplayerController : Control
 		startButton.Pressed += OnStartButtonPressed;
 	}
 
+	public override void _ExitTree()
+	{
+		Multiplayer.PeerConnected -= OnPeerConnected;
+		Multiplayer.PeerDisconnected -= OnPeerDisconnceted;
+		Multiplayer.ConnectedToServer -= OnConnectedToServer;
+		Multiplayer.ConnectionFailed -= OnConnectionFailed;
+		Multiplayer.ServerDisconnected -= OnServerDisconnected;
+		
+		hostButton.Pressed -= OnHostButtonPressed;
+		joinButton.Pressed -= OnJoinButtonPressed;
+		leaveButton.Pressed -= OnLeaveButtonPressed;
+		readyButton.Pressed -= OnReadyButtonPressed;
+		startButton.Pressed -= OnStartButtonPressed;
+	}
+	
 	private void HostGame()
 	{
 		peer = new();
@@ -68,10 +88,10 @@ public partial class MultiplayerController : Control
 		GD.Print("Joining game...");
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	private void SendPlayerInfo(string name, int id)
 	{
-		PlayerInfo playerInfo = new(id, name, false);
+		PlayerInfo playerInfo = new(id, name);
 		
 		if(!GameManager.Players.Contains(playerInfo))
 			GameManager.Players.Add(playerInfo);
@@ -85,6 +105,44 @@ public partial class MultiplayerController : Control
 		}
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void SpawnPlayerLobbyNameplate(int id)
+	{		
+		PlayerLobbyController playerLobbyController = playerLobbyScene.Instantiate<PlayerLobbyController>();
+		
+		PlayerInfo playerInfo = GameManager.Players.Where(x => x.ID == id).First();
+		
+		playerLobbyController.NameLabel.Text = playerInfo.Name;
+		playerLobbyController.ReadyCheckBox.ButtonPressed = false;
+		
+		playerLobbyNameplates.Add(playerInfo.ID, playerLobbyController);
+		
+		playerLobbyParentNode.AddChild(playerLobbyController);
+		
+		if(Multiplayer.IsServer())
+		{
+			foreach (var player in playerLobbyNameplates)
+			{
+				Rpc(nameof(SpawnPlayerLobbyNameplate), player.Key);
+			}
+		}
+	}
+
+	private void RemovePlayerLobbyNameplate(int id)
+	{
+	
+	}
+
+	private void ReadyUp()
+	{
+		
+	}
+
+	private void Disconnect()
+	{
+		Multiplayer.MultiplayerPeer = null;
+	}
+
 	#region Mutliplayer Callbacks
 	
 	private void OnConnectionFailed()
@@ -93,15 +151,27 @@ public partial class MultiplayerController : Control
 
 	private void OnConnectedToServer()
 	{
-		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());	
+		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());
+		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId());	
 	}
 
 	private void OnPeerDisconnceted(long id)
 	{
+		GameManager.Players.Remove(GameManager.Players.Where(i => i.ID == id).First());
+		playerLobbyNameplates[(int)id].QueueFree();
+		playerLobbyNameplates.Remove((int)id);
 	}
 
 	private void OnPeerConnected(long id)
 	{
+		
+	}
+	
+	private void OnServerDisconnected()
+	{
+		Multiplayer.MultiplayerPeer = null;
+		GameManager.Players.Clear();
+		playerLobbyNameplates.Clear();
 	}
 	
 	#endregion Multiplayer Callbacks
@@ -112,6 +182,7 @@ public partial class MultiplayerController : Control
 	{
 		HostGame();
 		SendPlayerInfo(nameInput.Text, 1);
+		SpawnPlayerLobbyNameplate(1);		
 				
 		hostButton.Visible = false;
 		joinButton.Visible = false;
@@ -139,16 +210,23 @@ public partial class MultiplayerController : Control
 	}
 
 	private void OnReadyButtonPressed()
-	{
+	{		
 		foreach (var player in GameManager.Players)
 		{
-			GD.Print($"Player: ID: {player.ID} /n Name: {player.Name} /n Ready: {player.IsReady}");
+			GD.Print($"Player: \n ID: {player.ID} \n Name: {player.Name}");
 		}
 	}
 
 	private void OnLeaveButtonPressed()
 	{
-		throw new NotImplementedException();
+		Disconnect();
+		
+		hostButton.Visible = true;
+		joinButton.Visible = true;
+		nameInput.Visible = true;
+		playerLobbyPanel.Visible = false;
+		readyButton.Visible = false;
+		leaveButton.Visible = false;
 	}
 	
 	#endregion Button Callbacks
