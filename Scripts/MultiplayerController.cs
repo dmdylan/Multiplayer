@@ -127,10 +127,19 @@ public partial class MultiplayerController : Control
 			}
 		}
 	}
-
+	
 	private void RemovePlayerLobbyNameplate(int id)
 	{
-	
+		playerLobbyNameplates[id].QueueFree();
+		playerLobbyNameplates.Remove(id);
+		
+		// if(Multiplayer.IsServer())
+		// {
+		// 	foreach (var player in playerLobbyNameplates)
+		// 	{
+		// 		Rpc(nameof(RemovePlayerLobbyNameplate), player.Key);
+		// 	}
+		// }
 	}
 
 	private void ReadyUp()
@@ -139,8 +148,15 @@ public partial class MultiplayerController : Control
 	}
 
 	private void Disconnect()
-	{
+	{		
 		Multiplayer.MultiplayerPeer = null;
+		
+		foreach (var playerLobbyNameplate in playerLobbyNameplates)
+		{
+			playerLobbyNameplate.Value.QueueFree();
+		}
+		
+		playerLobbyNameplates.Clear();
 	}
 
 	#region Mutliplayer Callbacks
@@ -157,9 +173,9 @@ public partial class MultiplayerController : Control
 
 	private void OnPeerDisconnceted(long id)
 	{
+		GD.Print("Peer disconnected");
 		GameManager.Players.Remove(GameManager.Players.Where(i => i.ID == id).First());
-		playerLobbyNameplates[(int)id].QueueFree();
-		playerLobbyNameplates.Remove((int)id);
+		RemovePlayerLobbyNameplate((int)id);
 	}
 
 	private void OnPeerConnected(long id)
@@ -220,7 +236,7 @@ public partial class MultiplayerController : Control
 	private void OnLeaveButtonPressed()
 	{
 		Disconnect();
-		
+			
 		hostButton.Visible = true;
 		joinButton.Visible = true;
 		nameInput.Visible = true;
