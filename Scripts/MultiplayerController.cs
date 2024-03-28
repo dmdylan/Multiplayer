@@ -106,7 +106,7 @@ public partial class MultiplayerController : Control
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void SpawnPlayerLobbyNameplate(int id)
+	private void SpawnPlayerLobbyNameplate(int id, bool isReady)
 	{	
 		if(playerLobbyNameplates.ContainsKey(id))
 			return;
@@ -116,7 +116,7 @@ public partial class MultiplayerController : Control
 		PlayerInfo playerInfo = GameManager.Players.Where(x => x.ID == id).First();
 		
 		playerLobbyController.NameLabel.Text = playerInfo.Name;
-		playerLobbyController.ReadyCheckBox.ButtonPressed = false;
+		playerLobbyController.ReadyCheckBox.ButtonPressed = isReady;
 		
 		playerLobbyNameplates.Add(playerInfo.ID, playerLobbyController);
 		
@@ -126,7 +126,7 @@ public partial class MultiplayerController : Control
 		{
 			foreach (var player in playerLobbyNameplates)
 			{
-				Rpc(nameof(SpawnPlayerLobbyNameplate), player.Key);
+				Rpc(nameof(SpawnPlayerLobbyNameplate), player.Key, player.Value.ReadyCheckBox.ButtonPressed);
 			}
 		}
 	}
@@ -146,9 +146,30 @@ public partial class MultiplayerController : Control
 		}
 	}
 
-	private void ReadyUp()
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void ReadyUp(int id)
 	{
+		playerLobbyNameplates[id].ReadyCheckBox.ButtonPressed = !playerLobbyNameplates[id].ReadyCheckBox.ButtonPressed;
 		
+		if(Multiplayer.IsServer())
+			CheckIfEveryoneIsReady();
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void CheckIfEveryoneIsReady()
+	{
+		int readyCount = 0;
+		
+		foreach (var player in playerLobbyNameplates)
+		{
+			if(player.Value.ReadyCheckBox.ButtonPressed)
+				readyCount++;
+		}
+		
+		if(readyCount == playerLobbyNameplates.Count)
+			startButton.Disabled = false;
+		else
+			startButton.Disabled = true;
 	}
 
 	private void Disconnect()
@@ -172,7 +193,8 @@ public partial class MultiplayerController : Control
 	private void OnConnectedToServer()
 	{
 		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());
-		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId());	
+		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId(), false);	
+		RpcId(1, nameof(CheckIfEveryoneIsReady));
 	}
 
 	private void OnPeerDisconnceted(long id)
@@ -183,7 +205,6 @@ public partial class MultiplayerController : Control
 
 	private void OnPeerConnected(long id)
 	{
-		
 	}
 	
 	private void OnServerDisconnected()
@@ -201,7 +222,7 @@ public partial class MultiplayerController : Control
 	{
 		HostGame();
 		SendPlayerInfo(nameInput.Text, 1);
-		SpawnPlayerLobbyNameplate(1);		
+		SpawnPlayerLobbyNameplate(1, false);		
 				
 		hostButton.Visible = false;
 		joinButton.Visible = false;
@@ -229,11 +250,9 @@ public partial class MultiplayerController : Control
 	}
 
 	private void OnReadyButtonPressed()
-	{		
-		foreach (var player in GameManager.Players)
-		{
-			GD.Print($"Player: \n ID: {player.ID} \n Name: {player.Name}");
-		}
+	{
+		ReadyUp(Multiplayer.GetUniqueId());
+		Rpc(nameof(ReadyUp), Multiplayer.GetUniqueId());
 	}
 
 	private void OnLeaveButtonPressed()
