@@ -107,7 +107,10 @@ public partial class MultiplayerController : Control
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	private void SpawnPlayerLobbyNameplate(int id)
-	{		
+	{	
+		if(playerLobbyNameplates.ContainsKey(id))
+			return;
+			
 		PlayerLobbyController playerLobbyController = playerLobbyScene.Instantiate<PlayerLobbyController>();
 		
 		PlayerInfo playerInfo = GameManager.Players.Where(x => x.ID == id).First();
@@ -128,18 +131,19 @@ public partial class MultiplayerController : Control
 		}
 	}
 	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	private void RemovePlayerLobbyNameplate(int id)
 	{
 		playerLobbyNameplates[id].QueueFree();
 		playerLobbyNameplates.Remove(id);
 		
-		// if(Multiplayer.IsServer())
-		// {
-		// 	foreach (var player in playerLobbyNameplates)
-		// 	{
-		// 		Rpc(nameof(RemovePlayerLobbyNameplate), player.Key);
-		// 	}
-		// }
+		if(Multiplayer.IsServer())
+		{
+			foreach (var player in playerLobbyNameplates)
+			{
+				Rpc(nameof(RemovePlayerLobbyNameplate), player.Key);
+			}
+		}
 	}
 
 	private void ReadyUp()
@@ -175,7 +179,6 @@ public partial class MultiplayerController : Control
 	{
 		GD.Print("Peer disconnected");
 		GameManager.Players.Remove(GameManager.Players.Where(i => i.ID == id).First());
-		RemovePlayerLobbyNameplate((int)id);
 	}
 
 	private void OnPeerConnected(long id)
@@ -235,6 +238,7 @@ public partial class MultiplayerController : Control
 
 	private void OnLeaveButtonPressed()
 	{
+		RpcId(1, nameof(RemovePlayerLobbyNameplate), Multiplayer.GetUniqueId());	
 		Disconnect();
 			
 		hostButton.Visible = true;
