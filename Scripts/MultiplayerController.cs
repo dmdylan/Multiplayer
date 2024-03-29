@@ -17,6 +17,13 @@ public partial class MultiplayerController : Control
 	[Export] private Button readyButton;
 	[Export] private Button startButton;
 	
+	[ExportCategory("Character Select")]
+	[Export] private VBoxContainer playerCharacterSelection;
+	[Export] private Button warriorButton;
+	[Export] private Button mageButton;
+	[Export] private Button clericButton;
+	[Export] private Button rogueButton;
+	
 	[ExportCategory("Lobby Info")]
 	[Export] private PackedScene playerLobbyScene;
 	[Export] private Panel playerLobbyPanel;
@@ -24,7 +31,7 @@ public partial class MultiplayerController : Control
 
 	ENetMultiplayerPeer peer;
 	
-	private Dictionary<int, PlayerLobbyController> playerLobbyNameplates = new();
+	private Dictionary<int, PlayerLobbyNameplate> playerLobbyNameplates = new();
 
 	public override void _Ready()
 	{	
@@ -39,6 +46,11 @@ public partial class MultiplayerController : Control
 		leaveButton.Pressed += OnLeaveButtonPressed;
 		readyButton.Pressed += OnReadyButtonPressed;
 		startButton.Pressed += OnStartButtonPressed;
+		
+		warriorButton.Pressed += OnWarriorButtonPressed;
+		mageButton.Pressed += OnMageButtonPressed;
+		clericButton.Pressed += OnClericButtonPressed;
+		rogueButton.Pressed += OnRogueButtonPressed;
 	}
 
 	public override void _ExitTree()
@@ -54,8 +66,13 @@ public partial class MultiplayerController : Control
 		leaveButton.Pressed -= OnLeaveButtonPressed;
 		readyButton.Pressed -= OnReadyButtonPressed;
 		startButton.Pressed -= OnStartButtonPressed;
+		
+		warriorButton.Pressed -= OnWarriorButtonPressed;
+		mageButton.Pressed -= OnMageButtonPressed;
+		clericButton.Pressed -= OnClericButtonPressed;
+		rogueButton.Pressed -= OnRogueButtonPressed;
 	}
-	
+
 	private void HostGame()
 	{
 		peer = new();
@@ -111,16 +128,16 @@ public partial class MultiplayerController : Control
 		if(playerLobbyNameplates.ContainsKey(id))
 			return;
 			
-		PlayerLobbyController playerLobbyController = playerLobbyScene.Instantiate<PlayerLobbyController>();
+		PlayerLobbyNameplate playerLobbyNameplate = playerLobbyScene.Instantiate<PlayerLobbyNameplate>();
 		
 		PlayerInfo playerInfo = GameManager.Players.Where(x => x.ID == id).First();
 		
-		playerLobbyController.NameLabel.Text = playerInfo.Name;
-		playerLobbyController.ReadyCheckBox.ButtonPressed = isReady;
+		playerLobbyNameplate.NameLabel.Text = playerInfo.Name;
+		playerLobbyNameplate.ReadyCheckBox.ButtonPressed = isReady;
 		
-		playerLobbyNameplates.Add(playerInfo.ID, playerLobbyController);
+		playerLobbyNameplates.Add(playerInfo.ID, playerLobbyNameplate);
 		
-		playerLobbyParentNode.AddChild(playerLobbyController);
+		playerLobbyParentNode.AddChild(playerLobbyNameplate);
 		
 		if(Multiplayer.IsServer())
 		{
@@ -184,10 +201,39 @@ public partial class MultiplayerController : Control
 		playerLobbyNameplates.Clear();
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	private void SetPlayerCharacterClass(int id, PlayerCharacterClass playerCharacterClass)
+	{
+		GameManager.Players.Where(x => x.ID == id).First().ChangePlayerCharacterClass(playerCharacterClass);
+
+		string labelText = string.Empty;
+		
+		switch (playerCharacterClass)
+		{
+			case PlayerCharacterClass.Warrior:
+				labelText = " W ";
+				break;
+			case PlayerCharacterClass.Mage:
+				labelText = " M ";
+				break;
+			case PlayerCharacterClass.Cleric:
+				labelText = " C ";
+				break;
+			case PlayerCharacterClass.Rogue:
+				labelText = " R ";
+				break;
+			default:
+				break;
+		}
+		
+		playerLobbyNameplates[id].CurrentCharacterClassLabel.Text = labelText;
+	}
+
 	#region Mutliplayer Callbacks
-	
+
 	private void OnConnectionFailed()
 	{
+		GD.Print("Connection failed");
 	}
 
 	private void OnConnectedToServer()
@@ -228,6 +274,7 @@ public partial class MultiplayerController : Control
 		joinButton.Visible = false;
 		nameInput.Visible = false;
 		playerLobbyPanel.Visible = true;
+		playerCharacterSelection.Visible = true;
 		readyButton.Visible = true;
 		leaveButton.Visible = true;
 	}
@@ -240,6 +287,7 @@ public partial class MultiplayerController : Control
 		joinButton.Visible = false;
 		nameInput.Visible = false;
 		playerLobbyPanel.Visible = true;
+		playerCharacterSelection.Visible = true;
 		readyButton.Visible = true;
 		leaveButton.Visible = true;
 	}
@@ -264,9 +312,30 @@ public partial class MultiplayerController : Control
 		joinButton.Visible = true;
 		nameInput.Visible = true;
 		playerLobbyPanel.Visible = false;
+		playerCharacterSelection.Visible = false;
 		readyButton.Visible = false;
 		leaveButton.Visible = false;
 	}
 	
+	private void OnWarriorButtonPressed()
+	{
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Warrior);
+	}
+
+	private void OnMageButtonPressed()
+	{
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Mage);
+	}
+
+	private void OnClericButtonPressed()
+	{
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Cleric);
+	}
+
+	private void OnRogueButtonPressed()
+	{
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Rogue);
+	}
+
 	#endregion Button Callbacks
 }

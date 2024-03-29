@@ -1,25 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://4flb5efcoqqo"]
 
-[ext_resource type="Script" path="res://Scripts/MultiplayerController.cs" id="1_wisww"]
-[ext_resource type="PackedScene" uid="uid://bss0hjv55ka4u" path="res://Scenes/player_lobby.tscn" id="2_egfk1"]
+[ext_resource type="Script" path="res://Scripts/MultiplayerController.cs" id="1_o0bq0"]
+[ext_resource type="PackedScene" uid="uid://bss0hjv55ka4u" path="res://Scenes/PlayerLobbyNameplate.tscn" id="2_a73so"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_7ri2a"]
 
-[node name="MultiplayerController" type="Control" node_paths=PackedStringArray("nameInput", "hostButton", "joinButton", "leaveButton", "readyButton", "startButton", "playerLobbyPanel", "playerLobbyParentNode")]
+[node name="MultiplayerController" type="Control" node_paths=PackedStringArray("nameInput", "hostButton", "joinButton", "leaveButton", "readyButton", "startButton", "playerCharacterSelection", "warriorButton", "mageButton", "clericButton", "rogueButton", "playerLobbyPanel", "playerLobbyParentNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wisww")
+script = ExtResource("1_o0bq0")
 nameInput = NodePath("TextEdit")
 hostButton = NodePath("HBoxContainer/HostButton")
 joinButton = NodePath("HBoxContainer/JoinButton")
 leaveButton = NodePath("HBoxContainer/LeaveButton")
 readyButton = NodePath("HBoxContainer/ReadyButton")
 startButton = NodePath("HBoxContainer/StartButton")
-playerLobbyScene = ExtResource("2_egfk1")
+playerCharacterSelection = NodePath("PlayerCharacterSelection")
+warriorButton = NodePath("PlayerCharacterSelection/Warrior")
+mageButton = NodePath("PlayerCharacterSelection/Mage")
+clericButton = NodePath("PlayerCharacterSelection/Cleric")
+rogueButton = NodePath("PlayerCharacterSelection/Rogue")
+playerLobbyScene = ExtResource("2_a73so")
 playerLobbyPanel = NodePath("Panel")
 playerLobbyParentNode = NodePath("Panel/VBoxContainer")
 
@@ -82,7 +87,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PlayerCharacterSelection" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,33 +101,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Warrior" type="Button" parent="VBoxContainer"]
+[node name="Warrior" type="Button" parent="PlayerCharacterSelection"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
 toggle_mode = true
 button_group = SubResource("ButtonGroup_7ri2a")
 text = "Warrior"
 text_overrun_behavior = 4
 
-[node name="Mage" type="Button" parent="VBoxContainer"]
+[node name="Mage" type="Button" parent="PlayerCharacterSelection"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
 toggle_mode = true
 button_group = SubResource("ButtonGroup_7ri2a")
-text = "Mage"
+text = "Mage
+"
 text_overrun_behavior = 4
 
-[node name="Cleric" type="Button" parent="VBoxContainer"]
+[node name="Cleric" type="Button" parent="PlayerCharacterSelection"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
 toggle_mode = true
 button_group = SubResource("ButtonGroup_7ri2a")
 text = "Cleric"
 text_overrun_behavior = 4
 
-[node name="Rogue" type="Button" parent="VBoxContainer"]
+[node name="Rogue" type="Button" parent="PlayerCharacterSelection"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
 toggle_mode = true
 button_group = SubResource("ButtonGroup_7ri2a")
 text = "Rogue"

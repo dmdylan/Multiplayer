@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://fbd483it1usf"]
+
+[ext_resource type="Texture2D" uid="uid://738af2ysy3dm" path="res://icon.svg" id="1_41kwp"]
+
+[node name="PlayerNameplate" type="Control"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 3
+anchor_right = 0.217
+anchor_bottom = 0.154
+offset_right = 0.0159912
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = -152.0
+offset_bottom = -3.0
+texture = ExtResource("1_41kwp")
+expand_mode = 1
+
+[node name="BarsParents" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 3.0
+offset_right = 247.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="BarsParents"]
+layout_mode = 2
+text = "Name Placeholder"
+
+[node name="HealthBar" type="TextureProgressBar" parent="BarsParents"]
+layout_mode = 2
