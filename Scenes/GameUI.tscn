@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgckbpvkk7o7c"]
+
+[ext_resource type="Script" path="res://Scripts/GameUI.cs" id="1_gq0se"]
+[ext_resource type="PackedScene" uid="uid://fbd483it1usf" path="res://Scenes/PlayerNameplate.tscn" id="2_6a558"]
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("characterNameplateParent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gq0se")
+playerCharacterNameplateScene = ExtResource("2_6a558")
+characterNameplateParent = NodePath("PlayerNameplateContainer")
+
+[node name="PlayerNameplateContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -895.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1

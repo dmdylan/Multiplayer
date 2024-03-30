@@ -229,6 +229,14 @@ public partial class MultiplayerController : Control
 		playerLobbyNameplates[id].CurrentCharacterClassLabel.Text = labelText;
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void StartGame()
+	{
+		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/GameUI.tscn").Instantiate<Control>();
+		GetTree().Root.AddChild(scene);
+		Hide();
+	}
+
 	#region Mutliplayer Callbacks
 
 	private void OnConnectionFailed()
@@ -294,7 +302,7 @@ public partial class MultiplayerController : Control
 	
 	private void OnStartButtonPressed()
 	{
-		
+		Rpc(nameof(StartGame));
 	}
 
 	private void OnReadyButtonPressed()
