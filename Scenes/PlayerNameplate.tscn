@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://fbd483it1usf"]
+[gd_scene load_steps=6 format=3 uid="uid://fbd483it1usf"]
 
 [ext_resource type="Texture2D" uid="uid://xe2h8mfhoda8" path="res://Assets/Kenney/RPGUI/PNG/panel_blue.png" id="1_2gdkw"]
 [ext_resource type="Script" path="res://Scripts/PlayerCharacterNameplate.cs" id="1_5at1e"]
-[ext_resource type="Texture2D" uid="uid://738af2ysy3dm" path="res://icon.svg" id="1_41kwp"]
 [ext_resource type="Texture2D" uid="uid://432clk37ic1l" path="res://Assets/Kenney/RPGUI/PNG/barBack_horizontalMid.png" id="3_js51u"]
 [ext_resource type="Texture2D" uid="uid://bo6nest36kjq8" path="res://Assets/Kenney/RPGUI/PNG/barRed_horizontalMid.png" id="4_vjrnq"]
 [ext_resource type="Texture2D" uid="uid://b78l2knhgrvdn" path="res://Assets/Kenney/RPGUI/PNG/barBlue_horizontalBlue.png" id="5_2hsll"]
 
-[node name="PlayerNameplate" type="Control" node_paths=PackedStringArray("nameLabel", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer")]
+[node name="PlayerNameplate" type="Control" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer")]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 3
 anchor_right = 0.217
@@ -18,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5at1e")
 nameLabel = NodePath("BarsParents/NameLabel")
+icon = NodePath("Icon")
 healthBar = NodePath("BarsParents/HealthBar")
 currentHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/CurrentValue")
 maxHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/MaxValue")
@@ -40,7 +40,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,8 +51,6 @@ offset_right = -158.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_41kwp")
-expand_mode = 1
 
 [node name="BarsParents" type="VBoxContainer" parent="."]
 layout_mode = 0

@@ -5,7 +5,7 @@ public partial class PlayerCharacterNameplate : Control
 {
 	[ExportCategory("Nameplate Info")]
 	[Export] private Label nameLabel;
-	[Export] private Texture2D icon;
+	[Export] private ColorRect icon;
 	
 	[ExportCategory("Health")]
 	[Export] private TextureProgressBar healthBar;
@@ -22,7 +22,7 @@ public partial class PlayerCharacterNameplate : Control
 	[Export] private HFlowContainer debuffsContainer;
 
 	public Label NameLabel => nameLabel;
-	public Texture2D Icon => icon;
+	public ColorRect Icon => icon;
 	public TextureProgressBar HealthBar => healthBar;
 	public Label CurrentHealthLabel => currentHealthLabel;
 	public Label MaxHealthLabel => maxHealthLabel;
