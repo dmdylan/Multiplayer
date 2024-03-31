@@ -22,15 +22,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
 offset_right = -895.0
-offset_bottom = -163.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="PlayerNameplate" parent="PlayerNameplateContainer" instance=ExtResource("2_6a558")]
+visible = false
 layout_mode = 2
 
 [node name="PlayerNameplate2" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+visible = false
 layout_mode = 2
 nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../PlayerNameplate/Icon")
@@ -44,6 +45,7 @@ buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
 [node name="PlayerNameplate3" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+visible = false
 layout_mode = 2
 nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../PlayerNameplate/Icon")
@@ -57,6 +59,7 @@ buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
 [node name="PlayerNameplate4" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+visible = false
 layout_mode = 2
 nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../PlayerNameplate/Icon")
@@ -69,18 +72,19 @@ maxEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValues
 buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplateContainer2" type="VBoxContainer" parent="."]
+[node name="EnemyNameplates" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 902.0
-offset_bottom = -163.0
+offset_left = 896.0
+offset_right = -6.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayerNameplate" parent="PlayerNameplateContainer2" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="PlayerNameplate" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
 layout_mode = 2
 nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
@@ -93,7 +97,7 @@ maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsPa
 buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate2" parent="PlayerNameplateContainer2" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="PlayerNameplate2" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
 layout_mode = 2
 nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
@@ -106,7 +110,7 @@ maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsPa
 buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate3" parent="PlayerNameplateContainer2" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="PlayerNameplate3" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
 layout_mode = 2
 nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
@@ -119,7 +123,7 @@ maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsPa
 buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate4" parent="PlayerNameplateContainer2" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="PlayerNameplate4" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
 layout_mode = 2
 nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
 icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
@@ -177,3 +181,336 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="DungeonGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 271.0
+offset_top = 20.0
+offset_right = -271.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Panel" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel3/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel4/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel5/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel6/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel7" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel7/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel8/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel9" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel9/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel10" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel10/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel11" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel11/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel12" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel12/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel13" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel13/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel14" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel14/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel15" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel15"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel15/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel16" type="Panel" parent="DungeonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DungeonGrid/Panel16"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="DungeonGrid/Panel16/MarginContainer"]
+layout_mode = 2
