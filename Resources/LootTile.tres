@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DungeonTile" load_steps=2 format=3 uid="uid://pmg6jw73otyt"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/DungeonTile.cs" id="1_eq5pm"]
+
+[resource]
+script = ExtResource("1_eq5pm")
+tileName = "Loot"
+tileColor = Color(0, 0.913725, 0.827451, 1)
