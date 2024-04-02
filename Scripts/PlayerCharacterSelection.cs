@@ -8,9 +8,9 @@ public partial class PlayerCharacterSelection : VBoxContainer
 	[Export] private Button mageButton;
 	[Export] private Button clericButton;
 	[Export] private Button rogueButton;
-
-	public override void _Ready()
-	{	
+	
+	public override void _EnterTree()
+	{
 		warriorButton.Pressed += OnWarriorButtonPressed;
 		mageButton.Pressed += OnMageButtonPressed;
 		clericButton.Pressed += OnClericButtonPressed;
@@ -27,21 +27,21 @@ public partial class PlayerCharacterSelection : VBoxContainer
 
 	private void OnWarriorButtonPressed()
 	{
-		GameManager.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Warrior);
+		GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Warrior);
 	}
 
 	private void OnMageButtonPressed()
 	{
-		GameManager.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Mage);
+		GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Mage);
 	}
 
 	private void OnClericButtonPressed()
 	{
-		GameManager.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Cleric);
+		GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Cleric);
 	}
 
 	private void OnRogueButtonPressed()
 	{
-		GameManager.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Rogue);
+		GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().ChangePlayerCharacterClass(PlayerCharacterClass.Rogue);
 	}
 }

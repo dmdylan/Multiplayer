@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/GameUI.cs" id="1_gq0se"]
 [ext_resource type="PackedScene" uid="uid://fbd483it1usf" path="res://Scenes/PlayerNameplate.tscn" id="2_6a558"]
 [ext_resource type="Texture2D" uid="uid://bhrque684oc30" path="res://Assets/Kenney/RPGUI/PNG/panel_brown.png" id="3_8pn2j"]
-[ext_resource type="PackedScene" uid="uid://b72oqumsvjpwn" path="res://Scenes/DungeonCell.tscn" id="4_quupu"]
+[ext_resource type="PackedScene" uid="uid://b72oqumsvjpwn" path="res://Scenes/DungeonTile.tscn" id="3_e6gr5"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("characterNameplateParent", "dungeonGridContainer")]
 layout_mode = 3
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gq0se")
 playerCharacterNameplateScene = ExtResource("2_6a558")
-dungeonTileUIScene = ExtResource("4_quupu")
+dungeonTileUIScene = ExtResource("3_e6gr5")
 characterNameplateParent = NodePath("PlayerNameplateContainer")
 dungeonGridContainer = NodePath("DungeonGrid")
 

@@ -11,4 +11,4 @@
 [node name="DungeonManager" type="Node"]
 script = ExtResource("1_044fn")
 gridSize = Vector2i(4, 4)
-dungeonTiles = Array[Object]([ExtResource("2_oj7op"), ExtResource("3_3mi36"), ExtResource("4_wowc0"), ExtResource("5_wcett"), ExtResource("6_ma2jx"), ExtResource("7_ffmp7")])
+dungeonTiles = Array[Object]([ExtResource("4_wowc0"), ExtResource("5_wcett"), ExtResource("2_oj7op"), ExtResource("6_ma2jx"), ExtResource("3_3mi36"), ExtResource("7_ffmp7")])

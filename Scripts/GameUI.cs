@@ -10,20 +10,16 @@ public partial class GameUI : Control
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
 	[Export] private GridContainer dungeonGridContainer;
-	
-	private DungeonManager dungeonManager;
-	
-	public override void _Ready()
+
+    public override void _Ready()
 	{
-		dungeonManager = GetNodeOrNull<Node>("/root/GameRoot/DungeonManager") as DungeonManager;
-		GD.Print(dungeonManager);
 		SpawnPlayerCharacterNameplates();
 		SetDungeonTiles();
 	}
 	
 	private void SpawnPlayerCharacterNameplates()
 	{
-		foreach (var player in GameManager.Players)
+		foreach (var player in GameManager.Instance.Players)
 		{
 			PlayerCharacterNameplate characterNameplate = playerCharacterNameplateScene.Instantiate<PlayerCharacterNameplate>();
 			
@@ -53,15 +49,15 @@ public partial class GameUI : Control
 	
 	private void SetDungeonTiles()
 	{
-		for (int i = 0; i < dungeonManager.DungeonGrid.GetLength(1); i++)
+		for (int i = 0; i < DungeonManager.Instance.DungeonGrid.GetLength(1); i++)
 		{
-			for (int j = 0; j < dungeonManager.DungeonGrid.GetLength(0); j++)
+			for (int j = 0; j < DungeonManager.Instance.DungeonGrid.GetLength(0); j++)
 			{
 				var dungeonTile = dungeonTileUIScene.Instantiate();
 				
-				dungeonTile.GetNode<ColorRect>("MarginContainer/ColorRect").Color = dungeonManager.DungeonGrid[j,i].TileColor;
+				dungeonTile.GetNode<ColorRect>("MarginContainer/ColorRect").Color = DungeonManager.Instance.DungeonGrid[j,i].TileColor;
 				
-				dungeonTile.GetNode<Label>("Label").Text = dungeonManager.DungeonGrid[j,i].TileName;
+				dungeonTile.GetNode<Label>("Label").Text = DungeonManager.Instance.DungeonGrid[j,i].TileName;
 				
 				dungeonTile.Name = $"{j},{i}";
 				

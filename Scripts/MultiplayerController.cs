@@ -33,8 +33,8 @@ public partial class MultiplayerController : Control
 	
 	private Dictionary<int, PlayerLobbyNameplate> playerLobbyNameplates = new();
 
-	public override void _Ready()
-	{	
+	public override void _EnterTree()
+	{
 		Multiplayer.PeerConnected += OnPeerConnected;
 		Multiplayer.PeerDisconnected += OnPeerDisconnceted;
 		Multiplayer.ConnectedToServer += OnConnectedToServer;
@@ -110,12 +110,12 @@ public partial class MultiplayerController : Control
 	{
 		PlayerInfo playerInfo = new(id, name);
 		
-		if(!GameManager.Players.Contains(playerInfo))
-			GameManager.Players.Add(playerInfo);
+		if(!GameManager.Instance.Players.Contains(playerInfo))
+			GameManager.Instance.Players.Add(playerInfo);
 			
 		if(Multiplayer.IsServer())
 		{
-			foreach (var player in GameManager.Players)
+			foreach (var player in GameManager.Instance.Players)
 			{
 				Rpc(nameof(SendPlayerInfo), player.Name, player.ID);
 			}
@@ -130,7 +130,7 @@ public partial class MultiplayerController : Control
 			
 		PlayerLobbyNameplate playerLobbyNameplate = playerLobbyScene.Instantiate<PlayerLobbyNameplate>();
 		
-		PlayerInfo playerInfo = GameManager.Players.Where(x => x.ID == id).First();
+		PlayerInfo playerInfo = GameManager.Instance.Players.Where(x => x.ID == id).First();
 		
 		playerLobbyNameplate.NameLabel.Text = playerInfo.Name;
 		playerLobbyNameplate.ReadyCheckBox.ButtonPressed = isReady;
@@ -204,7 +204,7 @@ public partial class MultiplayerController : Control
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SetPlayerCharacterClass(int id, PlayerCharacterClass playerCharacterClass)
 	{
-		GameManager.Players.Where(x => x.ID == id).First().ChangePlayerCharacterClass(playerCharacterClass);
+		GameManager.Instance.Players.Where(x => x.ID == id).First().ChangePlayerCharacterClass(playerCharacterClass);
 
 		string labelText = string.Empty;
 		
@@ -232,8 +232,7 @@ public partial class MultiplayerController : Control
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void StartGame()
 	{
-		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/GameUI.tscn").Instantiate<Control>();
-		GetTree().Root.AddChild(scene);
+		GameManager.Instance.StartGame();
 		Hide();
 	}
 
@@ -254,7 +253,7 @@ public partial class MultiplayerController : Control
 	private void OnPeerDisconnceted(long id)
 	{
 		GD.Print("Peer disconnected");
-		GameManager.Players.Remove(GameManager.Players.Where(i => i.ID == id).First());
+		GameManager.Instance.Players.Remove(GameManager.Instance.Players.Where(i => i.ID == id).First());
 	}
 
 	private void OnPeerConnected(long id)
@@ -264,7 +263,7 @@ public partial class MultiplayerController : Control
 	private void OnServerDisconnected()
 	{
 		Multiplayer.MultiplayerPeer = null;
-		GameManager.Players.Clear();
+		GameManager.Instance.Players.Clear();
 		playerLobbyNameplates.Clear();
 	}
 	

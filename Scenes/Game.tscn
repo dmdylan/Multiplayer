@@ -1,10 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmb03q4dd8kjk"]
+[gd_scene load_steps=2 format=3 uid="uid://dmb03q4dd8kjk"]
 
 [ext_resource type="PackedScene" uid="uid://dgckbpvkk7o7c" path="res://Scenes/GameUI.tscn" id="1_uchs3"]
-[ext_resource type="PackedScene" uid="uid://cg5abjfsh0udr" path="res://Scenes/DungeonManager.tscn" id="1_y6vq6"]
 
 [node name="GameRoot" type="Node"]
-
-[node name="DungeonManager" parent="." instance=ExtResource("1_y6vq6")]
 
 [node name="GameUI" parent="." instance=ExtResource("1_uchs3")]

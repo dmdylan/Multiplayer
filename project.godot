@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/Lobby.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://Scenes/GameManager.tscn"
+DungeonManager="*res://Scenes/DungeonManager.tscn"
+
 [display]
 
 window/stretch/mode="viewport"
