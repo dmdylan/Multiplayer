@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_eq5pm")
 tileName = "Loot"
-tileColor = Color(0, 0.913725, 0.827451, 1)
+tileColor = Color(0.85098, 0.886275, 0.47451, 1)

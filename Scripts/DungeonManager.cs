@@ -10,6 +10,8 @@ public partial class DungeonManager : Node
 	[Export] private DungeonTile[] dungeonTiles;
 	
 	private DungeonTile[,] dungeonGrid;
+	public DungeonTile[,] DungeonGrid => dungeonGrid;
+
 
 	public override void _Ready()
 	{

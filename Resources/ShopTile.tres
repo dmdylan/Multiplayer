@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_wjkt1")
 tileName = "Shop"
-tileColor = Color(0.952941, 1, 0.168627, 1)
+tileColor = Color(0, 0, 0.901961, 1)
