@@ -1,38 +1,39 @@
-using Godot;
-using System;
 using System.Collections.Generic;
 
-public partial class StateMachine : Node
-{	
-	[Export] private NodePath initalState;
-	
-	private Dictionary<string, State> states = new();
-	private State currentState;
-	
-	public void InitStateMachine(State state)
-	{
-		foreach (Node node in GetChildren())
-		{
-			if(node is State s)
-			{
-				states.Add(s.Name, s);
-				s.InitState(this);
-			}
-		}
-		
-		currentState = state;
-		currentState.EnterState();
-	}
-	
-	public void ChangeState(State state)
-	{
-		if(!states.ContainsKey(state.Name) || currentState == state)
-			return;
-		
-		currentState.ExitState();
-		
-		currentState = states[state.Name];
-		
-		currentState.EnterState();
-	}
+namespace StateStuff
+{
+    public class StateMachine
+    {
+        private Dictionary<string, State> states = new();
+        public State CurrentState { get; private set; }
+        public string CurrentStateName { get; private set; }
+        public string PreviousStateName { get; private set; }
+
+        public void AddState(string key, State state)
+        {
+            states.Add(key, state);
+        }
+
+        public void InitStateMachine(string stateName)
+        {
+            CurrentState = states[stateName];
+            CurrentState.EnterState();
+        }
+
+        public void InvokeUpdateState(float delta) => CurrentState.UpdateState(delta);
+        public void InvokePhysicsUpdateState(float delta) => CurrentState.PhysicsUpdateState(delta);
+
+        public void ChangeState(string stateName, State state)
+        {
+            if (!states.ContainsKey(stateName) || CurrentState == state)
+                return;
+
+            CurrentState.ExitState();
+
+            CurrentState = states[stateName];
+            CurrentStateName = stateName;
+
+            CurrentState.EnterState();
+        }
+    }
 }
