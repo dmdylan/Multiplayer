@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjoi0g5248hen"]
+[gd_scene load_steps=3 format=3 uid="uid://bjoi0g5248hen"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_83rhj"]
+[ext_resource type="Script" path="res://Scripts/State/StateMachine.cs" id="2_oo8ih"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_83rhj")
+
+[node name="GameStateMachine" type="Node" parent="."]
+script = ExtResource("2_oo8ih")
+
+[node name="Menu" type="Node" parent="GameStateMachine"]
+
+[node name="Lobby" type="Node" parent="GameStateMachine"]
+
+[node name="Game" type="Node" parent="GameStateMachine"]
+
+[node name="Combat" type="Node" parent="GameStateMachine"]
