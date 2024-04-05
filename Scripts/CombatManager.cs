@@ -4,7 +4,7 @@ using System;
 
 public partial class CombatManager : Node
 {
-	private StateMachine stateMachine = new();
+	private readonly StateMachine stateMachine = new();
 
 	public override void _Ready()
 	{
