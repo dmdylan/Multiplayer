@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseStatSheet" load_steps=2 format=3 uid="uid://4sseo5ywjv5i"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/BaseStatSheet.cs" id="1_3rgep"]
+
+[resource]
+script = ExtResource("1_3rgep")
+health = 5
+speed = 7
+defense = 0
