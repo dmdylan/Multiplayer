@@ -1,11 +1,10 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class BaseStatSheet : Resource
 {
-	[Export] private int health;
-	[Export] private int speed;
-	[Export] private int defense;
+	[Export] private BaseStatPair[] baseStats;
 	
+	public BaseStatPair[] BaseStats => baseStats;
 }

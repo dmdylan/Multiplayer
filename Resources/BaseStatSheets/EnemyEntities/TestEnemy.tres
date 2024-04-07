@@ -4,6 +4,4 @@
 
 [resource]
 script = ExtResource("1_3rgep")
-health = 5
-speed = 7
-defense = 0
+baseStats = null

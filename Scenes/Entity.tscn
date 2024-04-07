@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn477ock6c50g"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Entity.cs" id="1_fi72n"]
+[ext_resource type="Script" path="res://Scripts/Entity/EntityStatController.cs" id="2_8njkm"]
+
+[node name="Entity" type="Node"]
+script = ExtResource("1_fi72n")
+
+[node name="EntityStatController" type="Node" parent="."]
+script = ExtResource("2_8njkm")
