@@ -9,5 +9,12 @@ public partial class Entity : Node
 	public void InitializeEntity(EntityInfo entityInfo)
 	{
 		this.entityInfo = entityInfo;
+		
+		entityStatController = GetNodeOrNull<EntityStatController>("EntityStatController");
+	}
+	
+	private void EntityStatSetup()
+	{
+		
 	}
 }
