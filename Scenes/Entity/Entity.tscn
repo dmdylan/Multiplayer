@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn477ock6c50g"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Entity.cs" id="1_fi72n"]
+[ext_resource type="PackedScene" uid="uid://bg6atyo218v8d" path="res://Scenes/Entity/Components/StatComponent.tscn" id="2_8qgnn"]
+[ext_resource type="PackedScene" uid="uid://n27qof1q4nft" path="res://Scenes/Entity/Components/HealthComponent.tscn" id="3_hre5g"]
+[ext_resource type="PackedScene" uid="uid://cdtg4hwp1f2x6" path="res://Scenes/Entity/Components/StatusEffectComponent.tscn" id="4_i0fp1"]
+
+[node name="Entity" type="Node"]
+script = ExtResource("1_fi72n")
+
+[node name="StatComponent" parent="." instance=ExtResource("2_8qgnn")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_hre5g")]
+
+[node name="StatusEffectComponent" parent="." instance=ExtResource("4_i0fp1")]

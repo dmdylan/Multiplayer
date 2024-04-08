@@ -1,20 +1,23 @@
 using Godot;
-using System;
 
 public partial class Entity : Node
 {
-	protected EntityInfo entityInfo;
-	private EntityStatController entityStatController;
-	
+	public EntityInfo EntityInfo { get; private set; }
+	public StatComponent StatComponent { get; private set; }
+	public HealthComponent HealthComponent { get; private set; }
+	public StatusEffectComponent StatusEffectComponent { get; private set; }
+
 	public void InitializeEntity(EntityInfo entityInfo)
 	{
-		this.entityInfo = entityInfo;
+		EntityInfo = entityInfo;
 		
-		entityStatController = GetNodeOrNull<EntityStatController>("EntityStatController");
-	}
-	
-	private void EntityStatSetup()
-	{
+		StatComponent = GetNodeOrNull<StatComponent>("StatComponent");
+		HealthComponent = GetNodeOrNull<HealthComponent>("HealthComponent");
+		StatusEffectComponent = GetNodeOrNull<StatusEffectComponent>("StatusEffectComponent");
 		
+		//TODO: Change init so I don't need a reference to the entity?
+		StatComponent.InitalizeStatComponent(this);
+		HealthComponent.InitalizeHealthComponent(this);
+		StatusEffectComponent.IntializeStatusEffectComponent(this);
 	}
 }

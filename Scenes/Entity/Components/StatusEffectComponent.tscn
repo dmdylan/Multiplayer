@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdtg4hwp1f2x6"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Components/StatusEffectComponent.cs" id="1_nft3i"]
+
+[node name="StatusEffectComponent" type="Node"]
+script = ExtResource("1_nft3i")

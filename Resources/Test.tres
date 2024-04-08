@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatusEffectInfo" load_steps=2 format=3 uid="uid://ew66b0cvdwd"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/StatusEffectInfo.cs" id="1_55imx"]
+
+[resource]
+script = ExtResource("1_55imx")
+EffectName = ""
+EffectDescription = ""
+EffectType = 0
+EffectApplicationTime = 0
+EffectStackingType = 0

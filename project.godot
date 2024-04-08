@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scenes/GameManager.tscn"
-DungeonManager="*res://Scenes/DungeonManager.tscn"
+GameManager="*res://Scenes/Managers/GameManager.tscn"
+DungeonManager="*res://Scenes/Managers/DungeonManager.tscn"
 
 [display]
 

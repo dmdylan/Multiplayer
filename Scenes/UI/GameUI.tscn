@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgckbpvkk7o7c"]
 
 [ext_resource type="Script" path="res://Scripts/GameUI.cs" id="1_gq0se"]
-[ext_resource type="PackedScene" uid="uid://fbd483it1usf" path="res://Scenes/PlayerNameplate.tscn" id="2_6a558"]
+[ext_resource type="PackedScene" uid="uid://fbd483it1usf" path="res://Scenes/UI/PlayerNameplate.tscn" id="2_6a558"]
 [ext_resource type="Texture2D" uid="uid://bhrque684oc30" path="res://Assets/Kenney/RPGUI/PNG/panel_brown.png" id="3_8pn2j"]
 [ext_resource type="PackedScene" uid="uid://b72oqumsvjpwn" path="res://Scenes/DungeonTile.tscn" id="3_e6gr5"]
 

@@ -5,23 +5,20 @@ public enum PlayerCharacterClass { Warrior, Mage, Cleric, Rogue}
 
 public class PlayerInfo
 {
-	private readonly int id;
-	private readonly string name;
-	private PlayerCharacterClass playerCharacterClass;
-
-	public int ID => id;
-	public string Name => name;
-	public PlayerCharacterClass PlayerCharacterClass => playerCharacterClass;
+	public int ID { get; private set; }
+	public string Name { get; private set; }
+	public Entity PlayerEntity { get; private set; }
+	public PlayerCharacterClass PlayerCharacterClass { get; private set; }
 
 	public PlayerInfo(int id, string name)
 	{
-		this.id = id;
-		this.name = name;
+		ID = id;
+		Name = name;
 	}
 	
 	public void ChangePlayerCharacterClass(PlayerCharacterClass playerCharacterClass)
 	{
-		this.playerCharacterClass = playerCharacterClass;
+		PlayerCharacterClass = playerCharacterClass;
 	}
 }
 
