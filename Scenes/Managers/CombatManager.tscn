@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/CombatManager.cs" id="1_ydsbv"]
 
-[node name="CombatManager" type="Node"]
+[node name="CombatManager" type="Node" node_paths=PackedStringArray("StateDebugLabel")]
 script = ExtResource("1_ydsbv")
+StateDebugLabel = NodePath("CurrentStatDebugLabel")
+
+[node name="CurrentStatDebugLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "State Placeholder"

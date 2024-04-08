@@ -1,7 +1,7 @@
-using Godot;
-using System;
-
-public partial class StatusEffect : Node
+public class StatusEffect
 {
-	
+	public StatusEffect(StatusEffectInfo statusEffectInfo)
+	{
+		
+	}
 }

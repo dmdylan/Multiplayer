@@ -1,9 +1,13 @@
 using Godot;
 using StateStuff;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class CombatManager : Node
 {
+	[Export] public Label StateDebugLabel { get; private set; }
+	public List<Entity> Entities { get; private set; } = new List<Entity>();
+	
 	private readonly StateMachine stateMachine = new();
 
 	public override void _Ready()
@@ -20,5 +24,10 @@ public partial class CombatManager : Node
 		stateMachine.AddState("Defeat", new DefeatCombatState(stateMachine, this));
 		
 		stateMachine.InitStateMachine("BattleStart");
+	}
+	
+	private IOrderedEnumerable<Entity> SetTurnOrder()
+	{
+		return Entities.OrderByDescending(x => x.StatComponent.Stats[StatType.Speed]);
 	}
 }

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BaseStatSheet" load_steps=4 format=3 uid="uid://4sseo5ywjv5i"]
+[gd_resource type="Resource" script_class="BaseStatSheet" load_steps=5 format=3 uid="uid://4sseo5ywjv5i"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/BaseStatSheet.cs" id="1_3rgep"]
 [ext_resource type="Script" path="res://Scripts/Resources/BaseStatPair.cs" id="1_xnpce"]
@@ -6,8 +6,13 @@
 [sub_resource type="Resource" id="Resource_3jpn0"]
 script = ExtResource("1_xnpce")
 StatType = 0
-Value = 0.0
+Value = 5.0
+
+[sub_resource type="Resource" id="Resource_6rqub"]
+script = ExtResource("1_xnpce")
+StatType = 1
+Value = 5.0
 
 [resource]
 script = ExtResource("1_3rgep")
-baseStats = Array[Object]([SubResource("Resource_3jpn0")])
+baseStats = Array[Object]([SubResource("Resource_3jpn0"), SubResource("Resource_6rqub")])
