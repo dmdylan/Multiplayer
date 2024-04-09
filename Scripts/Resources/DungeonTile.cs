@@ -5,8 +5,8 @@ using System;
 public partial class DungeonTile : Resource
 {
 	[Export] private string tileName;
-	[Export] private Color tileColor;
+	[Export] private Texture2D tileTexture;
 	
 	public string TileName => tileName;	
-	public Color TileColor => tileColor;
+	public Texture2D TileTexture => tileTexture;
 }

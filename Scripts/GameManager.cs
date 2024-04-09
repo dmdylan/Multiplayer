@@ -18,7 +18,7 @@ public partial class GameManager : Node
 	
 	public void StartGame()
 	{
-		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/GameUI.tscn").Instantiate<Control>();
+		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GameUI.tscn").Instantiate<Control>();
 		DungeonManager.Instance.PopulateDungeonGrid();
 		GetTree().Root.AddChild(scene);
 	}

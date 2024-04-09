@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="DungeonTile" load_steps=2 format=3 uid="uid://bko30s7ilud5p"]
+[gd_resource type="Resource" script_class="DungeonTile" load_steps=3 format=3 uid="uid://bko30s7ilud5p"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/DungeonTile.cs" id="1_et7dp"]
+[ext_resource type="Texture2D" uid="uid://c60rnteo2dyqr" path="res://encountertile.png" id="2_n7lnq"]
 
 [resource]
 script = ExtResource("1_et7dp")
 tileName = "Encounter"
-tileColor = Color(1, 0.541176, 0.478431, 1)
+tileTexture = ExtResource("2_n7lnq")

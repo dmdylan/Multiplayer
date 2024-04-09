@@ -55,7 +55,7 @@ public partial class GameUI : Control
 			{
 				var dungeonTile = dungeonTileUIScene.Instantiate();
 				
-				dungeonTile.GetNode<ColorRect>("MarginContainer/ColorRect").Color = DungeonManager.Instance.DungeonGrid[j,i].TileColor;
+				dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton").TextureNormal = DungeonManager.Instance.DungeonGrid[j,i].TileTexture;
 				
 				dungeonTile.GetNode<Label>("Label").Text = DungeonManager.Instance.DungeonGrid[j,i].TileName;
 				

@@ -26,8 +26,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
