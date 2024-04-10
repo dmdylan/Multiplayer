@@ -23,9 +23,9 @@ namespace StateStuff
         public void InvokeUpdateState(float delta) => CurrentState.UpdateState(delta);
         public void InvokePhysicsUpdateState(float delta) => CurrentState.PhysicsUpdateState(delta);
 
-        public void ChangeState(string stateName, State state)
+        public void ChangeState(string stateName)
         {
-            if (!states.ContainsKey(stateName) || CurrentState == state)
+            if (!states.ContainsKey(stateName) || CurrentState == states[stateName])
                 return;
 
             CurrentState.ExitState();
