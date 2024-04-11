@@ -16,7 +16,7 @@ namespace StateStuff
 			combatManager.StateDebugLabel.Text = "Init Combat State";
 			SetInitialTurnOrder();
 			//Send info to other managers
-			SetNextTurn();
+			stateMachine.ChangeState("TurnSetup");
 		}
 
 		private void SetInitialTurnOrder()
@@ -26,18 +26,6 @@ namespace StateStuff
 			foreach (var item in turnOrderList)
 			{
 				combatManager.CurrentTurnOrder.Add(item);
-			}
-		}
-		
-		private void SetNextTurn()
-		{
-			if(GameManager.Instance.Players.Select(x => x.PlayerEntity == combatManager.CurrentTurnOrder[0]).FirstOrDefault())
-			{
-				stateMachine.ChangeState("PlayerTurn");
-			}
-			else
-			{
-				stateMachine.ChangeState("EnemyTurn");
 			}
 		}
 	}
