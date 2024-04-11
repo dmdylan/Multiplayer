@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EntityInfo" load_steps=3 format=3 uid="uid://do4wkw82wseei"]
+
+[ext_resource type="Resource" uid="uid://bs6wtb13gfir5" path="res://Resources/BaseStatSheets/PlayerEntities/MageStatSheet.tres" id="1_a52fo"]
+[ext_resource type="Script" path="res://Scripts/Resources/EntityInfo.cs" id="1_xx0b2"]
+
+[resource]
+script = ExtResource("1_xx0b2")
+Name = "Mage"
+BaseStatSheet = ExtResource("1_a52fo")

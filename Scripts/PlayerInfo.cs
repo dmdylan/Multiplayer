@@ -1,14 +1,8 @@
-using Godot;
-using System;
-
-public enum PlayerCharacterClass { Warrior, Mage, Cleric, Rogue}
-
 public class PlayerInfo
 {
 	public int ID { get; private set; }
 	public string Name { get; private set; }
-	public Entity PlayerEntity { get; private set; }
-	public PlayerCharacterClass PlayerCharacterClass { get; private set; }
+	public Entity Entity { get; private set; }
 
 	public PlayerInfo(int id, string name)
 	{
@@ -16,9 +10,9 @@ public class PlayerInfo
 		Name = name;
 	}
 	
-	public void ChangePlayerCharacterClass(PlayerCharacterClass playerCharacterClass)
+	public void SetEntity(Entity entity)
 	{
-		PlayerCharacterClass = playerCharacterClass;
+		Entity = entity;
 	}
 }
 

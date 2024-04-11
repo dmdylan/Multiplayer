@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaseStatSheet" load_steps=5 format=3 uid="uid://bs6wtb13gfir5"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/BaseStatSheet.cs" id="1_3yow4"]
+[ext_resource type="Script" path="res://Scripts/Resources/BaseStatPair.cs" id="1_sqwvr"]
+
+[sub_resource type="Resource" id="Resource_w44w6"]
+script = ExtResource("1_sqwvr")
+StatType = 0
+Value = 5.0
+
+[sub_resource type="Resource" id="Resource_amva6"]
+script = ExtResource("1_sqwvr")
+StatType = 1
+Value = 7.0
+
+[resource]
+script = ExtResource("1_3yow4")
+baseStats = Array[Object]([SubResource("Resource_w44w6"), SubResource("Resource_amva6")])

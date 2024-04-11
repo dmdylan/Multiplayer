@@ -6,10 +6,12 @@ public partial class Entity : Node
 	public StatComponent StatComponent { get; private set; }
 	public HealthComponent HealthComponent { get; private set; }
 	public StatusEffectComponent StatusEffectComponent { get; private set; }
+	public int? OwnerID { get; private set; }
 
-	public void InitializeEntity(EntityInfo entityInfo)
+	public void InitializeEntity(EntityInfo entityInfo, int? ownerID = null)
 	{
 		EntityInfo = entityInfo;
+		OwnerID = ownerID;
 		
 		StatComponent = GetNodeOrNull<StatComponent>("StatComponent");
 		HealthComponent = GetNodeOrNull<HealthComponent>("HealthComponent");

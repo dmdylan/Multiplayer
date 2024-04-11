@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bo6nest36kjq8" path="res://Assets/Kenney/RPGUI/PNG/barRed_horizontalMid.png" id="4_vjrnq"]
 [ext_resource type="Texture2D" uid="uid://b78l2knhgrvdn" path="res://Assets/Kenney/RPGUI/PNG/barBlue_horizontalBlue.png" id="5_2hsll"]
 
-[node name="PlayerNameplate" type="Control" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer")]
+[node name="PlayerNameplate" type="Control" node_paths=PackedStringArray("nameLabel", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer")]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 3
 anchor_right = 0.217
@@ -17,7 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5at1e")
 nameLabel = NodePath("BarsParents/NameLabel")
-icon = NodePath("Icon")
 healthBar = NodePath("BarsParents/HealthBar")
 currentHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/CurrentValue")
 maxHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/MaxValue")
@@ -40,7 +39,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Icon" type="ColorRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +50,7 @@ offset_right = -158.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
 [node name="BarsParents" type="VBoxContainer" parent="."]
 layout_mode = 0

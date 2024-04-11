@@ -4,5 +4,3 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_8ab7u")
-
-[node name="PlayerCharacterEntities" type="Node" parent="."]

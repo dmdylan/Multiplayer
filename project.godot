@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Scenes/Managers/GameManager.tscn"
 DungeonManager="*res://Scenes/Managers/DungeonManager.tscn"
+EntityManager="*res://Scenes/Managers/EntityManager.tscn"
 
 [display]
 
