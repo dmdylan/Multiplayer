@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime;
 using Godot;
 
@@ -11,9 +12,10 @@ public partial class DungeonManager : Node
 	
 	[Export] private Vector2I gridSize;
 	[Export] private DungeonTile[] dungeonTiles;
+	[Export] private DungeonTile bossTile;
 	
-	private DungeonTile[,] dungeonGrid;
-	public DungeonTile[,] DungeonGrid => dungeonGrid;
+	private DungeonTile[][] dungeonGrid;
+	public DungeonTile[][] DungeonGrid => dungeonGrid;
 
 
 	public override void _EnterTree()
@@ -28,19 +30,32 @@ public partial class DungeonManager : Node
 	{
 		base._Ready();
 		
-		dungeonGrid = new DungeonTile[gridSize.X, gridSize.Y];
+		dungeonGrid = new DungeonTile[gridSize.X][];
+		
+		dungeonGrid[0] = new DungeonTile[gridSize.Y];
+		dungeonGrid[1] = new DungeonTile[gridSize.Y];
+		dungeonGrid[2] = new DungeonTile[gridSize.Y];
+		dungeonGrid[3] = new DungeonTile[gridSize.Y];
+		dungeonGrid[4] = new DungeonTile[1];
 	}
 
 	public void PopulateDungeonGrid()
 	{
 		//Loop through grid Y
-		for (int i = 0; i < gridSize.Y; i++)
+		for (int i = 0; i < dungeonGrid.Length; i++)
 		{
 			//Loop through grid X
-			for (int j = 0; j < gridSize.X; j++)
+			for (int j = 0; j < dungeonGrid[i].Length; j++)
 			{
-				dungeonGrid[j, i] = dungeonTiles[GD.Randi() % dungeonTiles.Length];
-				// GD.Print($"Dungeon position {j},{i}: {dungeonGrid[j,i].TileName}");
+				if(i == dungeonGrid.Length - 1  )
+				{
+					dungeonGrid[i][j] = bossTile;
+					GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");
+					continue;
+				}
+				
+				dungeonGrid[i][j] = dungeonTiles[GD.Randi() % dungeonTiles.Length];
+				GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");	
 			}
 		}
 	}

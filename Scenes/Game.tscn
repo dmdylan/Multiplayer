@@ -4,4 +4,5 @@
 
 [node name="GameRoot" type="Node"]
 
-[node name="GameUI" parent="." instance=ExtResource("1_uchs3")]
+[node name="GameUI" parent="." node_paths=PackedStringArray("dungeonGridContainers") instance=ExtResource("1_uchs3")]
+dungeonGridContainers = []

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DungeonTile" load_steps=4 format=3 uid="uid://bbo3fcassomvj"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/DungeonTile.cs" id="1_4mekr"]
+
+[sub_resource type="Gradient" id="Gradient_l2r8h"]
+colors = PackedColorArray(1, 0.291615, 0.229135, 1, 0.858824, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qttbh"]
+gradient = SubResource("Gradient_l2r8h")
+fill_to = Vector2(1, 1)
+
+[resource]
+script = ExtResource("1_4mekr")
+tileName = "Boss"
+tileTexture = SubResource("GradientTexture2D_qttbh")

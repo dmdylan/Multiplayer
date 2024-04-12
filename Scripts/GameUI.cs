@@ -9,9 +9,9 @@ public partial class GameUI : Control
 	
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
-	[Export] private GridContainer dungeonGridContainer;
+	[Export] private HBoxContainer[] dungeonGridContainers;
 
-    public override void _Ready()
+	public override void _Ready()
 	{
 		SpawnPlayerCharacterNameplates();
 		SetDungeonTiles();
@@ -33,19 +33,24 @@ public partial class GameUI : Control
 	
 	private void SetDungeonTiles()
 	{
-		for (int i = 0; i < DungeonManager.Instance.DungeonGrid.GetLength(1); i++)
+		for (int i = 0; i < DungeonManager.Instance.DungeonGrid.Length; i++)
 		{
-			for (int j = 0; j < DungeonManager.Instance.DungeonGrid.GetLength(0); j++)
-			{
+			for (int j = 0; j < DungeonManager.Instance.DungeonGrid[i].Length; j++)
+			{				
 				var dungeonTile = dungeonTileUIScene.Instantiate();
 				
-				dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton").TextureNormal = DungeonManager.Instance.DungeonGrid[j,i].TileTexture;
+				TextureButton textureButton = dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton");
+					
+				textureButton.TextureNormal = DungeonManager.Instance.DungeonGrid[i][j].TileTexture;
 				
-				dungeonTile.GetNode<Label>("Label").Text = DungeonManager.Instance.DungeonGrid[j,i].TileName;
+				if(i != 0)
+					textureButton.Disabled = true;
+				
+				dungeonTile.GetNode<Label>("Label").Text = DungeonManager.Instance.DungeonGrid[i][j].TileName;
 				
 				dungeonTile.Name = $"{j},{i}";
 				
-				dungeonGridContainer.AddChild(dungeonTile);
+				dungeonGridContainers[i].AddChild(dungeonTile);
 			}
 		}
 	}
