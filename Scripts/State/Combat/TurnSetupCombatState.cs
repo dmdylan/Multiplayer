@@ -23,7 +23,7 @@ namespace StateStuff
 		
 		private void SetNextTurn()
 		{
-			if(GameManager.Instance.Players.Select(x => x.PlayerEntity == combatManager.CurrentTurnOrder[0]).FirstOrDefault())
+			if(GameManager.Instance.Players.Select(x => x.Entity == combatManager.CurrentTurnOrder[0]).FirstOrDefault())
 			{
 				stateMachine.ChangeState("PlayerTurn");
 			}

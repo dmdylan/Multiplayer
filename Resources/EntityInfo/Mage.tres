@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="EntityInfo" load_steps=3 format=3 uid="uid://do4wkw82wseei"]
+[gd_resource type="Resource" script_class="EntityInfo" load_steps=4 format=3 uid="uid://do4wkw82wseei"]
 
 [ext_resource type="Resource" uid="uid://bs6wtb13gfir5" path="res://Resources/BaseStatSheets/PlayerEntities/MageStatSheet.tres" id="1_a52fo"]
 [ext_resource type="Script" path="res://Scripts/Resources/EntityInfo.cs" id="1_xx0b2"]
+[ext_resource type="Image" uid="uid://cirnogefyhcq8" path="res://mageicon.png" id="2_vy6c0"]
 
 [resource]
 script = ExtResource("1_xx0b2")
 Name = "Mage"
+EntityIcon = ExtResource("2_vy6c0")
 BaseStatSheet = ExtResource("1_a52fo")

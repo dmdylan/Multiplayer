@@ -10,6 +10,7 @@ public partial class StatComponent : Node
 	{
 		this.entity = entity;
 		
+		//Throwing null error
 		foreach (var statPair in entity.EntityInfo.BaseStatSheet.BaseStats)
 		{
 			Stats.Add(statPair.StatType, new Stat(statPair.Value));

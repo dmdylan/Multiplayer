@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://n27qof1q4nft" path="res://Scenes/Entity/Components/HealthComponent.tscn" id="3_hre5g"]
 [ext_resource type="PackedScene" uid="uid://cdtg4hwp1f2x6" path="res://Scenes/Entity/Components/StatusEffectComponent.tscn" id="4_i0fp1"]
 
-[node name="Entity" type="Node"]
+[node name="Entity" type="Node" node_paths=PackedStringArray("StatComponent", "HealthComponent", "StatusEffectComponent")]
 script = ExtResource("1_fi72n")
+StatComponent = NodePath("StatComponent")
+HealthComponent = NodePath("HealthComponent")
+StatusEffectComponent = NodePath("StatusEffectComponent")
 
 [node name="StatComponent" parent="." instance=ExtResource("2_8qgnn")]
 

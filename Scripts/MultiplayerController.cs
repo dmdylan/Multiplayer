@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -202,36 +201,15 @@ public partial class MultiplayerController : Control
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	private void SetPlayerCharacterClass(int id, PlayerCharacterClass playerCharacterClass)
-	{
-		GameManager.Instance.Players.Where(x => x.ID == id).First().ChangePlayerCharacterClass(playerCharacterClass);
-
-		string labelText = string.Empty;
-		
-		switch (playerCharacterClass)
-		{
-			case PlayerCharacterClass.Warrior:
-				labelText = " W ";
-				break;
-			case PlayerCharacterClass.Mage:
-				labelText = " M ";
-				break;
-			case PlayerCharacterClass.Cleric:
-				labelText = " C ";
-				break;
-			case PlayerCharacterClass.Rogue:
-				labelText = " R ";
-				break;
-			default:
-				break;
-		}
-		
-		playerLobbyNameplates[id].CurrentCharacterClassLabel.Text = labelText;
+	private void SetPlayerCharacterClass(int id, string className)
+	{		
+		playerLobbyNameplates[id].CurrentCharacterClassLabel.Text = className;
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void StartGame()
 	{
+		GameManager.Instance.SpawnPlayerEntities(playerLobbyNameplates[Multiplayer.GetUniqueId()].CurrentCharacterClassLabel.Text);
 		GameManager.Instance.StartGame();
 		Hide();
 	}
@@ -326,22 +304,22 @@ public partial class MultiplayerController : Control
 	
 	private void OnWarriorButtonPressed()
 	{
-		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Warrior);
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), "Warrior");
 	}
 
 	private void OnMageButtonPressed()
 	{
-		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Mage);
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), "Mage");
 	}
 
 	private void OnClericButtonPressed()
 	{
-		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Cleric);
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), "Cleric");
 	}
 
 	private void OnRogueButtonPressed()
 	{
-		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), (int)PlayerCharacterClass.Rogue);
+		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), "Rogue");
 	}
 
 	#endregion Button Callbacks

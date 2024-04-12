@@ -25,7 +25,7 @@ public partial class GameUI : Control
 			
 			characterNameplate.NameLabel.Text = player.Name;
 
-			characterNameplate.Icon.Texture = ResourceLoader.Load<ImageTexture>(player.PlayerEntity.EntityInfo.EntityIcon.ResourcePath);
+			characterNameplate.Icon.Texture = ImageTexture.CreateFromImage(ResourceLoader.Load<Image>(player.Entity.EntityInfo.EntityIcon.ResourcePath));
 
 			characterNameplateParent.AddChild(characterNameplate);
 		}

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://f2baxtky8esv"]
+[gd_scene load_steps=3 format=3 uid="uid://f2baxtky8esv"]
 
 [ext_resource type="Script" path="res://Scripts/EntityManager.cs" id="1_q87h2"]
+[ext_resource type="PackedScene" uid="uid://cn477ock6c50g" path="res://Scenes/Entity/Entity.tscn" id="2_6a032"]
 
 [node name="EntityManager" type="Node"]
 script = ExtResource("1_q87h2")
+entityBase = ExtResource("2_6a032")

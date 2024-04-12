@@ -26,10 +26,14 @@ public partial class GameManager : Node
 		GetTree().Root.AddChild(scene);
 	}
 	
-	public void SetPlayerClass(int id, string className)
+	public void SpawnPlayerEntities(string entityName)
 	{
-		EntityInfo entityInfo = EntityDatabase.Entities.Where(x => x.Name == className).FirstOrDefault();
-		
-		Players.Where(x => x.ID == id).First().PlayerEntity = EntityManager.Instance.CreateNewEntity(entityInfo);				
+		foreach (var player in Players)
+		{
+			GD.Print(entityName);
+			EntityInfo entityInfo = EntityDatabase.Entities.Where(x => x.Name == entityName).FirstOrDefault();
+			
+			player.SetEntity(EntityManager.Instance.CreateNewEntity(entityInfo, player.ID));
+		}
 	}
 }

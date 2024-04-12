@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EntityDatabase" load_steps=3 format=3 uid="uid://bu8kn58niimvo"]
+[gd_resource type="Resource" script_class="EntityDatabase" load_steps=4 format=3 uid="uid://bu8kn58niimvo"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/EntityDatabase.cs" id="1_dugt6"]
 [ext_resource type="Resource" uid="uid://ckwtbu0m7leun" path="res://Resources/EntityInfo/TestEntity.tres" id="1_ra6t4"]
+[ext_resource type="Resource" uid="uid://do4wkw82wseei" path="res://Resources/EntityInfo/Mage.tres" id="2_esf82"]
 
 [resource]
 script = ExtResource("1_dugt6")
-Entities = Array[Object]([ExtResource("1_ra6t4")])
+Entities = Array[Object]([ExtResource("1_ra6t4"), ExtResource("2_esf82")])
