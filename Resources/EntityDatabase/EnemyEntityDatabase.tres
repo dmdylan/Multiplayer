@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EntityDatabase" load_steps=3 format=3 uid="uid://35y0e57bte7s"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/EntityDatabase.cs" id="1_7dw3d"]
+[ext_resource type="Resource" uid="uid://ckwtbu0m7leun" path="res://Resources/EntityInfo/TestEntity.tres" id="1_xo2ug"]
+
+[resource]
+script = ExtResource("1_7dw3d")
+Entities = Array[Object]([ExtResource("1_xo2ug")])

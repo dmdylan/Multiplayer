@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/DungeonTileNode.cs" id="1_jiv3p"]
 [ext_resource type="ButtonGroup" uid="uid://b03xsub66xm4m" path="res://DungeonTileButtonGroup.tres" id="2_maesb"]
 
-[node name="DungeonTile" type="Panel"]
+[node name="DungeonTile" type="Panel" node_paths=PackedStringArray("textureButton", "iconGrid")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,6 +18,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_jiv3p")
+textureButton = NodePath("MarginContainer/TextureButton")
+iconGrid = NodePath("IconGrid")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -51,4 +53,40 @@ text = "Placeholder"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="OnDungeonTileButtonPressed"]
+[node name="IconGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -38.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 4
+
+[node name="0" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+
+[node name="1" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
