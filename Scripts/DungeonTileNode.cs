@@ -8,13 +8,12 @@ public partial class DungeonTileNode : Panel
 	[Export] private TextureButton textureButton;
 	[Export] private GridContainer iconGrid;
 
-	private List<TextureRect> imageTextures;
+	private List<TextureRect> imageTextures = new();
 
 	public override void _Ready()
 	{
-		foreach (var item in iconGrid.GetChildren(false))
+		foreach (var item in iconGrid.GetChildren())
 		{
-			GD.Print(item.Name);
 			if(item is TextureRect rect)
 				imageTextures.Add(rect);
 		}
@@ -35,12 +34,18 @@ public partial class DungeonTileNode : Panel
 		Rpc(nameof(SetIconOnTile), Multiplayer.GetUniqueId());
 	}
 	
+	//Does not remove current node for new one
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SetIconOnTile(int id)
 	{
-		TextureRect textureRect = imageTextures.Where(x => x.Texture == null).First();
+		TextureRect textureRect = imageTextures.Where(x => x.Texture == null).FirstOrDefault();
 		
-		textureRect.Texture = ImageTexture.CreateFromImage(GameManager.Instance.Players[id].Entity.EntityInfo.EntityIcon);
+		if(textureRect == null)
+			return;
+		
+		Image image = GameManager.Instance.Players.Where(x => x.ID == id).First().Entity.EntityInfo.EntityIcon;
+		
+		textureRect.Texture = ImageTexture.CreateFromImage(image);
 		
 		textureRect.Visible = true;
 	}

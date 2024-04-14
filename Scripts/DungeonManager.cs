@@ -27,6 +27,7 @@ public partial class DungeonManager : Node
 		
 		dungeonGrid = new DungeonTile[gridSize.X][];
 		
+		//TODO: Put in for loop
 		dungeonGrid[0] = new DungeonTile[gridSize.Y];
 		dungeonGrid[1] = new DungeonTile[gridSize.Y];
 		dungeonGrid[2] = new DungeonTile[gridSize.Y];
@@ -34,6 +35,8 @@ public partial class DungeonManager : Node
 		dungeonGrid[4] = new DungeonTile[1];
 	}
 
+	//TODO: Isn't synched between clients
+	[Rpc(MultiplayerApi.RpcMode.Authority)]
 	public void PopulateDungeonGrid()
 	{
 		//Loop through grid Y
@@ -53,5 +56,24 @@ public partial class DungeonManager : Node
 				GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");	
 			}
 		}
+		
+		// if(Multiplayer.IsServer())
+		// {
+		// 	foreach (var player in GameManager.Instance.Players)
+		// 	{
+				
+		// 	}
+		// }
+	}
+	
+	[Rpc]
+	private void SendDungeonGrid()
+	{
+		
+	}
+	
+	public void DungeonTileSelected()
+	{
+		
 	}
 }
