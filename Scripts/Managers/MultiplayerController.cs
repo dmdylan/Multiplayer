@@ -80,7 +80,7 @@ public partial class MultiplayerController : Control
 		
 		if(error != Error.Ok)
 		{
-			GD.Print($"Error cannot host: {error}");
+			GD.PrintErr($"Error cannot host: {error}");
 			return;
 		}
 		
@@ -122,7 +122,7 @@ public partial class MultiplayerController : Control
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void SpawnPlayerLobbyNameplate(int id, bool isReady)
+	private void SpawnPlayerLobbyNameplate(int id, bool isReady, string currentClass)
 	{	
 		if(playerLobbyNameplates.ContainsKey(id))
 			return;
@@ -133,7 +133,8 @@ public partial class MultiplayerController : Control
 		
 		playerLobbyNameplate.NameLabel.Text = playerInfo.Name;
 		playerLobbyNameplate.ReadyCheckBox.ButtonPressed = isReady;
-		
+		playerLobbyNameplate.CurrentCharacterClassLabel.Text = currentClass;
+
 		playerLobbyNameplates.Add(playerInfo.ID, playerLobbyNameplate);
 		
 		playerLobbyParentNode.AddChild(playerLobbyNameplate);
@@ -142,7 +143,7 @@ public partial class MultiplayerController : Control
 		{
 			foreach (var player in playerLobbyNameplates)
 			{
-				Rpc(nameof(SpawnPlayerLobbyNameplate), player.Key, player.Value.ReadyCheckBox.ButtonPressed);
+				Rpc(nameof(SpawnPlayerLobbyNameplate), player.Key, player.Value.ReadyCheckBox.ButtonPressed, player.Value.CurrentCharacterClassLabel.Text);
 			}
 		}
 	}
@@ -224,7 +225,7 @@ public partial class MultiplayerController : Control
 	private void OnConnectedToServer()
 	{
 		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());
-		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId(), false);	
+		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId(), false, string.Empty);	
 		RpcId(1, nameof(CheckIfEveryoneIsReady));
 	}
 
@@ -253,7 +254,7 @@ public partial class MultiplayerController : Control
 	{
 		HostGame();
 		SendPlayerInfo(nameInput.Text, 1);
-		SpawnPlayerLobbyNameplate(1, false);		
+		SpawnPlayerLobbyNameplate(1, false, string.Empty);		
 				
 		hostButton.Visible = false;
 		joinButton.Visible = false;

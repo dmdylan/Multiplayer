@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameUI : Control
 {
@@ -10,6 +11,8 @@ public partial class GameUI : Control
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
 	[Export] private HBoxContainer[] dungeonGridContainers;
+
+	public List<DungeonTileNode> DungeonTileNodes { get; private set; }
 
 	public override void _Ready()
 	{
@@ -33,11 +36,17 @@ public partial class GameUI : Control
 	
 	private void SetDungeonTiles()
 	{
+		int counter = 0;
+		
 		for (int i = 0; i < DungeonManager.Instance.DungeonGrid.Length; i++)
 		{
 			for (int j = 0; j < DungeonManager.Instance.DungeonGrid[i].Length; j++)
 			{				
-				var dungeonTile = dungeonTileUIScene.Instantiate();
+				var dungeonTile = dungeonTileUIScene.Instantiate() as DungeonTileNode;
+				
+				dungeonTile.ID = counter;
+				
+				UIManager.Instance.DungeonTileNodes.Add(dungeonTile);
 				
 				TextureButton textureButton = dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton");
 					
@@ -51,6 +60,8 @@ public partial class GameUI : Control
 				dungeonTile.Name = $"{j},{i}";
 				
 				dungeonGridContainers[i].AddChild(dungeonTile);
+				
+				counter++;
 			}
 		}
 	}

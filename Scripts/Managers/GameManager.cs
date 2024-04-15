@@ -18,13 +18,19 @@ public partial class GameManager : Node
 		else
 			instance = this;
 	}
-	
+
+	public override void _Ready()
+	{
+		base._Ready();
+		
+		GD.Seed(12345);
+	}
+
 	public void StartGame()
 	{
 		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GameUI.tscn").Instantiate<Control>();
 		
-		if(Multiplayer.IsServer())
-			Rpc(nameof(DungeonManager.Instance.PopulateDungeonGrid));
+ 		DungeonManager.Instance.PopulateDungeonGrid();
 			
 		GetTree().Root.AddChild(scene);
 	}
@@ -33,7 +39,6 @@ public partial class GameManager : Node
 	{
 		foreach (var player in Players)
 		{
-			GD.Print(entityName);
 			EntityInfo entityInfo = EntityDatabase.Entities.Where(x => x.Name == entityName).FirstOrDefault();
 			
 			player.SetEntity(EntityManager.Instance.CreateNewEntity(entityInfo, player.ID));

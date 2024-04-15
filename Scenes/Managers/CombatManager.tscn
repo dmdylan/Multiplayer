@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c684uo5emnpxl"]
 
-[ext_resource type="Script" path="res://Scripts/CombatManager.cs" id="1_ydsbv"]
+[ext_resource type="Script" path="res://Scripts/Managers/CombatManager.cs" id="1_ydsbv"]
 
 [node name="CombatManager" type="Node" node_paths=PackedStringArray("StateDebugLabel")]
 script = ExtResource("1_ydsbv")
