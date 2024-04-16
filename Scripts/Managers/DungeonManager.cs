@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 public partial class DungeonManager : Node
@@ -8,10 +10,13 @@ public partial class DungeonManager : Node
 	[Export] private Vector2I gridSize;
 	[Export] private DungeonTile[] dungeonTiles;
 	[Export] private DungeonTile bossTile;
+	[Export] private EntityDatabase enemyEntityDatabase;
 
-    public DungeonTile[][] DungeonGrid { get; private set; }
+	public DungeonTile[][] DungeonGrid { get; private set; }
 
-    public override void _EnterTree()
+	private int currentTier = 0;
+
+	public override void _EnterTree()
 	{		
 		if(instance != null)
 			QueueFree();
@@ -55,8 +60,16 @@ public partial class DungeonManager : Node
 		}		
 	}
 	
+	//Select enemies at certain tier threshold
+	//Assign number of enemies in encounter (could be based on set of parameters)
+	//Assign selected enemies to specific encounter
 	public void SetupDungeonTiles()
 	{
-		
+		List<EntityInfo> entities = enemyEntityDatabase.Entities
+									.Where(x => x.Tier == currentTier - 1
+									|| x.Tier ==  currentTier
+									|| x.Tier == currentTier + 1).ToList();
+									
+
 	}
 }
