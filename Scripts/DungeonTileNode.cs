@@ -17,7 +17,6 @@ public partial class DungeonTileNode : Panel
 	{
 		foreach (var item in iconGrid.GetChildren())
 		{
-			GD.Print(item);
 			if(item is TextureRect rect)
 				ImageTextures.Add(rect);
 		}

@@ -12,7 +12,7 @@ public partial class DungeonManager : Node
 	[Export] private DungeonTile bossTile;
 	[Export] private EntityDatabase enemyEntityDatabase;
 
-	public DungeonTile[][] DungeonGrid { get; private set; }
+	public DungeonCell[][] DungeonGrid { get; private set; }
 
 	private int currentTier = 0;
 
@@ -26,16 +26,14 @@ public partial class DungeonManager : Node
 
 	public override void _Ready()
 	{
-		base._Ready();
-		
-		DungeonGrid = new DungeonTile[gridSize.X][];
+		DungeonGrid = new DungeonCell[gridSize.X][];
 		
 		for (int i = 0; i < gridSize.X; i++)
 		{
 			if(i == gridSize.X - 1)
-				DungeonGrid[i] = new DungeonTile[1];
+				DungeonGrid[i] = new DungeonCell[1];
 			else
-				DungeonGrid[i] = new DungeonTile[gridSize.Y];
+				DungeonGrid[i] = new DungeonCell[gridSize.Y];
 		}
 	}
 
@@ -49,15 +47,17 @@ public partial class DungeonManager : Node
 			{
 				if(i == DungeonGrid.Length - 1  )
 				{
-					DungeonGrid[i][j] = bossTile;
+					// DungeonGrid[i][j] = bossTile;
 					// GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");
 					continue;
 				}
 				
-				DungeonGrid[i][j] = dungeonTiles[GD.Randi() % dungeonTiles.Length];
+				// DungeonGrid[i][j] = dungeonTiles[GD.Randi() % dungeonTiles.Length];
 				// GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");	
 			}
-		}		
+		}
+		
+		SetupDungeonTiles();		
 	}
 	
 	//Select enemies at certain tier threshold
@@ -69,7 +69,7 @@ public partial class DungeonManager : Node
 									.Where(x => x.Tier == currentTier - 1
 									|| x.Tier ==  currentTier
 									|| x.Tier == currentTier + 1).ToList();
-									
-
+		
+		
 	}
 }
