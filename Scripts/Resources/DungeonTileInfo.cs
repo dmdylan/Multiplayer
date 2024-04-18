@@ -1,6 +1,6 @@
 using Godot;
 [GlobalClass]
-public partial class DungeonTile : Resource
+public partial class DungeonTileInfo : Resource
 {
 	[Export] private string tileName;
 	[Export] private Texture2D tileTexture;

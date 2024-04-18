@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://cg5abjfsh0udr"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/DungeonManager.cs" id="1_044fn"]
-[ext_resource type="Resource" uid="uid://bko30s7ilud5p" path="res://Resources/DungeonTiles/EncounterTile.tres" id="2_oj7op"]
+[ext_resource type="Resource" uid="uid://bko30s7ilud5p" path="res://Resources/DungeonTiles/Encounter.tres" id="2_oj7op"]
 [ext_resource type="Resource" uid="uid://pmg6jw73otyt" path="res://Resources/DungeonTiles/LootTile.tres" id="3_3mi36"]
-[ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/ShopTile.tres" id="4_wowc0"]
+[ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="4_wowc0"]
 [ext_resource type="Resource" uid="uid://bowh7jmri4d0y" path="res://Resources/DungeonTiles/ExoticShop.tres" id="5_wcett"]
 [ext_resource type="Resource" uid="uid://60qwa7eu1peu" path="res://Resources/DungeonTiles/RareEncounter.tres" id="6_ma2jx"]
 [ext_resource type="Resource" uid="uid://blfvueol7rsj3" path="res://Resources/DungeonTiles/RareLoot.tres" id="7_ffmp7"]
-[ext_resource type="Resource" uid="uid://bbo3fcassomvj" path="res://Resources/DungeonTiles/BossTile.tres" id="8_63woh"]
+[ext_resource type="Resource" uid="uid://bbo3fcassomvj" path="res://Resources/DungeonTiles/Boss.tres" id="8_63woh"]
 [ext_resource type="Resource" uid="uid://35y0e57bte7s" path="res://Resources/EntityDatabase/EnemyEntityDatabase.tres" id="9_ibdyo"]
 
 [node name="DungeonManager" type="Node"]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DungeonTile" load_steps=3 format=3 uid="uid://pmg6jw73otyt"]
+[gd_resource type="Resource" script_class="DungeonTileInfo" load_steps=3 format=3 uid="uid://pmg6jw73otyt"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/DungeonTile.cs" id="1_eq5pm"]
+[ext_resource type="Script" path="res://Scripts/Resources/DungeonTileInfo.cs" id="1_eq5pm"]
 [ext_resource type="Texture2D" uid="uid://dphar7wxdftrr" path="res://loottile.png" id="2_l63eg"]
 
 [resource]

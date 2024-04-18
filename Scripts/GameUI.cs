@@ -1,9 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class GameUI : Control
 {
+	[ExportCategory("Dungeon Tile Info")]
+	[Export] private DungeonTileInfo[] dungeonTiles;
+	
 	[ExportCategory("Scenes")]
 	[Export] private PackedScene playerCharacterNameplateScene;
 	[Export] private PackedScene dungeonTileUIScene;
@@ -13,11 +17,15 @@ public partial class GameUI : Control
 	[Export] private HBoxContainer[] dungeonGridContainers;
 
 	public List<DungeonTileNode> DungeonTileNodes { get; private set; }
+	
+	private List<DungeonTileInfo> dungeonTileInfoList;
 
 	public override void _Ready()
 	{
+		dungeonTileInfoList = dungeonTiles.ToList();
+		
 		SpawnPlayerCharacterNameplates();
-		SetDungeonTiles();
+		SetDungeonTiles();	
 	}
 	
 	private void SpawnPlayerCharacterNameplates()
@@ -50,12 +58,13 @@ public partial class GameUI : Control
 				
 				TextureButton textureButton = dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton");
 					
-				textureButton.TextureNormal = DungeonManager.Instance.DungeonGrid[i][j].TileTexture;
+				textureButton.TextureNormal = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileTexture;
 				
+				//Disable all but the first row for initalization
 				if(i != 0)
 					textureButton.Disabled = true;
 				
-				dungeonTile.GetNode<Label>("Label").Text = DungeonManager.Instance.DungeonGrid[i][j].TileName;
+				dungeonTile.GetNode<Label>("Label").Text = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileName;
 				
 				dungeonTile.Name = $"{j},{i}";
 				
@@ -64,5 +73,10 @@ public partial class GameUI : Control
 				counter++;
 			}
 		}
+	}
+	
+	private DungeonTileInfo GetTileType(DungeonCellType dungeonCellType)
+	{			
+		return dungeonTileInfoList.Where(x => x.TileName == dungeonCellType.ToString()).First();
 	}
 }

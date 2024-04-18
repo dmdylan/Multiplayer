@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgckbpvkk7o7c"]
+[gd_scene load_steps=12 format=3 uid="uid://dgckbpvkk7o7c"]
 
 [ext_resource type="Script" path="res://Scripts/GameUI.cs" id="1_gq0se"]
+[ext_resource type="Resource" uid="uid://bbo3fcassomvj" path="res://Resources/DungeonTiles/Boss.tres" id="2_3h7xa"]
 [ext_resource type="PackedScene" uid="uid://fbd483it1usf" path="res://Scenes/UI/PlayerNameplate.tscn" id="2_6a558"]
 [ext_resource type="Texture2D" uid="uid://bhrque684oc30" path="res://Assets/Kenney/RPGUI/PNG/panel_brown.png" id="3_8pn2j"]
+[ext_resource type="Resource" uid="uid://bko30s7ilud5p" path="res://Resources/DungeonTiles/Encounter.tres" id="3_121oj"]
 [ext_resource type="PackedScene" uid="uid://b72oqumsvjpwn" path="res://Scenes/DungeonTile.tscn" id="3_e6gr5"]
+[ext_resource type="Resource" uid="uid://bowh7jmri4d0y" path="res://Resources/DungeonTiles/ExoticShop.tres" id="4_xmtnl"]
+[ext_resource type="Resource" uid="uid://pmg6jw73otyt" path="res://Resources/DungeonTiles/LootTile.tres" id="5_ok802"]
+[ext_resource type="Resource" uid="uid://60qwa7eu1peu" path="res://Resources/DungeonTiles/RareEncounter.tres" id="6_odp43"]
+[ext_resource type="Resource" uid="uid://blfvueol7rsj3" path="res://Resources/DungeonTiles/RareLoot.tres" id="7_0ajpi"]
+[ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="8_n33i4"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("characterNameplateParent", "dungeonGridContainers")]
 layout_mode = 3
@@ -13,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gq0se")
+dungeonTiles = Array[Object]([ExtResource("2_3h7xa"), ExtResource("3_121oj"), ExtResource("4_xmtnl"), ExtResource("5_ok802"), ExtResource("6_odp43"), ExtResource("7_0ajpi"), ExtResource("8_n33i4")])
 playerCharacterNameplateScene = ExtResource("2_6a558")
 dungeonTileUIScene = ExtResource("3_e6gr5")
 characterNameplateParent = NodePath("PlayerNameplateContainer")

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -8,8 +9,8 @@ public partial class DungeonManager : Node
 	public static DungeonManager Instance => instance;
 	
 	[Export] private Vector2I gridSize;
-	[Export] private DungeonTile[] dungeonTiles;
-	[Export] private DungeonTile bossTile;
+	[Export] private DungeonTileInfo[] dungeonTiles;
+	[Export] private DungeonTileInfo bossTile;
 	[Export] private EntityDatabase enemyEntityDatabase;
 
 	public DungeonCell[][] DungeonGrid { get; private set; }
@@ -39,21 +40,30 @@ public partial class DungeonManager : Node
 
 	public void PopulateDungeonGrid()
 	{
+		Array values = Enum.GetValues(typeof(DungeonCellType));
+		
+		foreach (var item in values)
+		{
+			GD.Print(item);
+		}
+		
 		//Loop through grid Y
 		for (int i = 0; i < DungeonGrid.Length; i++)
 		{
 			//Loop through grid X
 			for (int j = 0; j < DungeonGrid[i].Length; j++)
 			{
-				if(i == DungeonGrid.Length - 1  )
+				if(i == DungeonGrid.Length - 1)
 				{
-					// DungeonGrid[i][j] = bossTile;
-					// GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");
+					DungeonGrid[i][j] = new DungeonCell(DungeonCellType.Boss, new Vector2I(i,j));
+					GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
 					continue;
 				}
 				
-				// DungeonGrid[i][j] = dungeonTiles[GD.Randi() % dungeonTiles.Length];
-				// GD.Print($"Dungeon position {i},{j}: {dungeonGrid[i][j].TileName}");	
+				DungeonCell dungeonCell = new((DungeonCellType)values.GetValue(GD.Randi() % values.Length), new Vector2I(i,j));
+				
+				DungeonGrid[i][j] = dungeonCell;
+				GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");	
 			}
 		}
 		

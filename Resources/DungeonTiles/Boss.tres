@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DungeonTile" load_steps=4 format=3 uid="uid://bbo3fcassomvj"]
+[gd_resource type="Resource" script_class="DungeonTileInfo" load_steps=4 format=3 uid="uid://bbo3fcassomvj"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/DungeonTile.cs" id="1_4mekr"]
+[ext_resource type="Script" path="res://Scripts/Resources/DungeonTileInfo.cs" id="1_4mekr"]
 
 [sub_resource type="Gradient" id="Gradient_l2r8h"]
 colors = PackedColorArray(1, 0.291615, 0.229135, 1, 0.858824, 1, 0, 1)
