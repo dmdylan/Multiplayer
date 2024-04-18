@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -28,11 +29,9 @@ public partial class GameManager : Node
 
 	public void StartGame()
 	{
-		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GameUI.tscn").Instantiate<Control>();
-		
  		DungeonManager.Instance.PopulateDungeonGrid();
-			
-		GetTree().Root.AddChild(scene);
+				
+		UIManager.Instance.LoadGameUI();
 	}
 	
 	public void SpawnPlayerEntities(string entityName)

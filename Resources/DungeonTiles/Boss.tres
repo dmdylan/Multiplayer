@@ -13,3 +13,4 @@ fill_to = Vector2(1, 1)
 script = ExtResource("1_4mekr")
 tileName = "Boss"
 tileTexture = SubResource("GradientTexture2D_qttbh")
+dungeonCellType = 6

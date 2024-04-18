@@ -7,3 +7,4 @@
 script = ExtResource("1_wjkt1")
 tileName = "Shop"
 tileTexture = ExtResource("2_b5qrm")
+dungeonCellType = 2

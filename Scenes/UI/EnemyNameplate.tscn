@@ -1,0 +1,148 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8s8c6oew0l5m"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerCharacterNameplate.cs" id="1_cnxgn"]
+[ext_resource type="Texture2D" uid="uid://xe2h8mfhoda8" path="res://Assets/Kenney/RPGUI/PNG/panel_blue.png" id="2_bhbt3"]
+[ext_resource type="Texture2D" uid="uid://432clk37ic1l" path="res://Assets/Kenney/RPGUI/PNG/barBack_horizontalMid.png" id="3_isq00"]
+[ext_resource type="Texture2D" uid="uid://bo6nest36kjq8" path="res://Assets/Kenney/RPGUI/PNG/barRed_horizontalMid.png" id="4_dd0xx"]
+[ext_resource type="Texture2D" uid="uid://b78l2knhgrvdn" path="res://Assets/Kenney/RPGUI/PNG/barBlue_horizontalBlue.png" id="5_v0n5e"]
+
+[node name="EnemyNameplate" type="Control" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer")]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 3
+anchor_right = 0.217
+anchor_bottom = 0.154
+offset_right = 0.0159912
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cnxgn")
+nameLabel = NodePath("BarsParents/NameLabel")
+icon = NodePath("Icon")
+healthBar = NodePath("BarsParents/HealthBar")
+currentHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/CurrentValue")
+maxHealthLabel = NodePath("BarsParents/HealthBar/HealthValuesParent/MaxValue")
+energyBar = NodePath("BarsParents/EnergyBar")
+currentEnergyLabel = NodePath("BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
+maxEnergyLabel = NodePath("BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
+buffsContainer = NodePath("BuffsDebuffsParent/Buffs")
+debuffsContainer = NodePath("BuffsDebuffsParent/Debuffs")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bhbt3")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 157.0
+offset_top = 9.0
+offset_right = -11.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BarsParents" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 153.0
+offset_bottom = 91.0
+
+[node name="NameLabel" type="Label" parent="BarsParents"]
+layout_mode = 2
+text = "Name Placeholder"
+
+[node name="HealthBar" type="TextureProgressBar" parent="BarsParents"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 10.0
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 6
+stretch_margin_right = 6
+stretch_margin_bottom = 6
+texture_under = ExtResource("3_isq00")
+texture_progress = ExtResource("4_dd0xx")
+
+[node name="HealthValuesParent" type="HBoxContainer" parent="BarsParents/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CurrentValue" type="Label" parent="BarsParents/HealthBar/HealthValuesParent"]
+layout_mode = 2
+text = "10"
+
+[node name="_" type="Label" parent="BarsParents/HealthBar/HealthValuesParent"]
+layout_mode = 2
+text = "/"
+
+[node name="MaxValue" type="Label" parent="BarsParents/HealthBar/HealthValuesParent"]
+layout_mode = 2
+text = "10"
+
+[node name="EnergyBar" type="TextureProgressBar" parent="BarsParents"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 10.0
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 6
+stretch_margin_right = 6
+stretch_margin_bottom = 6
+texture_under = ExtResource("3_isq00")
+texture_progress = ExtResource("5_v0n5e")
+
+[node name="EnergyValuesParent" type="HBoxContainer" parent="BarsParents/EnergyBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CurrentValue" type="Label" parent="BarsParents/EnergyBar/EnergyValuesParent"]
+layout_mode = 2
+text = "10"
+
+[node name="_" type="Label" parent="BarsParents/EnergyBar/EnergyValuesParent"]
+layout_mode = 2
+text = "/"
+
+[node name="MaxValue" type="Label" parent="BarsParents/EnergyBar/EnergyValuesParent"]
+layout_mode = 2
+text = "10"
+
+[node name="BuffsDebuffsParent" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -120.0
+offset_bottom = 100.0
+
+[node name="Buffs" type="HFlowContainer" parent="BuffsDebuffsParent"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Debuffs" type="HFlowContainer" parent="BuffsDebuffsParent"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2

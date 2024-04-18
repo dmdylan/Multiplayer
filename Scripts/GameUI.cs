@@ -16,7 +16,8 @@ public partial class GameUI : Control
 	[Export] private Control characterNameplateParent;
 	[Export] private HBoxContainer[] dungeonGridContainers;
 
-	public List<DungeonTileNode> DungeonTileNodes { get; private set; }
+	private List<DungeonTileNode> dungeonTileNodes = new();
+	private Dictionary<int, PlayerDungeonMarker> dungeonMarkers = new();
 	
 	private List<DungeonTileInfo> dungeonTileInfoList;
 
@@ -25,7 +26,7 @@ public partial class GameUI : Control
 		dungeonTileInfoList = dungeonTiles.ToList();
 		
 		SpawnPlayerCharacterNameplates();
-		SetDungeonTiles();	
+		// SetDungeonTiles();	
 	}
 	
 	private void SpawnPlayerCharacterNameplates()
@@ -42,7 +43,8 @@ public partial class GameUI : Control
 		}
 	}
 	
-	private void SetDungeonTiles()
+	// [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SetDungeonTiles()
 	{
 		int counter = 0;
 		
@@ -54,20 +56,23 @@ public partial class GameUI : Control
 				
 				dungeonTile.ID = counter;
 				
-				UIManager.Instance.DungeonTileNodes.Add(dungeonTile);
+				dungeonTile.InitDungeonTile(DungeonManager.Instance.DungeonGrid[i][j]);		
 				
-				TextureButton textureButton = dungeonTile.GetNode<TextureButton>("MarginContainer/TextureButton");
+				//TODO: Need to unsubscribe from this event somehow
+				dungeonTile.DungeonTileNodePressed += PlayerSelectedDungeonTile;
 					
-				textureButton.TextureNormal = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileTexture;
+				dungeonTile.TextureButton.TextureNormal = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileTexture;
 				
 				//Disable all but the first row for initalization
 				if(i != 0)
-					textureButton.Disabled = true;
+					dungeonTile.TextureButton.Disabled = true;
 				
-				dungeonTile.GetNode<Label>("Label").Text = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileName;
+				dungeonTile.Label.Text = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileName;
 				
 				dungeonTile.Name = $"{j},{i}";
 				
+				
+				dungeonTileNodes.Add(dungeonTile);
 				dungeonGridContainers[i].AddChild(dungeonTile);
 				
 				counter++;
@@ -77,6 +82,42 @@ public partial class GameUI : Control
 	
 	private DungeonTileInfo GetTileType(DungeonCellType dungeonCellType)
 	{			
-		return dungeonTileInfoList.Where(x => x.TileName == dungeonCellType.ToString()).First();
+		return dungeonTileInfoList.Where(x => x.DungeonCellType == dungeonCellType).FirstOrDefault();
+	}
+	
+	private void PlayerSelectedDungeonTile(int playerID, int tileID)
+	{
+		Rpc(nameof(SetIconOnTile), playerID, tileID);	
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SetIconOnTile(int id, int tileID)
+	{
+		DungeonTileNode tile = dungeonTileNodes[tileID];
+		
+		if(!dungeonMarkers.ContainsKey(id))
+		{
+			dungeonMarkers.Add(id, new PlayerDungeonMarker
+			{
+				imageTexture = ImageTexture.CreateFromImage(GameManager.Instance.Players.Where(x => x.ID == id).First().Entity.EntityInfo.EntityIcon),
+				currentSelectedTile = tile
+			});
+			
+			dungeonMarkers[id].currentSelectedTile.ImageTextures.Where(x => x.Texture == null).FirstOrDefault().Texture = dungeonMarkers[id].imageTexture;
+		}
+		else
+		{
+			dungeonMarkers[id].currentSelectedTile.ImageTextures.Where(x => x.Texture == dungeonMarkers[id].imageTexture).First().Texture = null;	
+			
+			tile.ImageTextures.Where(x => x.Texture == null).FirstOrDefault().Texture = dungeonMarkers[id].imageTexture;
+			
+			dungeonMarkers[id].currentSelectedTile = tile;
+		}
+	}
+	
+	private class PlayerDungeonMarker
+	{
+		public ImageTexture imageTexture;
+		public DungeonTileNode currentSelectedTile;
 	}
 }

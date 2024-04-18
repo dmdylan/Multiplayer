@@ -5,17 +5,21 @@ using System.Linq;
 
 public partial class DungeonTileNode : Panel
 {
-	[Export] private TextureButton textureButton;
-	[Export] private GridContainer iconGrid;
+	[Export] public TextureButton TextureButton { get; private set; }
+	[Export] public GridContainer IconGrid {get; private set;}
+	[Export] public Label Label {get; private set;}
 
+	private DungeonCell dungeonCell;
 	public int ID {get; set;}
+	
+	public event Action<int,int> DungeonTileNodePressed;
 	
 	//TODO: Remove the list, make one ui scene for the player choice and add to the node, not keep track in node
 	public List<TextureRect> ImageTextures { get; private set; } = new();
 
 	public override void _Ready()
 	{
-		foreach (var item in iconGrid.GetChildren())
+		foreach (var item in IconGrid.GetChildren())
 		{
 			if(item is TextureRect rect)
 				ImageTextures.Add(rect);
@@ -24,16 +28,29 @@ public partial class DungeonTileNode : Panel
 
 	public override void _EnterTree()
 	{
-		textureButton.Pressed += OnDungeonTileButtonPressed;
+		TextureButton.Pressed += OnDungeonTileButtonPressed;
 	}
 
 	public override void _ExitTree()
 	{
-		textureButton.Pressed -= OnDungeonTileButtonPressed;
+		TextureButton.Pressed -= OnDungeonTileButtonPressed;
 	}
 
+	public void InitDungeonTile(DungeonCell dungeonCell)
+	{
+		this.dungeonCell = dungeonCell;
+	}
+	
 	private void OnDungeonTileButtonPressed()
 	{
-		UIManager.Instance.PlayerSelectedDungeonTile(Multiplayer.GetUniqueId(), ID);
+		DungeonTileNodePressed?.Invoke(Multiplayer.GetUniqueId(), ID);
+		
+		if(dungeonCell is EncounterDungeonCell encounterDungeonCell)
+		{
+			foreach (var item in encounterDungeonCell.EnemyEntities)
+			{
+				GD.Print(item.Name);
+			}
+		}
 	}
 }

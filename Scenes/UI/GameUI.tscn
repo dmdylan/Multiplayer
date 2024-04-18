@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgckbpvkk7o7c"]
+[gd_scene load_steps=13 format=3 uid="uid://dgckbpvkk7o7c"]
 
 [ext_resource type="Script" path="res://Scripts/GameUI.cs" id="1_gq0se"]
 [ext_resource type="Resource" uid="uid://bbo3fcassomvj" path="res://Resources/DungeonTiles/Boss.tres" id="2_3h7xa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://60qwa7eu1peu" path="res://Resources/DungeonTiles/RareEncounter.tres" id="6_odp43"]
 [ext_resource type="Resource" uid="uid://blfvueol7rsj3" path="res://Resources/DungeonTiles/RareLoot.tres" id="7_0ajpi"]
 [ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="8_n33i4"]
+[ext_resource type="PackedScene" uid="uid://c8s8c6oew0l5m" path="res://Scenes/UI/EnemyNameplate.tscn" id="11_lmnar"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("characterNameplateParent", "dungeonGridContainers")]
 layout_mode = 3
@@ -84,7 +85,6 @@ buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
 debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
 [node name="EnemyNameplates" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -95,57 +95,47 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayerNameplate" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="EnemyNameplate" parent="EnemyNameplates" instance=ExtResource("11_lmnar")]
 layout_mode = 2
-nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
-healthBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate2" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="EnemyNameplate2" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
 layout_mode = 2
-nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
-healthBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
+nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
+icon = NodePath("../EnemyNameplate/Icon")
+healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
+currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
+maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
+energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
+currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
+maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
+buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
+debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate3" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="EnemyNameplate3" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
 layout_mode = 2
-nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
-healthBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
+nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
+icon = NodePath("../EnemyNameplate/Icon")
+healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
+currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
+maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
+energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
+currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
+maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
+buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
+debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
 
-[node name="PlayerNameplate4" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
+[node name="EnemyNameplate4" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
 layout_mode = 2
-nameLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../../PlayerNameplateContainer/PlayerNameplate/Icon")
-healthBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../../PlayerNameplateContainer/PlayerNameplate/BuffsDebuffsParent/Debuffs")
+nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
+icon = NodePath("../EnemyNameplate/Icon")
+healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
+currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
+maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
+energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
+currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
+maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
+buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
+debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
 
 [node name="Inventory" type="NinePatchRect" parent="."]
 layout_mode = 1
