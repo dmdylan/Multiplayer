@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c82frsxkhbrdw"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_0ku8r"]
+[ext_resource type="ArrayMesh" uid="uid://3c2w3uaeu3j" path="res://d6_Cube_001.res" id="1_ctnd0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n2m05"]
 
 [node name="Dice" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_0ku8r")
+mesh = ExtResource("1_ctnd0")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
 
