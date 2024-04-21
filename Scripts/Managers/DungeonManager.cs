@@ -49,7 +49,7 @@ public partial class DungeonManager : Node
 			for (int j = 0; j < DungeonGrid[i].Length; j++)
 			{
 				//Subtracting to because it is inclusive and I don't want to include Boss which is the last value
-				DungeonCellType dungeonCellType = (DungeonCellType)values.GetValue(GD.RandRange(0, values.Length - 2));
+				DungeonCellType dungeonCellType = GetRandomDungeonCell();
 				
 				if (i == DungeonGrid.Length - 1)
 				{
@@ -84,5 +84,36 @@ public partial class DungeonManager : Node
 									.Where(x => x.Tier == currentTier - 1
 									|| x.Tier == currentTier
 									|| x.Tier == currentTier + 1).ToList();
+	}
+	
+	//TODO: Make weighted randoms that can be changed throughout the playthrough based on current tier, or just change % values
+	private DungeonCellType GetRandomDungeonCell()
+	{
+		float randomValue = GD.Randf();
+		
+		if(randomValue < .70f)
+		{
+			return DungeonCellType.Encounter;
+		}
+		else if(randomValue < .85f)
+		{
+			return DungeonCellType.Loot; 
+		}
+		else if(randomValue < .95f)
+		{
+			return DungeonCellType.Shop;
+		}
+		else if(randomValue < .97f)
+		{
+			return DungeonCellType.RareEncounter;
+		}
+		else if(randomValue <.99f)
+		{
+			return DungeonCellType.RareLoot;
+		}
+		else
+		{
+			return DungeonCellType.ExoticShop;
+		}
 	}
 }
