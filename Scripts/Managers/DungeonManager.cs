@@ -78,7 +78,7 @@ public partial class DungeonManager : Node
 	//Select enemies at certain tier threshold
 	//Assign number of enemies in encounter (could be based on set of parameters)
 	//Assign selected enemies to specific encounter
-	public List<EntityInfo> SetupEncounterList()
+	private List<EntityInfo> SetupEncounterList()
 	{
 		return enemyEntityDatabase.Entities
 									.Where(x => x.Tier == currentTier - 1

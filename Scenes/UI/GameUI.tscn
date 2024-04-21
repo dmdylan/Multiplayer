@@ -144,7 +144,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
 offset_top = -89.0
-offset_right = 215.0
+offset_right = 277.0
 offset_bottom = -7.0
 grow_vertical = 0
 texture = ExtResource("3_8pn2j")
@@ -179,6 +179,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel3" type="Panel" parent="Inventory/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel4" type="Panel" parent="Inventory/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
