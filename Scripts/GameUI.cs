@@ -5,6 +5,8 @@ using System.Linq;
 
 public partial class GameUI : Control
 {
+	[Export] private Button diceRollDebugButton;
+	
 	[ExportCategory("Dungeon Tile Info")]
 	[Export] private DungeonTileInfo[] dungeonTiles;
 	
@@ -20,6 +22,29 @@ public partial class GameUI : Control
 	private Dictionary<int, PlayerDungeonMarker> dungeonMarkers = new();
 	
 	private List<DungeonTileInfo> dungeonTileInfoList;
+
+	public override void _EnterTree()
+	{
+		diceRollDebugButton.Pressed += RollDice;
+	}
+
+	public override void _ExitTree()
+	{
+		diceRollDebugButton.Pressed -= RollDice;
+	}
+
+	private void RollDice()
+	{	
+		List<Die> dice = new();
+		
+		for (int i = 0; i < 5; i++)
+		{
+			dice.Add(new Die());
+		}
+			
+		DiceManager.Instance.RollDice(dice);
+	}
+
 
 	public override void _Ready()
 	{

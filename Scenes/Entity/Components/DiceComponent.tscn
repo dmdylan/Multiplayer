@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyigsgapkf5t4"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Components/DiceComponent.cs" id="1_pr6ng"]
+
+[node name="DiceComponent" type="Node"]
+script = ExtResource("1_pr6ng")

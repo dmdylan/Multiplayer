@@ -5,6 +5,7 @@ public partial class Entity : Node
 	[Export] public StatComponent StatComponent { get; private set; }
 	[Export] public HealthComponent HealthComponent { get; private set; }
 	[Export] public StatusEffectComponent StatusEffectComponent { get; private set; }
+	[Export] public DiceComponent DiceComponent { get; private set; }
 	public EntityInfo EntityInfo { get; private set; }
 	public int? OwnerID { get; private set; }
 
@@ -17,5 +18,6 @@ public partial class Entity : Node
 		StatComponent.InitalizeStatComponent(this);
 		HealthComponent.InitalizeHealthComponent(this);
 		StatusEffectComponent.IntializeStatusEffectComponent(this);
+		DiceComponent.InitalizeDiceComponent(this);
 	}
 }

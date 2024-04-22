@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwlsvuqpd8rs5"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/DiceManager.cs" id="1_r6be6"]
+[ext_resource type="PackedScene" uid="uid://c82frsxkhbrdw" path="res://Scenes/Dice/D6Die.tscn" id="2_ty0yj"]
+
+[node name="DiceManager" type="Node"]
+script = ExtResource("1_r6be6")
+d6Debug = ExtResource("2_ty0yj")

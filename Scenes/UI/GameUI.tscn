@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="8_n33i4"]
 [ext_resource type="PackedScene" uid="uid://c8s8c6oew0l5m" path="res://Scenes/UI/EnemyNameplate.tscn" id="11_lmnar"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("characterNameplateParent", "dungeonGridContainers")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("diceRollDebugButton", "characterNameplateParent", "dungeonGridContainers")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gq0se")
+diceRollDebugButton = NodePath("Button")
 dungeonTiles = Array[Object]([ExtResource("2_3h7xa"), ExtResource("3_121oj"), ExtResource("4_xmtnl"), ExtResource("5_ok802"), ExtResource("6_odp43"), ExtResource("7_0ajpi"), ExtResource("8_n33i4")])
 playerCharacterNameplateScene = ExtResource("2_6a558")
 dungeonTileUIScene = ExtResource("3_e6gr5")
@@ -226,3 +227,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 596.0
+offset_right = 660.0
+offset_bottom = 636.0
+text = "Roll the dice, bitch!"

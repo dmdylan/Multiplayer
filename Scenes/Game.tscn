@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmb03q4dd8kjk"]
+[gd_scene load_steps=8 format=3 uid="uid://dmb03q4dd8kjk"]
 
 [ext_resource type="PackedScene" uid="uid://dgckbpvkk7o7c" path="res://Scenes/UI/GameUI.tscn" id="1_uchs3"]
-[ext_resource type="PackedScene" uid="uid://c82frsxkhbrdw" path="res://Scenes/Dice/D6Die.tscn" id="2_8l06l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2dbo6"]
 
@@ -87,7 +86,4 @@ mesh = SubResource("BoxMesh_2dbo6")
 shape = SubResource("ConcavePolygonShape3D_xfgjw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.69593, -0.43614, 0.570494, 0, 0.794439, 0.607344, -0.71811, -0.422669, 0.552874, 9.64279, 8.87147, 9.88161)
-
-[node name="D6" parent="." instance=ExtResource("2_8l06l")]
-transform = Transform3D(-0.381868, 0.5848, 0.715671, 0.247748, -0.681243, 0.688861, 0.890392, 0.44036, 0.115261, 0, 5.30108, 0)
+transform = Transform3D(0.69593, -0.43614, 0.570494, 0, 0.794439, 0.607344, -0.71811, -0.422669, 0.552874, 3.86563, 6.6323, 3.45981)

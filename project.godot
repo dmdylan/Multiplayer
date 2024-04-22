@@ -21,6 +21,7 @@ GameManager="*res://Scenes/Managers/GameManager.tscn"
 DungeonManager="*res://Scenes/Managers/DungeonManager.tscn"
 EntityManager="*res://Scenes/Managers/EntityManager.tscn"
 UIManager="*res://Scenes/Managers/UIManager.tscn"
+DiceManager="*res://Scenes/Managers/DiceManager.tscn"
 
 [display]
 
@@ -30,6 +31,10 @@ window/vsync/vsync_mode=0
 [dotnet]
 
 project/assembly_name="Multiplayer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 
 [rendering]
 
