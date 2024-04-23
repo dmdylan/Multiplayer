@@ -27,6 +27,11 @@ public partial class UIManager : Node
 		
 		scene.SetDungeonTiles();
 	}
+	
+	public void LoadDungeonTileUIScene()
+	{
+		
+	}
 }
 
 

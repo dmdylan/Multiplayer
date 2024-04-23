@@ -12,24 +12,27 @@ public partial class GameUI : Control
 	
 	[ExportCategory("Scenes")]
 	[Export] private PackedScene playerCharacterNameplateScene;
+	[Export] private PackedScene enemyEntityNameplateScene;
 	[Export] private PackedScene dungeonTileUIScene;
 	
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
 	[Export] private HBoxContainer[] dungeonGridContainers;
 
-	private List<DungeonTileNode> dungeonTileNodes = new();
+	private Dictionary<Vector2I, DungeonTileNode> dungeonTileNodes = new();
 	private Dictionary<int, PlayerDungeonMarker> dungeonMarkers = new();
 	
 	private List<DungeonTileInfo> dungeonTileInfoList;
 
 	public override void _EnterTree()
 	{
+		GameEventsManager.DungeonTileNodePressed += PlayerSelectedDungeonTile;
 		diceRollDebugButton.Pressed += RollDice;
 	}
 
 	public override void _ExitTree()
 	{
+		GameEventsManager.DungeonTileNodePressed -= PlayerSelectedDungeonTile;
 		diceRollDebugButton.Pressed -= RollDice;
 	}
 
@@ -71,20 +74,13 @@ public partial class GameUI : Control
 	// [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	public void SetDungeonTiles()
 	{
-		int counter = 0;
-		
 		for (int i = 0; i < DungeonManager.Instance.DungeonGrid.Length; i++)
 		{
 			for (int j = 0; j < DungeonManager.Instance.DungeonGrid[i].Length; j++)
 			{				
 				var dungeonTile = dungeonTileUIScene.Instantiate() as DungeonTileNode;
 				
-				dungeonTile.ID = counter;
-				
 				dungeonTile.InitDungeonTile(DungeonManager.Instance.DungeonGrid[i][j]);		
-				
-				//TODO: Need to unsubscribe from this event somehow
-				dungeonTile.DungeonTileNodePressed += PlayerSelectedDungeonTile;
 					
 				dungeonTile.TextureButton.TextureNormal = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileTexture;
 				
@@ -97,10 +93,8 @@ public partial class GameUI : Control
 				dungeonTile.Name = $"{j},{i}";
 				
 				
-				dungeonTileNodes.Add(dungeonTile);
+				dungeonTileNodes.Add(dungeonTile.TilePosition, dungeonTile);
 				dungeonGridContainers[i].AddChild(dungeonTile);
-				
-				counter++;
 			}
 		}
 	}
@@ -110,15 +104,16 @@ public partial class GameUI : Control
 		return dungeonTileInfoList.Where(x => x.DungeonCellType == dungeonCellType).FirstOrDefault();
 	}
 	
-	private void PlayerSelectedDungeonTile(int playerID, int tileID)
+	private void PlayerSelectedDungeonTile(int playerID, Vector2I tileGridPosition)
 	{
-		Rpc(nameof(SetIconOnTile), playerID, tileID);	
+		Rpc(nameof(SetIconOnTile), playerID, tileGridPosition);	
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void SetIconOnTile(int id, int tileID)
+	public void SetIconOnTile(int id, Vector2I tileGridPosition)
 	{
-		DungeonTileNode tile = dungeonTileNodes[tileID];
+		//TODO: Setup checks for this when not being lazy
+		DungeonTileNode tile = dungeonTileNodes[tileGridPosition];
 		
 		if(!dungeonMarkers.ContainsKey(id))
 		{

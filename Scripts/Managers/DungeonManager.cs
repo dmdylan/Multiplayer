@@ -39,16 +39,13 @@ public partial class DungeonManager : Node
 	}
 
 	public void PopulateDungeonGrid()
-	{
-		Array values = Enum.GetValues(typeof(DungeonCellType));
-		
+	{	
 		//Loop through grid Y
 		for (int i = 0; i < DungeonGrid.Length; i++)
 		{
 			//Loop through grid X
 			for (int j = 0; j < DungeonGrid[i].Length; j++)
 			{
-				//Subtracting to because it is inclusive and I don't want to include Boss which is the last value
 				DungeonCellType dungeonCellType = GetRandomDungeonCell();
 				
 				if (i == DungeonGrid.Length - 1)

@@ -24,6 +24,7 @@ script = ExtResource("1_gq0se")
 diceRollDebugButton = NodePath("Button")
 dungeonTiles = Array[Object]([ExtResource("2_3h7xa"), ExtResource("3_121oj"), ExtResource("4_xmtnl"), ExtResource("5_ok802"), ExtResource("6_odp43"), ExtResource("7_0ajpi"), ExtResource("8_n33i4")])
 playerCharacterNameplateScene = ExtResource("2_6a558")
+enemyEntityNameplateScene = ExtResource("11_lmnar")
 dungeonTileUIScene = ExtResource("3_e6gr5")
 characterNameplateParent = NodePath("PlayerNameplateContainer")
 dungeonGridContainers = [NodePath("DungeonGrid/HBoxContainer"), NodePath("DungeonGrid/HBoxContainer2"), NodePath("DungeonGrid/HBoxContainer3"), NodePath("DungeonGrid/HBoxContainer4"), NodePath("DungeonGrid/HBoxContainer5")]
@@ -39,52 +40,6 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayerNameplate" parent="PlayerNameplateContainer" instance=ExtResource("2_6a558")]
-visible = false
-layout_mode = 2
-
-[node name="PlayerNameplate2" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
-visible = false
-layout_mode = 2
-nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../PlayerNameplate/Icon")
-healthBar = NodePath("../PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
-
-[node name="PlayerNameplate3" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
-visible = false
-layout_mode = 2
-nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../PlayerNameplate/Icon")
-healthBar = NodePath("../PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
-
-[node name="PlayerNameplate4" parent="PlayerNameplateContainer" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("2_6a558")]
-visible = false
-layout_mode = 2
-nameLabel = NodePath("../PlayerNameplate/BarsParents/NameLabel")
-icon = NodePath("../PlayerNameplate/Icon")
-healthBar = NodePath("../PlayerNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../PlayerNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../PlayerNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../PlayerNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../PlayerNameplate/BuffsDebuffsParent/Debuffs")
-
 [node name="EnemyNameplates" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -95,48 +50,6 @@ offset_right = -6.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
-
-[node name="EnemyNameplate" parent="EnemyNameplates" instance=ExtResource("11_lmnar")]
-layout_mode = 2
-
-[node name="EnemyNameplate2" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
-layout_mode = 2
-nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
-icon = NodePath("../EnemyNameplate/Icon")
-healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
-
-[node name="EnemyNameplate3" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
-layout_mode = 2
-nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
-icon = NodePath("../EnemyNameplate/Icon")
-healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
-
-[node name="EnemyNameplate4" parent="EnemyNameplates" node_paths=PackedStringArray("nameLabel", "icon", "healthBar", "currentHealthLabel", "maxHealthLabel", "energyBar", "currentEnergyLabel", "maxEnergyLabel", "buffsContainer", "debuffsContainer") instance=ExtResource("11_lmnar")]
-layout_mode = 2
-nameLabel = NodePath("../EnemyNameplate/BarsParents/NameLabel")
-icon = NodePath("../EnemyNameplate/Icon")
-healthBar = NodePath("../EnemyNameplate/BarsParents/HealthBar")
-currentHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/CurrentValue")
-maxHealthLabel = NodePath("../EnemyNameplate/BarsParents/HealthBar/HealthValuesParent/MaxValue")
-energyBar = NodePath("../EnemyNameplate/BarsParents/EnergyBar")
-currentEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/CurrentValue")
-maxEnergyLabel = NodePath("../EnemyNameplate/BarsParents/EnergyBar/EnergyValuesParent/MaxValue")
-buffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Buffs")
-debuffsContainer = NodePath("../EnemyNameplate/BuffsDebuffsParent/Debuffs")
 
 [node name="Inventory" type="NinePatchRect" parent="."]
 layout_mode = 1

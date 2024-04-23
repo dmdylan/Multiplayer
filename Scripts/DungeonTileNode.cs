@@ -10,9 +10,7 @@ public partial class DungeonTileNode : Panel
 	[Export] public Label Label {get; private set;}
 
 	private DungeonCell dungeonCell;
-	public int ID {get; set;}
-	
-	public event Action<int,int> DungeonTileNodePressed;
+	public Vector2I TilePosition { get; private set; }
 	
 	//TODO: Remove the list, make one ui scene for the player choice and add to the node, not keep track in node
 	public List<TextureRect> ImageTextures { get; private set; } = new();
@@ -39,18 +37,19 @@ public partial class DungeonTileNode : Panel
 	public void InitDungeonTile(DungeonCell dungeonCell)
 	{
 		this.dungeonCell = dungeonCell;
+		TilePosition = dungeonCell.GridLocation;
 	}
 	
 	private void OnDungeonTileButtonPressed()
 	{
-		DungeonTileNodePressed?.Invoke(Multiplayer.GetUniqueId(), ID);
+		GameEventsManager.InvokeDungeonTileNodePressed(Multiplayer.GetUniqueId(), TilePosition);
 		
-		if(dungeonCell is EncounterDungeonCell encounterDungeonCell)
-		{
-			foreach (var item in encounterDungeonCell.EnemyEntities)
-			{
-				GD.Print(item.Name);
-			}
-		}
+		// if(dungeonCell is EncounterDungeonCell encounterDungeonCell)
+		// {
+		// 	foreach (var item in encounterDungeonCell.EnemyEntities)
+		// 	{
+		// 		GD.Print(item.Name);
+		// 	}
+		// }
 	}
 }
