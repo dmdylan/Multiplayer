@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DungeonTileInfo" load_steps=4 format=3 uid="uid://bbo3fcassomvj"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bbo3fcassomvj"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/DungeonTileInfo.cs" id="1_4mekr"]
 
