@@ -22,6 +22,7 @@ DungeonManager="*res://Scenes/Managers/DungeonManager.tscn"
 EntityManager="*res://Scenes/Managers/EntityManager.tscn"
 UIManager="*res://Scenes/Managers/UIManager.tscn"
 DiceManager="*res://Scenes/Managers/DiceManager.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -34,7 +35,7 @@ project/assembly_name="Multiplayer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/debug_menu/plugin.cfg")
 
 [rendering]
 

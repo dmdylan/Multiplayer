@@ -18,25 +18,45 @@ public partial class DiceManager : Node
 	}
 	
 	//TODO: Will need to sync the dice roll
+	//TODO: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
 	public void RollDice(List<Die> dice)
 	{
 		RandomNumberGenerator random = new();
 		
-		foreach (var die in dice)
+		for (int i = 0; i < dice.Count; i++)
 		{
-			Die dieInstance = d6Debug.Instantiate<Die>();
+			Die die = GetDieTypeScene(dice[i]).Instantiate<Die>();
+			
+			die.Translate(new Vector3(random.RandfRange(-3f,3f),5, random.RandfRange(-3f,3f)));
 			
 			float randomX = random.RandfRange(-Mathf.Pi, Mathf.Pi);
 			float randomY = random.RandfRange(-Mathf.Pi, Mathf.Pi);
 			float randomZ = random.RandfRange(-Mathf.Pi, Mathf.Pi);
 			
-			dieInstance.Translate(new Vector3(0,5,0));
 			
-			dieInstance.Rotation = new Vector3(randomX, randomY, randomZ);
+			die.Rotation = new Vector3(randomX, randomY, randomZ);
 			
-			AddChild(dieInstance);		
+			AddChild(die);		
 					
-			dieInstance.ApplyCentralImpulse(dieInstance.GlobalTransform.Basis.Z * 5);
-		}		
+			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 5);
+		}
+		
+		//TODO: Move the deletion and handling of dice out of die script and to dice manager
+		//Wait for all die to finish
+	}
+	
+	private PackedScene GetDieTypeScene(Die die)
+	{
+		switch (die.DieType)
+		{
+			case DieType.D4:
+				return default;
+			case DieType.D6:
+				return d6Debug;
+			case DieType.D8:
+				return default;
+			default:
+				return default;
+		}
 	}
 }

@@ -24,4 +24,9 @@ public partial class DiceComponent : Node
 		else
 			GD.PushError($"Could not remove {die}");
 	}
+	
+	public void EditDie(Die die)
+	{
+		
+	}
 }
