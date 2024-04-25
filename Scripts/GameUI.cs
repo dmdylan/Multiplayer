@@ -35,9 +35,16 @@ public partial class GameUI : Control
 		GameEventsManager.DungeonTileNodePressed -= PlayerSelectedDungeonTile;
 		diceRollDebugButton.Pressed -= RollDice;
 	}
-
+	
+	
 	private void RollDice()
 	{	
+		RpcId(1, nameof(RollDiceRpc));
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void RollDiceRpc()
+	{
 		List<Die> dice = new();
 		
 		for (int i = 0; i < 5; i++)
@@ -47,7 +54,6 @@ public partial class GameUI : Control
 			
 		DiceManager.Instance.RollDice(dice);
 	}
-
 
 	public override void _Ready()
 	{

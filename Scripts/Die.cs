@@ -6,4 +6,9 @@ public partial class Die : RigidBody3D
 {
 	[Export] public Sprite3D[] Faces { get; private set; }
 	[Export] public DieType DieType { get; private set; } = DieType.D6;
+	
+	public void ChangeFaceSprite(int faceIndex, Image image)
+	{
+		Faces[faceIndex].Texture = ImageTexture.CreateFromImage(image);
+	}
 }

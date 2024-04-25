@@ -8,8 +8,10 @@ public partial class GameManager : Node
 	private static GameManager instance;
 	public static GameManager Instance => instance;
 
-	[Export] public EntityDatabase EntityDatabase { get; private set; }
+	[Export] private PackedScene gameDebugScene;
 
+	[Export] public EntityDatabase EntityDatabase { get; private set; }
+	
 	public List<PlayerInfo> Players { get; } = new();
 	
 	private Dictionary<int, Vector2I> playerDungeonTileSelections = new(); 
@@ -39,8 +41,12 @@ public partial class GameManager : Node
 	public void StartGame()
 	{
  		DungeonManager.Instance.PopulateDungeonGrid();
+		
+		var scene = gameDebugScene.Instantiate();
+		
+		AddChild(scene);
 				
-		UIManager.Instance.LoadGameUI();
+		// UIManager.Instance.LoadGameUI();
 	}
 	
 	public void SpawnPlayerEntities(string entityName)

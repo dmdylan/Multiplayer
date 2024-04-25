@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjoi0g5248hen"]
+[gd_scene load_steps=4 format=3 uid="uid://bjoi0g5248hen"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/GameManager.cs" id="1_8ab7u"]
+[ext_resource type="PackedScene" uid="uid://dmb03q4dd8kjk" path="res://Scenes/Game.tscn" id="2_epni3"]
 [ext_resource type="Resource" uid="uid://bu8kn58niimvo" path="res://Resources/EntityDatabase/EntityDatabase.tres" id="2_trcyo"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_8ab7u")
+gameDebugScene = ExtResource("2_epni3")
 EntityDatabase = ExtResource("2_trcyo")

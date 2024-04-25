@@ -42,7 +42,6 @@ public partial class DiceManager : Node
 			float randomY = random.RandfRange(-Mathf.Pi, Mathf.Pi);
 			float randomZ = random.RandfRange(-Mathf.Pi, Mathf.Pi);
 
-
 			die.Rotation = new Vector3(randomX, randomY, randomZ);
 
 			AddChild(die);

@@ -96,5 +96,3 @@ shape = SubResource("ConcavePolygonShape3D_xfgjw")
 transform = Transform3D(0.69593, -0.614042, 0.372336, 0, 0.518494, 0.855081, -0.71811, -0.595077, 0.360835, 5.76744, 8.89867, 5.58671)
 
 [node name="GameUI" parent="." instance=ExtResource("1_iouio")]
-dungeonTiles = null
-enemyEntityNameplateScene = null
