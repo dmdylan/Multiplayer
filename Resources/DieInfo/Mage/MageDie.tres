@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DieInfo" load_steps=2 format=3 uid="uid://cfjx66qhoevir"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/DieInfo.cs" id="1_a6gyi"]
+
+[resource]
+script = ExtResource("1_a6gyi")
+DieFaces = Array[Object]([null, null, null, null])
+DieType = 1

@@ -16,12 +16,12 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="D6" type="RigidBody3D" node_paths=PackedStringArray("Faces")]
+[node name="D6" type="RigidBody3D" node_paths=PackedStringArray("FaceImages")]
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_g03t8")
 freeze_mode = 1
 script = ExtResource("1_bmtj6")
-Faces = [NodePath("MeshInstance3D/Faces/0"), NodePath("MeshInstance3D/Faces/1"), NodePath("MeshInstance3D/Faces/2"), NodePath("MeshInstance3D/Faces/3"), NodePath("MeshInstance3D/Faces/4"), NodePath("MeshInstance3D/Faces/5")]
+FaceImages = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_n2m05")
@@ -35,21 +35,27 @@ skeleton = NodePath("")
 
 [node name="0" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(2.58946, 0, 0, 0, 2.58946, 0, 0, 0, 1, 0, 0, 0.915649)
+shaded = true
 
 [node name="1" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(-2.58946, 0, -8.74228e-08, 0, 2.58946, 0, 2.26378e-07, 0, -1, 0, 0, -0.91396)
+shaded = true
 
 [node name="2" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(2.58946, -9.89529e-15, 1.35762e-29, -1.42109e-14, 1.13189e-07, 1, -2.82945e-14, -2.58946, 4.37114e-08, 0, 0.924587, 0)
+shaded = true
 
 [node name="3" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(-1.13189e-07, 0, 1, 0, 2.58946, 0, -2.58946, 0, -4.37114e-08, 0.926114, 0, 0)
+shaded = true
 
 [node name="4" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(-1.13189e-07, 0, -1, 0, 2.58946, 0, 2.58946, 0, -4.37114e-08, -0.926719, 0, 0)
+shaded = true
 
 [node name="5" type="Sprite3D" parent="MeshInstance3D/Faces"]
 transform = Transform3D(2.58946, 2.26378e-07, 8.74228e-08, 2.26378e-07, -1.13189e-07, -1, -2.26378e-07, 2.58946, -4.37114e-08, 0, -0.921753, 0)
+shaded = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.05

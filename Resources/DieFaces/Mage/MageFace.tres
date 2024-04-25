@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DieFace" load_steps=2 format=3 uid="uid://peo4nbmjp7i0"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="1_jfxjy"]
+
+[resource]
+script = ExtResource("1_jfxjy")
+Name = ""
+Value = 0

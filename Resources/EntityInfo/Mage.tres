@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_mltlx"]
 script = ExtResource("1_i4fjx")
-Dice = Array[RigidBody3D]([null])
+DiceInfo = null
 
 [resource]
 script = ExtResource("1_xx0b2")

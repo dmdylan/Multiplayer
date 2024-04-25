@@ -36,23 +36,17 @@ public partial class GameUI : Control
 		diceRollDebugButton.Pressed -= RollDice;
 	}
 	
-	
 	private void RollDice()
 	{	
-		RpcId(1, nameof(RollDiceRpc));
+		int entityListID = EntityManager.Instance.ActiveEntities.Where(x => x.OwnerID == Multiplayer.GetUniqueId()).First().GetIndex();
+		
+		RpcId(1, nameof(RollDiceRpc), entityListID);
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void RollDiceRpc()
-	{
-		List<Die> dice = new();
-		
-		for (int i = 0; i < 5; i++)
-		{
-			dice.Add(new Die());
-		}
-			
-		DiceManager.Instance.RollDice(dice);
+	private void RollDiceRpc(int entityID)
+	{	
+		DiceManager.Instance.RollDice(entityID);
 	}
 
 	public override void _Ready()

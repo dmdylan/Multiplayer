@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class DiceManager : Node
 {
@@ -21,13 +22,21 @@ public partial class DiceManager : Node
 
 	//TODO: Will need to sync the dice roll
 	//TODO: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
-	public void RollDice(List<Die> dice)
+	public void RollDice(int id)
 	{
+		List<DieInfo> diceInfo = EntityManager.Instance.ActiveEntities.Where(x => x.OwnerID == id).First().DiceComponent.DiceList;
+		List<Die> dice = new();
+		
+		foreach (var info in diceInfo)
+		{
+			dice.Add(new Die(info));
+		}
+		
 		RandomNumberGenerator random = new();
 
 		for (int i = 0; i < dice.Count; i++)
 		{
-			Die die = GetDieTypeScene(dice[i]).Instantiate<Die>();
+			Die die = GetDieTypeScene(dice[i]).Instantiate() as Die;
 
 			currentDice.Add(die);
 
@@ -73,7 +82,6 @@ public partial class DiceManager : Node
 		}
 		
 		currentDice.Clear();
-		//TODO: Maybe remove trimexcess
 		currentDice.TrimExcess();
 	}
 
@@ -82,16 +90,16 @@ public partial class DiceManager : Node
 		float topHeight = 0;
 		int index = 0;
 
-		for (int i = 0; i < die.Faces.Length; i++)
+		for (int i = 0; i < die.FaceImages.Length; i++)
 		{
-			if (die.Faces[i].GlobalTransform.Origin.Y > topHeight)
+			if (die.FaceImages[i].GlobalTransform.Origin.Y > topHeight)
 			{
-				topHeight = die.Faces[i].GlobalTransform.Origin.Y;
+				topHeight = die.FaceImages[i].GlobalTransform.Origin.Y;
 				index = i;
 			}	
 		}
 		
-		GD.Print($"Top face is {die.Faces[index].Name}");
+		GD.Print($"Top face is {die.FaceImages[index].Name}");
 	}
 
 	private PackedScene GetDieTypeScene(Die die)

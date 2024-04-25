@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class EntityManager : Node
 {
@@ -7,6 +8,8 @@ public partial class EntityManager : Node
 	
 	private static EntityManager instance;
 	public static EntityManager Instance => instance;
+	
+	public List<Entity> ActiveEntities { get; private set; } = new();
 
 	public override void _EnterTree()
 	{
@@ -21,6 +24,8 @@ public partial class EntityManager : Node
 		Entity entity = entityBase.Instantiate() as Entity;
 		
 		entity.InitializeEntity(entityInfo, ownerID);
+		
+		ActiveEntities.Add(entity);
 		
 		AddChild(entity);
 		
