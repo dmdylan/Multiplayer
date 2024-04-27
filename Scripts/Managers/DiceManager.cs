@@ -12,6 +12,8 @@ public partial class DiceManager : Node
 
 	private List<Die> currentDice = new();
 
+	private MultiplayerSynchronizer multiplayerSynchronizer;
+
 	public override void _EnterTree()
 	{
 		if (instance != null)
@@ -20,21 +22,31 @@ public partial class DiceManager : Node
 			instance = this;
 	}
 
-	//TODO: Will need to sync the dice roll
-	//TODO: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void RollDice(Entity entity)
+	public void RollDice(int id)
 	{
-		GD.Print("Dice manager roll dice function called");
+		// if(Multiplayer.IsServer())
+		// 	RollDiceRpc(id);
+		// else
+			Rpc(nameof(RollDiceRpc), id);
+	}
+
+	//TODO: Will need to sync the dice roll
+	//FIXME: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	private void RollDiceRpc(int entityID)
+	{
+		Entity entity = EntityManager.Instance.ActiveEntities.Where(x => x.EntityListID == entityID).First();
 
 		foreach (var die in entity.DiceComponent.DiceList)
 		{
-			//TODO: Move this to the dice component itself? Might fuck it up if it adds as reference and deletes
-			GetDieTypeScene(die).Instantiate<Die>();
+			GD.Print(die);
+			Die dieInstance = GetDieTypeScene(die).Instantiate<Die>();
 			
-			currentDice.Add(die);
+			dieInstance.InitDie(die.DieInfo);
 			
-			die.SleepingStateChanged += DieSleepingStateChangedEventHandler;
+			currentDice.Add(dieInstance);
+			
+			dieInstance.SleepingStateChanged += DieSleepingStateChangedEventHandler;
 		}
 		
 		RandomNumberGenerator random = new();
@@ -50,12 +62,24 @@ public partial class DiceManager : Node
 			die.Rotation = new Vector3(randomX, randomY, randomZ);
 
 			AddChild(die);
-
-			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 5);
+						
+			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 20);
 		}
 
 		//TODO: Move the deletion and handling of dice out of die script and to dice manager
 		//Wait for all die to finish
+	}
+
+	[Rpc]
+	private void AddDieToCurrentDiceList()
+	{
+		
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	private void RollDiceRpcTwo()
+	{
+		
 	}
 
 	private void DieSleepingStateChangedEventHandler()

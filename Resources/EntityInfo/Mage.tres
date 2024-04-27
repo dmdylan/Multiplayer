@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityInfo" load_steps=17 format=3 uid="uid://do4wkw82wseei"]
+[gd_resource type="Resource" script_class="EntityInfo" load_steps=19 format=3 uid="uid://do4wkw82wseei"]
 
 [ext_resource type="Resource" uid="uid://bs6wtb13gfir5" path="res://Resources/BaseStatSheets/PlayerEntities/MageStatSheet.tres" id="1_a52fo"]
 [ext_resource type="Script" path="res://Scripts/Resources/BaseDiceLoadout.cs" id="1_i4fjx"]
@@ -58,9 +58,19 @@ script = ExtResource("2_4oud4")
 DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
 DieType = 1
 
+[sub_resource type="Resource" id="Resource_ollx0"]
+script = ExtResource("2_4oud4")
+DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
+DieType = 1
+
+[sub_resource type="Resource" id="Resource_w6e5k"]
+script = ExtResource("2_4oud4")
+DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
+DieType = 1
+
 [sub_resource type="Resource" id="Resource_mltlx"]
 script = ExtResource("1_i4fjx")
-DiceInfo = Array[Object]([SubResource("Resource_48e65"), SubResource("Resource_7t1x6")])
+DiceInfo = Array[Object]([SubResource("Resource_48e65"), SubResource("Resource_7t1x6"), SubResource("Resource_ollx0"), SubResource("Resource_w6e5k")])
 
 [resource]
 script = ExtResource("1_xx0b2")

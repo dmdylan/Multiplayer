@@ -1,23 +1,31 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 public partial class Die : RigidBody3D
 {
 	[Export] public Sprite3D[] FaceImages { get; private set; }
 	[Export] public DieType DieType { get; private set; }
-	
-	private DieFace[] dieFaces;
-	
-	public void InitDie(DieInfo dieInfo)
+
+	public DieInfo DieInfo { get; private set; }
+	public List<DieFace> DieFaces { get; private set; } = new();
+
+	public override void _Ready()
 	{
-		dieFaces = dieInfo.DieFaces;
-		DieType = dieInfo.DieType;
-		
-		for (int i = 0; i < dieFaces.Length; i++)
+		for (int i = 0; i < DieFaces.Count; i++)
 		{
-			ChangeFaceSprite(i, dieFaces[i].Image);
+			ChangeFaceSprite(i, DieFaces[i].Image);
 		}
 	}
-	
+
+	public void InitDie(DieInfo dieInfo)
+	{
+		DieInfo = dieInfo;
+		
+		DieFaces = dieInfo.DieFaces.ToList();
+		DieType = dieInfo.DieType;
+	}
+
 	public void ChangeFaceSprite(int faceIndex, Texture2D image)
 	{
 		FaceImages[faceIndex].Texture = image;

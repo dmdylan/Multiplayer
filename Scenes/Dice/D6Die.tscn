@@ -22,6 +22,7 @@ physics_material_override = SubResource("PhysicsMaterial_g03t8")
 freeze_mode = 1
 script = ExtResource("1_bmtj6")
 FaceImages = [NodePath("MeshInstance3D/Faces/0"), NodePath("MeshInstance3D/Faces/1"), NodePath("MeshInstance3D/Faces/2"), NodePath("MeshInstance3D/Faces/3"), NodePath("MeshInstance3D/Faces/4"), NodePath("MeshInstance3D/Faces/5")]
+DieType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_n2m05")
@@ -58,5 +59,4 @@ transform = Transform3D(2.58946, 2.26378e-07, 8.74228e-08, 2.26378e-07, -1.13189
 shaded = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.05
 replication_config = SubResource("SceneReplicationConfig_pibli")

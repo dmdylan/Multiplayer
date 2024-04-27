@@ -10,6 +10,8 @@ public partial class EntityManager : Node
 	public static EntityManager Instance => instance;
 	
 	public List<Entity> ActiveEntities { get; private set; } = new();
+	
+	int entityIDCounter = 0;
 
 	public override void _EnterTree()
 	{
@@ -19,15 +21,17 @@ public partial class EntityManager : Node
 			instance = this;		
 	}
 	
-	public Entity CreateNewEntity(EntityInfo entityInfo, int? ownerID = null)
+	public Entity CreateNewEntity(EntityInfo entityInfo)
 	{
 		Entity entity = entityBase.Instantiate() as Entity;
 		
-		entity.InitializeEntity(entityInfo, ownerID);
+		entity.InitializeEntity(entityInfo, entityIDCounter);
 		
 		ActiveEntities.Add(entity);
 		
 		AddChild(entity);
+		
+		entityIDCounter++;
 		
 		return entity;
 	}

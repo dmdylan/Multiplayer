@@ -39,10 +39,9 @@ public partial class GameUI : Control
 	private void RollDice()
 	{	
 		GD.Print("Roll dice event handler called");
-		DiceManager.Instance.RollDice(GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().Entity);
+		DiceManager.Instance.RollDice(GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().Entity.EntityListID);
 	}
-
-
+	
 	public override void _Ready()
 	{
 		dungeonTileInfoList = dungeonTiles.ToList();

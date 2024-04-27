@@ -7,12 +7,12 @@ public partial class Entity : Node
 	[Export] public StatusEffectComponent StatusEffectComponent { get; private set; }
 	[Export] public DiceComponent DiceComponent { get; private set; }
 	public EntityInfo EntityInfo { get; private set; }
-	public int? OwnerID { get; private set; }
+	public int EntityListID{ get; private set; }
 
-	public void InitializeEntity(EntityInfo entityInfo, int? ownerID = null)
+	public void InitializeEntity(EntityInfo entityInfo, int entityListID)
 	{
 		EntityInfo = entityInfo;
-		OwnerID = ownerID;
+		EntityListID = entityListID;
 		
 		//TODO: Change init so I don't need a reference to the entity?
 		StatComponent.InitalizeStatComponent(this);

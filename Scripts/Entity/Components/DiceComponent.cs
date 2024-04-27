@@ -8,14 +8,14 @@ public partial class DiceComponent : Node
 	//TODO: Currently is just the info and the dice are made by the dice manager. Could have the dice made here and sent to dice manager.
 	public List<Die> DiceList { get; private set; } = new();
 	private Entity entity;
-	
+
 	public void InitalizeDiceComponent(Entity entity)
 	{
 		this.entity = entity;
 		
 		foreach (var item in entity.EntityInfo.BaseDiceLoadout.DiceInfo)
 		{
-			Die die = ResourceLoader.Load<PackedScene>("res://Scenes/Dice/D6Die.tscn").Instantiate<Die>();
+			Die die = new();
 			
 			die.InitDie(item);
 			

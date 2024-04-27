@@ -55,7 +55,7 @@ public partial class GameManager : Node
 		{
 			EntityInfo entityInfo = EntityDatabase.Entities.Where(x => x.Name == entityName).FirstOrDefault();
 			
-			player.SetEntity(EntityManager.Instance.CreateNewEntity(entityInfo, player.ID));
+			player.SetEntity(EntityManager.Instance.CreateNewEntity(entityInfo));
 		}
 	}
 	
