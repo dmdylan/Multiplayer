@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fqvbdygckvlk"
-path="res://.godot/imported/shoptile.png-cf5e755cdd9df2aa25c4d533e1ba6ca4.ctex"
+uid="uid://5pfqmftivjpw"
+path="res://.godot/imported/rareloottile.png-2526e9831a0a7278e66cdc7106e4b9da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shoptile.png"
-dest_files=["res://.godot/imported/shoptile.png-cf5e755cdd9df2aa25c4d533e1ba6ca4.ctex"]
+source_file="res://Textures/DungeonTiles/rareloottile.png"
+dest_files=["res://.godot/imported/rareloottile.png-2526e9831a0a7278e66cdc7106e4b9da.ctex"]
 
 [params]
 

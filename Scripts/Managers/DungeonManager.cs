@@ -51,7 +51,7 @@ public partial class DungeonManager : Node
 				if (i == DungeonGrid.Length - 1)
 				{
 					DungeonGrid[i][j] = new DungeonCell(DungeonCellType.Boss, new Vector2I(i, j));
-					GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
+					// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
 					continue;
 				}
 
@@ -60,14 +60,14 @@ public partial class DungeonManager : Node
 					EncounterDungeonCell encounterDungeonCell = new(dungeonCellType, new Vector2I(i, j));
 					encounterDungeonCell.SetupEncountEntities(SetupEncounterList());
 					DungeonGrid[i][j] = encounterDungeonCell;
-					GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
+					// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
 					continue;
 				}
 
 				DungeonCell dungeonCell = new(dungeonCellType, new Vector2I(i, j));
 
 				DungeonGrid[i][j] = dungeonCell;
-				GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
+				// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
 			}
 		}
 	}

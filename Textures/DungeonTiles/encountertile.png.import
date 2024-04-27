@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dphar7wxdftrr"
-path="res://.godot/imported/loottile.png-a245f28903e1716ea8342ae6eb5eda4b.ctex"
+uid="uid://c60rnteo2dyqr"
+path="res://.godot/imported/encountertile.png-ef2eaa6b6b92f822a0d402beaf37fca1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://loottile.png"
-dest_files=["res://.godot/imported/loottile.png-a245f28903e1716ea8342ae6eb5eda4b.ctex"]
+source_file="res://Textures/DungeonTiles/encountertile.png"
+dest_files=["res://.godot/imported/encountertile.png-ef2eaa6b6b92f822a0d402beaf37fca1.ctex"]
 
 [params]
 

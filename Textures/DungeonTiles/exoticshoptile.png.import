@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o1pt1rk7m40d"
-path="res://.godot/imported/exoticshoptile.png-5d4a2e7364e5b95ed998e420dcd6a059.ctex"
+path="res://.godot/imported/exoticshoptile.png-76e412d929d0ad991ff0c9dd937e5f98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://exoticshoptile.png"
-dest_files=["res://.godot/imported/exoticshoptile.png-5d4a2e7364e5b95ed998e420dcd6a059.ctex"]
+source_file="res://Textures/DungeonTiles/exoticshoptile.png"
+dest_files=["res://.godot/imported/exoticshoptile.png-76e412d929d0ad991ff0c9dd937e5f98.ctex"]
 
 [params]
 

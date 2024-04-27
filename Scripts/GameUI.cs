@@ -38,16 +38,10 @@ public partial class GameUI : Control
 	
 	private void RollDice()
 	{	
-		int entityListID = EntityManager.Instance.ActiveEntities.Where(x => x.OwnerID == Multiplayer.GetUniqueId()).First().GetIndex();
-		
-		RpcId(1, nameof(RollDiceRpc), entityListID);
+		GD.Print("Roll dice event handler called");
+		DiceManager.Instance.RollDice(GameManager.Instance.Players.Where(x => x.ID == Multiplayer.GetUniqueId()).First().Entity);
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void RollDiceRpc(int entityID)
-	{	
-		DiceManager.Instance.RollDice(entityID);
-	}
 
 	public override void _Ready()
 	{
@@ -65,7 +59,7 @@ public partial class GameUI : Control
 			
 			characterNameplate.NameLabel.Text = player.Name;
 
-			characterNameplate.Icon.Texture = ImageTexture.CreateFromImage(ResourceLoader.Load<Image>(player.Entity.EntityInfo.EntityIcon.ResourcePath));
+			characterNameplate.Icon.Texture = player.Entity.EntityInfo.EntityIcon;
 
 			characterNameplateParent.AddChild(characterNameplate);
 		}
@@ -119,7 +113,7 @@ public partial class GameUI : Control
 		{
 			dungeonMarkers.Add(id, new PlayerDungeonMarker
 			{
-				imageTexture = ImageTexture.CreateFromImage(GameManager.Instance.Players.Where(x => x.ID == id).First().Entity.EntityInfo.EntityIcon),
+				imageTexture = GameManager.Instance.Players.Where(x => x.ID == id).First().Entity.EntityInfo.EntityIcon,
 				currentSelectedTile = tile
 			});
 			
@@ -137,7 +131,7 @@ public partial class GameUI : Control
 	
 	private class PlayerDungeonMarker
 	{
-		public ImageTexture imageTexture;
+		public Texture2D imageTexture;
 		public DungeonTileNode currentSelectedTile;
 	}
 }

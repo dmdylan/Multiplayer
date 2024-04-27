@@ -1,19 +1,73 @@
-[gd_resource type="Resource" script_class="EntityInfo" load_steps=6 format=3 uid="uid://do4wkw82wseei"]
+[gd_resource type="Resource" script_class="EntityInfo" load_steps=17 format=3 uid="uid://do4wkw82wseei"]
 
 [ext_resource type="Resource" uid="uid://bs6wtb13gfir5" path="res://Resources/BaseStatSheets/PlayerEntities/MageStatSheet.tres" id="1_a52fo"]
 [ext_resource type="Script" path="res://Scripts/Resources/BaseDiceLoadout.cs" id="1_i4fjx"]
+[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="1_p26ek"]
 [ext_resource type="Script" path="res://Scripts/Resources/EntityInfo.cs" id="1_xx0b2"]
-[ext_resource type="Image" uid="uid://cirnogefyhcq8" path="res://mageicon.png" id="2_vy6c0"]
+[ext_resource type="Script" path="res://Scripts/Resources/DieInfo.cs" id="2_4oud4"]
+[ext_resource type="Texture2D" uid="uid://cirnogefyhcq8" path="res://Textures/EntityIcons/mageicon.png" id="5_b1req"]
+
+[sub_resource type="Resource" id="Resource_edenv"]
+script = ExtResource("1_p26ek")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_j0ah6"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_fkiuf"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_kcd6m"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_6ymo7"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_04nl2"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_xgily"]
+script = ExtResource("1_p26ek")
+Image = ExtResource("5_b1req")
+Name = ""
+Value = 0
+
+[sub_resource type="Resource" id="Resource_48e65"]
+script = ExtResource("2_4oud4")
+DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
+DieType = 1
+
+[sub_resource type="Resource" id="Resource_7t1x6"]
+script = ExtResource("2_4oud4")
+DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
+DieType = 1
 
 [sub_resource type="Resource" id="Resource_mltlx"]
 script = ExtResource("1_i4fjx")
-DiceInfo = null
+DiceInfo = Array[Object]([SubResource("Resource_48e65"), SubResource("Resource_7t1x6")])
 
 [resource]
 script = ExtResource("1_xx0b2")
 Name = "Mage"
-EntityIcon = ExtResource("2_vy6c0")
+EntityIcon = ExtResource("5_b1req")
 BaseStatSheet = ExtResource("1_a52fo")
 BaseDiceLoadout = SubResource("Resource_mltlx")
+AvailableDieFaces = Array[Object]([SubResource("Resource_edenv"), null, null])
 Tier = 0
 BaseExpValue = 0

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DungeonTileInfo" load_steps=3 format=3 uid="uid://bko30s7ilud5p"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/DungeonTileInfo.cs" id="1_et7dp"]
-[ext_resource type="Texture2D" uid="uid://c60rnteo2dyqr" path="res://encountertile.png" id="2_n7lnq"]
+[ext_resource type="Texture2D" uid="uid://c60rnteo2dyqr" path="res://Textures/DungeonTiles/encountertile.png" id="2_n7lnq"]
 
 [resource]
 script = ExtResource("1_et7dp")

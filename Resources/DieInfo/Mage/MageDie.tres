@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="DieInfo" load_steps=2 format=3 uid="uid://cfjx66qhoevir"]
+[gd_resource type="Resource" script_class="DieInfo" load_steps=4 format=3 uid="uid://cfjx66qhoevir"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/DieInfo.cs" id="1_a6gyi"]
+[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="1_r10bb"]
+
+[sub_resource type="Resource" id="Resource_vfs70"]
+script = ExtResource("1_r10bb")
+Name = ""
+Value = 0
 
 [resource]
 script = ExtResource("1_a6gyi")
-DieFaces = Array[Object]([null, null, null, null])
+DieFaces = Array[Object]([SubResource("Resource_vfs70"), null, null, null])
 DieType = 1

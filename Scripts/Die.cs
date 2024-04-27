@@ -7,7 +7,7 @@ public partial class Die : RigidBody3D
 	
 	private DieFace[] dieFaces;
 	
-	public Die(DieInfo dieInfo)
+	public void InitDie(DieInfo dieInfo)
 	{
 		dieFaces = dieInfo.DieFaces;
 		DieType = dieInfo.DieType;
@@ -18,8 +18,8 @@ public partial class Die : RigidBody3D
 		}
 	}
 	
-	public void ChangeFaceSprite(int faceIndex, Image image)
+	public void ChangeFaceSprite(int faceIndex, Texture2D image)
 	{
-		FaceImages[faceIndex].Texture = ImageTexture.CreateFromImage(image);
+		FaceImages[faceIndex].Texture = image;
 	}
 }

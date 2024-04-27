@@ -22,26 +22,22 @@ public partial class DiceManager : Node
 
 	//TODO: Will need to sync the dice roll
 	//TODO: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
-	public void RollDice(int id)
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void RollDice(Entity entity)
 	{
-		List<DieInfo> diceInfo = EntityManager.Instance.ActiveEntities.Where(x => x.OwnerID == id).First().DiceComponent.DiceList;
-		List<Die> dice = new();
-		
-		foreach (var info in diceInfo)
+		GD.Print("Dice manager roll dice function called");
+
+		foreach (var die in entity.DiceComponent.DiceList)
 		{
-			dice.Add(new Die(info));
+			//TODO: Move this to the dice component itself? Might fuck it up if it adds as reference and deletes
+			GetDieTypeScene(die).Instantiate<Die>();
+			
+			currentDice.Add(die);
+			
+			die.SleepingStateChanged += DieSleepingStateChangedEventHandler;
 		}
 		
 		RandomNumberGenerator random = new();
-
-		for (int i = 0; i < dice.Count; i++)
-		{
-			Die die = GetDieTypeScene(dice[i]).Instantiate() as Die;
-
-			currentDice.Add(die);
-
-			die.SleepingStateChanged += DieSleepingStateChangedEventHandler;
-		}
 
 		foreach (var die in currentDice)
 		{

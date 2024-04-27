@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bse1k1vmymu2j"
-path="res://.godot/imported/rareencountertile.png-fcfe5a2b9b5310bc4f3de5b52e5ca58c.ctex"
+path="res://.godot/imported/rareencountertile.png-25594c9e1864b478252bea5fced4fb46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rareencountertile.png"
-dest_files=["res://.godot/imported/rareencountertile.png-fcfe5a2b9b5310bc4f3de5b52e5ca58c.ctex"]
+source_file="res://Textures/DungeonTiles/rareencountertile.png"
+dest_files=["res://.godot/imported/rareencountertile.png-25594c9e1864b478252bea5fced4fb46.ctex"]
 
 [params]
 

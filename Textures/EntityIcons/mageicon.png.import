@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c60rnteo2dyqr"
-path="res://.godot/imported/encountertile.png-c0d2b8118d1e347ec5c92d45b98bf111.ctex"
+uid="uid://cirnogefyhcq8"
+path="res://.godot/imported/mageicon.png-b84f87d041e4c94d2347fbc22002fe63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://encountertile.png"
-dest_files=["res://.godot/imported/encountertile.png-c0d2b8118d1e347ec5c92d45b98bf111.ctex"]
+source_file="res://Textures/EntityIcons/mageicon.png"
+dest_files=["res://.godot/imported/mageicon.png-b84f87d041e4c94d2347fbc22002fe63.ctex"]
 
 [params]
 
