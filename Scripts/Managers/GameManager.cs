@@ -41,17 +41,13 @@ public partial class GameManager : Node
 	public void StartGame()
 	{
  		DungeonManager.Instance.PopulateDungeonGrid();
-		
-		var scene = gameDebugScene.Instantiate();
-		
-		AddChild(scene);
 				
-		// UIManager.Instance.LoadGameUI();
+		UIManager.Instance.LoadGameUI();
 	}
 	
 	public void SpawnPlayerEntities(string entityName)
 	{
-		foreach (var player in Players)
+		foreach (PlayerInfo player in Players)
 		{
 			EntityInfo entityInfo = EntityDatabase.Entities.Where(x => x.Name == entityName).FirstOrDefault();
 			
@@ -61,12 +57,50 @@ public partial class GameManager : Node
 	
 	private void DungeonTileNodePressedEventHandler(int playerID, Vector2I tileGridPosition)
 	{
-		playerDungeonTileSelections.Add(playerID, tileGridPosition);
-		
-		if(playerDungeonTileSelections.Count == Players.Count)
+		if(Multiplayer.IsServer())
+			DungeonTileNodeRpc(playerID, tileGridPosition);
+		else
+			RpcId(1, nameof(DungeonTileNodeRpc), playerID, tileGridPosition);
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void DungeonTileNodeRpc(int playerID, Vector2I tileGridPosition)
+	{
+		GD.Print("Dungeon tile node pressed called");
+		if (playerDungeonTileSelections.TryGetValue(playerID, out Vector2I selected))
 		{
-			//Find tile with most votes
-			//Load the appropriate scene of the selected tile
+			playerDungeonTileSelections[playerID] = selected;
 		}
+		else
+		{
+			playerDungeonTileSelections.Add(playerID, tileGridPosition);
+		}
+
+		if (playerDungeonTileSelections.Count == Players.Count)
+		{
+			CheckTileVoteCount();
+		}
+	}
+	
+	private void CheckTileVoteCount()
+	{
+		Dictionary<Vector2I, int> keyValuePairs = new();
+		
+		foreach (Vector2I value in playerDungeonTileSelections.Values)
+		{
+			if(keyValuePairs.ContainsKey(value))
+			{
+				keyValuePairs[value]++;
+			}
+			else
+			{
+				keyValuePairs.Add(value, 1);
+			}
+		}
+		
+		if(keyValuePairs.Count > 1 && keyValuePairs.ElementAt(0).Value == keyValuePairs.ElementAt(1).Value)
+			GD.Print("2 different");
+		else
+			GD.Print("One most common");
 	}
 }

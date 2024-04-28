@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dgckbpvkk7o7c" path="res://Scenes/UI/GameUI.tscn" id="1_iouio"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2dbo6"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vs1ni"]
 bounce = 0.5
@@ -71,7 +73,7 @@ physics_material_override = SubResource("PhysicsMaterial_vs1ni")
 shape = SubResource("ConcavePolygonShape3D_o2yh3")
 
 [node name="Wall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 9, -5, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, -5, 3, 0.5)
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
@@ -92,17 +94,28 @@ physics_material_override = SubResource("PhysicsMaterial_vs1ni")
 shape = SubResource("ConcavePolygonShape3D_xfgjw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.69593, -0.532507, 0.481787, 0, 0.670909, 0.741539, -0.71811, -0.516059, 0.466906, 5.6757, 9.15407, 6.59603)
+transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466906, 9.43927, 15.6371, 9.92984)
 environment = SubResource("Environment_55vhk")
+current = true
+fov = 45.0
+far = 30.15
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466906, 8.80285, 17.1202, 9.46365)
+visible = false
+environment = SubResource("Environment_55vhk")
+projection = 1
+fov = 45.0
+size = 15.554
 far = 30.15
 
 [node name="GameUI" parent="." instance=ExtResource("1_iouio")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.345, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.345, 0)
 light_color = Color(1, 0.6, 0.294118, 1)
 light_energy = 3.666
 light_indirect_energy = 5.075
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.792
+omni_range = 13.96

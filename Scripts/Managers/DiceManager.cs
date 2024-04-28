@@ -30,8 +30,8 @@ public partial class DiceManager : Node
 			Rpc(nameof(RollDiceRpc), id);
 	}
 
-	//TODO: Will need to sync the dice roll
 	//FIXME: Dice can get stuck sometimes, might need to reroll. Can use raycast on each side to check it one is touching the ground
+	//FIXME: Dice are synched through multiplayer synchronizer and 0 delay, could be heavy on network. Switch to lerp positions?
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void RollDiceRpc(int entityID)
 	{
@@ -39,7 +39,6 @@ public partial class DiceManager : Node
 
 		foreach (var die in entity.DiceComponent.DiceList)
 		{
-			GD.Print(die);
 			Die dieInstance = GetDieTypeScene(die).Instantiate<Die>();
 			
 			dieInstance.InitDie(die.DieInfo);
@@ -63,23 +62,19 @@ public partial class DiceManager : Node
 
 			AddChild(die);
 						
-			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 20);
+			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 20);	
 		}
-
-		//TODO: Move the deletion and handling of dice out of die script and to dice manager
-		//Wait for all die to finish
-	}
-
-	[Rpc]
-	private void AddDieToCurrentDiceList()
-	{
-		
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	private void RollDiceRpcTwo()
+	private void SpawnDice()
 	{
-		
+		foreach (var die in currentDice)
+		{
+			AddChild(die);
+						
+			die.ApplyCentralImpulse(die.GlobalTransform.Basis.Z * 20);	
+		}
 	}
 
 	private void DieSleepingStateChangedEventHandler()

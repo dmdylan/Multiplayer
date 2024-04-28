@@ -74,7 +74,7 @@ public partial class GameUI : Control
 				var dungeonTile = dungeonTileUIScene.Instantiate() as DungeonTileNode;
 				
 				dungeonTile.InitDungeonTile(DungeonManager.Instance.DungeonGrid[i][j]);		
-					
+				
 				dungeonTile.TextureButton.TextureNormal = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileTexture;
 				
 				//Disable all but the first row for initalization
