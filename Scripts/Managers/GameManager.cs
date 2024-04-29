@@ -31,13 +31,6 @@ public partial class GameManager : Node
 		GameEventsManager.DungeonTileNodePressed -= DungeonTileNodePressedEventHandler;
 	}
 
-	public override void _Ready()
-	{
-		base._Ready();
-		
-		GD.Seed(12345);
-	}
-
 	public void StartGame()
 	{
  		DungeonManager.Instance.PopulateDungeonGrid();

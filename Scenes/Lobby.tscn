@@ -5,7 +5,7 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_7ri2a"]
 
-[node name="MultiplayerController" type="Control" node_paths=PackedStringArray("nameInput", "hostButton", "joinButton", "leaveButton", "readyButton", "startButton", "playerCharacterSelection", "warriorButton", "mageButton", "clericButton", "rogueButton", "playerLobbyPanel", "playerLobbyParentNode")]
+[node name="MultiplayerController" type="Control" node_paths=PackedStringArray("nameInput", "hostButton", "joinButton", "leaveButton", "readyButton", "startButton", "seedGenerationInput", "playerCharacterSelection", "warriorButton", "mageButton", "clericButton", "rogueButton", "playerLobbyPanel", "playerLobbyParentNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ joinButton = NodePath("HBoxContainer/JoinButton")
 leaveButton = NodePath("HBoxContainer/LeaveButton")
 readyButton = NodePath("HBoxContainer/ReadyButton")
 startButton = NodePath("HBoxContainer/StartButton")
+seedGenerationInput = NodePath("Panel/HBoxContainer2/SeedGenerationInput")
 playerCharacterSelection = NodePath("PlayerCharacterSelection")
 warriorButton = NodePath("PlayerCharacterSelection/Warrior")
 mageButton = NodePath("PlayerCharacterSelection/Mage")
@@ -86,6 +87,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 110.0
+offset_right = 204.0
+offset_bottom = 145.0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+text = "Seed:"
+
+[node name="SeedGenerationInput" type="TextEdit" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="PlayerCharacterSelection" type="VBoxContainer" parent="."]
 visible = false

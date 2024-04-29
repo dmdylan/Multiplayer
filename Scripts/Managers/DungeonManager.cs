@@ -50,37 +50,13 @@ public partial class DungeonManager : Node
 				
 				if (i == DungeonGrid.Length - 1)
 				{
-					DungeonGrid[i][j] = new DungeonCell(DungeonCellType.Boss, new Vector2I(i, j));
-					// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
-					continue;
+					dungeonCellType = DungeonCellType.Boss;
 				}
-
-				if (dungeonCellType == DungeonCellType.Encounter || dungeonCellType == DungeonCellType.RareEncounter)
-				{
-					EncounterDungeonCell encounterDungeonCell = new(dungeonCellType, new Vector2I(i, j));
-					encounterDungeonCell.SetupEncountEntities(SetupEncounterList());
-					DungeonGrid[i][j] = encounterDungeonCell;
-					// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
-					continue;
-				}
-
-				DungeonCell dungeonCell = new(dungeonCellType, new Vector2I(i, j));
-
-				DungeonGrid[i][j] = dungeonCell;
+				
+				DungeonGrid[i][j] = SetupDungeonCell(dungeonCellType, new Vector2I(i, j));
 				// GD.Print($"Dungeon position {i},{j}: {DungeonGrid[i][j].DungeonCellType}");
 			}
 		}
-	}
-
-	//Select enemies at certain tier threshold
-	//Assign number of enemies in encounter (could be based on set of parameters)
-	//Assign selected enemies to specific encounter
-	private List<EntityInfo> SetupEncounterList()
-	{
-		return enemyEntityDatabase.Entities
-									.Where(x => x.Tier == currentTier - 1
-									|| x.Tier == currentTier
-									|| x.Tier == currentTier + 1).ToList();
 	}
 	
 	//TODO: Make weighted randoms that can be changed throughout the playthrough based on current tier, or just change % values
@@ -112,5 +88,45 @@ public partial class DungeonManager : Node
 		{
 			return DungeonCellType.ExoticShop;
 		}
+	}
+	
+	private DungeonCell SetupDungeonCell(DungeonCellType dungeonCellType, Vector2I position)
+	{
+		switch (dungeonCellType)
+		{
+			case DungeonCellType.Encounter:
+				EncounterDungeonCell encounterDungeonCell = new (dungeonCellType, position);
+				encounterDungeonCell.SetupEncounterEntities(SetupEncounterList());
+				return encounterDungeonCell;
+			case DungeonCellType.RareEncounter:
+				return new DungeonCell(dungeonCellType, position);
+			case DungeonCellType.Shop:
+				return new DungeonCell(dungeonCellType, position);
+			case DungeonCellType.ExoticShop:
+				return new DungeonCell(dungeonCellType, position);
+			case DungeonCellType.Loot:
+				return new DungeonCell(dungeonCellType, position);
+			case DungeonCellType.RareLoot:
+				return new DungeonCell(dungeonCellType, position);
+			case DungeonCellType.Boss:
+				return new DungeonCell(dungeonCellType, position);
+			default:
+				return default;
+		}
+	}
+	
+	//Select enemies at certain tier threshold
+	//Assign number of enemies in encounter (could be based on set of parameters)
+	//Assign selected enemies to specific encounter
+	private List<EntityInfo> SetupEncounterList()
+	{
+		List<EntityInfo> encounterList = new List<EntityInfo>();
+		
+		encounterList = enemyEntityDatabase.Entities
+									.Where(x => x.Tier == currentTier - 1
+									|| x.Tier == currentTier
+									|| x.Tier == currentTier + 1).ToList();
+		
+		return encounterList;
 	}
 }

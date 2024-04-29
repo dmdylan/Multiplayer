@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,7 @@ public partial class MultiplayerController : Control
 	[Export] private Button leaveButton;
 	[Export] private Button readyButton;
 	[Export] private Button startButton;
+	[Export] private TextEdit seedGenerationInput;
 	
 	[ExportCategory("Character Select")]
 	[Export] private VBoxContainer playerCharacterSelection;
@@ -50,6 +52,8 @@ public partial class MultiplayerController : Control
 		mageButton.Pressed += OnMageButtonPressed;
 		clericButton.Pressed += OnClericButtonPressed;
 		rogueButton.Pressed += OnRogueButtonPressed;
+		
+		seedGenerationInput.TextChanged += OnSeedGenerationInputTextChanged;
 	}
 
 	public override void _ExitTree()
@@ -70,6 +74,8 @@ public partial class MultiplayerController : Control
 		mageButton.Pressed -= OnMageButtonPressed;
 		clericButton.Pressed -= OnClericButtonPressed;
 		rogueButton.Pressed -= OnRogueButtonPressed;
+		
+		seedGenerationInput.TextChanged -= OnSeedGenerationInputTextChanged;
 	}
 
 	private void HostGame()
@@ -189,6 +195,12 @@ public partial class MultiplayerController : Control
 			startButton.Disabled = true;
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void SetSeedValue(string value)
+	{
+		seedGenerationInput.Text = value;	
+	}
+
 	private void Disconnect()
 	{		
 		Multiplayer.MultiplayerPeer = null;
@@ -210,6 +222,8 @@ public partial class MultiplayerController : Control
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void StartGame()
 	{
+		GD.Seed(seedGenerationInput.Text.Hash());
+		
 		GameManager.Instance.SpawnPlayerEntities(playerLobbyNameplates[Multiplayer.GetUniqueId()].CurrentCharacterClassLabel.Text);
 		GameManager.Instance.StartGame();
 		Hide();
@@ -226,7 +240,7 @@ public partial class MultiplayerController : Control
 	{
 		RpcId(1, nameof(SendPlayerInfo), nameInput.Text, Multiplayer.GetUniqueId());
 		RpcId(1, nameof(SpawnPlayerLobbyNameplate), Multiplayer.GetUniqueId(), false, string.Empty);	
-		RpcId(1, nameof(CheckIfEveryoneIsReady));
+		RpcId(1, nameof(CheckIfEveryoneIsReady));		
 	}
 
 	private void OnPeerDisconnceted(long id)
@@ -237,6 +251,8 @@ public partial class MultiplayerController : Control
 
 	private void OnPeerConnected(long id)
 	{
+		if(Multiplayer.IsServer())
+			Rpc(nameof(SetSeedValue), seedGenerationInput.Text);	
 	}
 	
 	private void OnServerDisconnected()
@@ -248,11 +264,12 @@ public partial class MultiplayerController : Control
 	
 	#endregion Multiplayer Callbacks
 
-	#region Button Callbacks
+	#region Input Callbacks
 	
 	private void OnHostButtonPressed()
 	{
 		HostGame();
+		seedGenerationInput.Text = Random.Shared.Next().ToString();
 		SendPlayerInfo(nameInput.Text, 1);
 		SpawnPlayerLobbyNameplate(1, false, string.Empty);		
 				
@@ -273,6 +290,7 @@ public partial class MultiplayerController : Control
 		joinButton.Visible = false;
 		nameInput.Visible = false;
 		playerLobbyPanel.Visible = true;
+		seedGenerationInput.Editable = false;
 		playerCharacterSelection.Visible = true;
 		readyButton.Visible = true;
 		leaveButton.Visible = true;
@@ -323,5 +341,10 @@ public partial class MultiplayerController : Control
 		Rpc(nameof(SetPlayerCharacterClass), Multiplayer.GetUniqueId(), "Rogue");
 	}
 
-	#endregion Button Callbacks
+	private void OnSeedGenerationInputTextChanged()
+	{
+		Rpc(nameof(SetSeedValue), seedGenerationInput.Text);
+	}
+
+	#endregion Input Callbacks
 }

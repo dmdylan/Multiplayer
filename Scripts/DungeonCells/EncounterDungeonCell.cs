@@ -9,7 +9,7 @@ public class EncounterDungeonCell : DungeonCell
 	{
 	}
 	
-	public void SetupEncountEntities(List<EntityInfo> entities)
+	public virtual void SetupEncounterEntities(List<EntityInfo> entities)
 	{
 		int count = (int)GD.Randi() % 5;
 		
