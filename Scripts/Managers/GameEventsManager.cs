@@ -11,4 +11,7 @@ public static class GameEventsManager
 	/// </summary>
 	public static event Action<int, Vector2I> DungeonTileNodePressed;
 	public static void InvokeDungeonTileNodePressed(int playerID, Vector2I tileGridPosition) => DungeonTileNodePressed?.Invoke(playerID, tileGridPosition);
+	
+	public static event Action ChangedScene;
+	public static void InvokeChangedScene() => ChangedScene?.Invoke(); 
 }

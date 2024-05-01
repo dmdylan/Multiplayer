@@ -92,7 +92,10 @@ public partial class GameManager : Node
 		}
 		
 		if(keyValuePairs.Count > 1 && keyValuePairs.ElementAt(0).Value == keyValuePairs.ElementAt(1).Value)
+		{
+			
 			GD.Print("2 different");
+		}
 		else
 			GD.Print("One most common");
 	}

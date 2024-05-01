@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmb03q4dd8kjk"]
 
-[ext_resource type="PackedScene" uid="uid://dgckbpvkk7o7c" path="res://Scenes/UI/GameUI.tscn" id="1_iouio"]
+[ext_resource type="PackedScene" uid="uid://dgckbpvkk7o7c" path="res://Scenes/UI/GameUI.tscn" id="1_u42xl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2dbo6"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -28,7 +28,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="Environment" id="Environment_55vhk"]
 background_mode = 1
 
-[node name="GameRoot" type="Node"]
+[node name="CombatSceneRoot" type="Node"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, 0, 0)
@@ -109,7 +109,7 @@ fov = 45.0
 size = 15.554
 far = 30.15
 
-[node name="GameUI" parent="." instance=ExtResource("1_iouio")]
+[node name="GameUI" parent="." instance=ExtResource("1_u42xl")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.345, 0)
