@@ -23,6 +23,7 @@ EntityManager="*res://Scenes/Managers/EntityManager.tscn"
 UIManager="*res://Scenes/Managers/UIManager.tscn"
 DiceManager="*res://Scenes/Managers/DiceManager.tscn"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+SceneManager="*res://Scenes/Managers/SceneManager.tscn"
 
 [display]
 

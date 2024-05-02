@@ -91,12 +91,26 @@ public partial class GameManager : Node
 			}
 		}
 		
+		Vector2I gridPosition;
+		
 		if(keyValuePairs.Count > 1 && keyValuePairs.ElementAt(0).Value == keyValuePairs.ElementAt(1).Value)
 		{
-			
-			GD.Print("2 different");
+			gridPosition = keyValuePairs.ElementAt(GD.RandRange(0,1)).Key;		
 		}
 		else
-			GD.Print("One most common");
+		{
+			gridPosition = keyValuePairs.ElementAt(0).Key;			
+		}
+		
+		DungeonCell dungeonCell = DungeonManager.Instance.DungeonGrid[gridPosition.X][gridPosition.Y];
+		
+		//FIXME: Need to change to acceptable network variable
+		Rpc(nameof(ChangeSceneRpc), dungeonCell.DungeonCellType.ToString());
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	private void ChangeSceneRpc(DungeonCellType dungeonCellType)
+	{
+		GameEventsManager.InvokeChangedScene(dungeonCellType);
 	}
 }
