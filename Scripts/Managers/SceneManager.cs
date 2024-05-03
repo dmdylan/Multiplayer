@@ -27,9 +27,9 @@ public partial class SceneManager : Node
 		GameEventsManager.ChangedScene -= ChangedSceneEventHandler;
 	}
 
-	private void ChangedSceneEventHandler(DungeonCellType dungeonCellType)
-	{
-		switch (dungeonCellType)
+	private void ChangedSceneEventHandler(Vector2I cellPosition)
+	{	
+		switch (Helpers.GetDungeonCell(cellPosition).DungeonCellType)
 		{
 			case DungeonCellType.Encounter:
 				LoadNewScene(combatScene);

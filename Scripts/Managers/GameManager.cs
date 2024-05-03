@@ -102,15 +102,15 @@ public partial class GameManager : Node
 			gridPosition = keyValuePairs.ElementAt(0).Key;			
 		}
 		
-		DungeonCell dungeonCell = DungeonManager.Instance.DungeonGrid[gridPosition.X][gridPosition.Y];
-		
+		// DungeonCell dungeonCell = DungeonManager.Instance.DungeonGrid[gridPosition.X][gridPosition.Y];
+			
 		//FIXME: Need to change to acceptable network variable
-		Rpc(nameof(ChangeSceneRpc), dungeonCell.DungeonCellType.ToString());
+		Rpc(nameof(ChangeSceneRpc), gridPosition);
 	}
 	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	private void ChangeSceneRpc(DungeonCellType dungeonCellType)
+	private void ChangeSceneRpc(Vector2I gridPosition)
 	{
-		GameEventsManager.InvokeChangedScene(dungeonCellType);
+		GameEventsManager.InvokeChangedScene(gridPosition);
 	}
 }

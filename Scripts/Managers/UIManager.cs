@@ -11,17 +11,50 @@ public partial class UIManager : Node
 	[ExportCategory("UI Scenes")]
 	[Export] private PackedScene GameUIScene;
 	
+	private GameUI gameUI;
+	
 	public override void _EnterTree()
 	{
 		if(instance != null)
 			QueueFree();
 		else
-			instance = this;	
+			instance = this;
+			
+		GameEventsManager.ChangedScene += ChangedSceneEventHandler;	
 	}
-	
+
+	public override void _ExitTree()
+	{
+		GameEventsManager.ChangedScene -= ChangedSceneEventHandler;	
+	}
+
+	private void ChangedSceneEventHandler(Vector2I i)
+	{
+		switch (Helpers.GetDungeonCell(i).DungeonCellType)
+		{
+			case DungeonCellType.Encounter:
+				gameUI.ChangeDungeonGridVisibility();
+				break;
+			case DungeonCellType.RareEncounter:
+				break;
+			case DungeonCellType.Shop:
+				break;
+			case DungeonCellType.ExoticShop:
+				break;
+			case DungeonCellType.Loot:
+				break;
+			case DungeonCellType.RareLoot:
+				break;
+			case DungeonCellType.Boss:
+				break;
+		}
+	}
+
 	public void LoadGameUI()
 	{
 		var scene = ResourceLoader.Load<PackedScene>(GameUIScene.ResourcePath).Instantiate<Control>() as GameUI;
+		
+		gameUI = scene;
 		
 		GetTree().Root.AddChild(scene);
 		

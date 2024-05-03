@@ -35,6 +35,8 @@ public partial class DiceManager : Node
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void RollDiceRpc(int entityID)
 	{
+		ClearDiceList();
+		
 		Entity entity = EntityManager.Instance.ActiveEntities.Where(x => x.EntityListID == entityID).First();
 
 		foreach (var die in entity.DiceComponent.DiceList)
@@ -89,6 +91,12 @@ public partial class DiceManager : Node
 		{
 			CheckDieTopSide(die);
 		}
+	}
+
+	private void ClearDiceList()
+	{
+		if(currentDice == null || currentDice.Count == 0)
+			return;
 		
 		foreach (var die in currentDice)
 		{
@@ -100,6 +108,7 @@ public partial class DiceManager : Node
 		currentDice.TrimExcess();
 	}
 
+	//TODO: How to get die top side information for combat?
 	private void CheckDieTopSide(Die die)
 	{
 		float topHeight = 0;

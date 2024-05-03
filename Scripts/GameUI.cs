@@ -17,6 +17,7 @@ public partial class GameUI : Control
 	
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
+	[Export] private Control dungeonGridParent;
 	[Export] private HBoxContainer[] dungeonGridContainers;
 
 	private Dictionary<Vector2I, DungeonTileNode> dungeonTileNodes = new();
@@ -83,13 +84,17 @@ public partial class GameUI : Control
 				
 				dungeonTile.Label.Text = GetTileType(DungeonManager.Instance.DungeonGrid[i][j].DungeonCellType).TileName;
 				
-				dungeonTile.Name = $"{j},{i}";
-				
+				dungeonTile.Name = $"{j},{i}";			
 				
 				dungeonTileNodes.Add(dungeonTile.TilePosition, dungeonTile);
 				dungeonGridContainers[i].AddChild(dungeonTile);
 			}
 		}
+	}
+	
+	public void ChangeDungeonGridVisibility()
+	{
+		dungeonGridParent.Visible = !dungeonGridParent.Visible;
 	}
 	
 	private DungeonTileInfo GetTileType(DungeonCellType dungeonCellType)

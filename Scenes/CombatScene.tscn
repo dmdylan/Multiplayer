@@ -60,8 +60,7 @@ physics_material_override = SubResource("PhysicsMaterial_vs1ni")
 shape = SubResource("ConcavePolygonShape3D_8bgvj")
 
 [node name="Wall4" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, 5)
-visible = false
+transform = Transform3D(9, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, 5)
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall4"]
@@ -81,8 +80,7 @@ physics_material_override = SubResource("PhysicsMaterial_vs1ni")
 shape = SubResource("ConcavePolygonShape3D_ax0dd")
 
 [node name="Wall3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 9, 5, 3, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, 5, 3, 0.5)
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall3"]
@@ -93,9 +91,18 @@ shape = SubResource("ConcavePolygonShape3D_xfgjw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466906, 9.43927, 15.6371, 9.92984)
+visible = false
 environment = SubResource("Environment_55vhk")
 current = true
 fov = 45.0
+far = 30.15
+
+[node name="Camera3D3" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00174539, 0.999999, 0, -0.999999, -0.00174539, 0, 19.637, 0)
+environment = SubResource("Environment_55vhk")
+current = true
+fov = 45.0
+size = 12.321
 far = 30.15
 
 [node name="Camera3D2" type="Camera3D" parent="."]

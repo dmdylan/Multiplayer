@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="8_n33i4"]
 [ext_resource type="PackedScene" uid="uid://c8s8c6oew0l5m" path="res://Scenes/UI/EnemyNameplate.tscn" id="11_lmnar"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("diceRollDebugButton", "characterNameplateParent", "dungeonGridContainers")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("diceRollDebugButton", "characterNameplateParent", "dungeonGridParent", "dungeonGridContainers")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,7 @@ playerCharacterNameplateScene = ExtResource("2_6a558")
 enemyEntityNameplateScene = ExtResource("11_lmnar")
 dungeonTileUIScene = ExtResource("3_e6gr5")
 characterNameplateParent = NodePath("PlayerNameplateContainer")
+dungeonGridParent = NodePath("DungeonGrid")
 dungeonGridContainers = [NodePath("DungeonGrid/HBoxContainer"), NodePath("DungeonGrid/HBoxContainer2"), NodePath("DungeonGrid/HBoxContainer3"), NodePath("DungeonGrid/HBoxContainer4"), NodePath("DungeonGrid/HBoxContainer5")]
 
 [node name="PlayerNameplateContainer" type="VBoxContainer" parent="."]
