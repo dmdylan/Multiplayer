@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerCharacterNameplate : Control
+public partial class EntityNameplate : Control
 {
 	[ExportCategory("Nameplate Info")]
 	[Export] private Label nameLabel;

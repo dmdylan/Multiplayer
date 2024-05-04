@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fbd483it1usf"]
 
 [ext_resource type="Texture2D" uid="uid://xe2h8mfhoda8" path="res://Assets/Kenney/RPGUI/PNG/panel_blue.png" id="1_2gdkw"]
-[ext_resource type="Script" path="res://Scripts/PlayerCharacterNameplate.cs" id="1_5at1e"]
+[ext_resource type="Script" path="res://Scripts/EntityNameplate.cs" id="1_5at1e"]
 [ext_resource type="Texture2D" uid="uid://432clk37ic1l" path="res://Assets/Kenney/RPGUI/PNG/barBack_horizontalMid.png" id="3_js51u"]
 [ext_resource type="Texture2D" uid="uid://bo6nest36kjq8" path="res://Assets/Kenney/RPGUI/PNG/barRed_horizontalMid.png" id="4_vjrnq"]
 [ext_resource type="Texture2D" uid="uid://b78l2knhgrvdn" path="res://Assets/Kenney/RPGUI/PNG/barBlue_horizontalBlue.png" id="5_2hsll"]

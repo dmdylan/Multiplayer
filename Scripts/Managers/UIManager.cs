@@ -34,6 +34,7 @@ public partial class UIManager : Node
 		{
 			case DungeonCellType.Encounter:
 				gameUI.ChangeDungeonGridVisibility();
+				gameUI.SpawnEnemyEntityNameplates(i);
 				break;
 			case DungeonCellType.RareEncounter:
 				break;

@@ -2,12 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://4sseo5ywjv5i" path="res://Resources/BaseStatSheets/EnemyEntities/TestEnemy.tres" id="1_ddmeq"]
 [ext_resource type="Script" path="res://Scripts/Resources/EntityInfo.cs" id="1_dioqe"]
-[ext_resource type="Texture2D" uid="uid://bse1k1vmymu2j" path="res://Textures/DungeonTiles/rareencountertile.png" id="2_mgnj1"]
+[ext_resource type="Texture2D" uid="uid://dw2nuhkobu86v" path="res://Textures/EntityIcons/testenemyicon.png" id="2_nr5vm"]
 
 [resource]
 script = ExtResource("1_dioqe")
 Name = "Test"
-EntityIcon = ExtResource("2_mgnj1")
+EntityIcon = ExtResource("2_nr5vm")
 BaseStatSheet = ExtResource("1_ddmeq")
 AvailableDieFaces = null
 Tier = 0

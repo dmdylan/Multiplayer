@@ -17,6 +17,7 @@ public partial class GameUI : Control
 	
 	[ExportCategory("Parent Nodes")]
 	[Export] private Control characterNameplateParent;
+	[Export] private Control enemyNameplateParent;
 	[Export] private Control dungeonGridParent;
 	[Export] private HBoxContainer[] dungeonGridContainers;
 
@@ -55,13 +56,28 @@ public partial class GameUI : Control
 	{
 		foreach (var player in GameManager.Instance.Players)
 		{
-			PlayerCharacterNameplate characterNameplate = playerCharacterNameplateScene.Instantiate<PlayerCharacterNameplate>();
+			EntityNameplate characterNameplate = playerCharacterNameplateScene.Instantiate<EntityNameplate>();
 			
 			characterNameplate.NameLabel.Text = player.Name;
 
 			characterNameplate.Icon.Texture = player.Entity.EntityInfo.EntityIcon;
 
 			characterNameplateParent.AddChild(characterNameplate);
+		}
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+	public void SpawnEnemyEntityNameplates(Vector2I dungeonCell)
+	{
+		EncounterDungeonCell encounterDungeonCell = Helpers.GetDungeonCell(dungeonCell) as EncounterDungeonCell;
+		
+		foreach (EntityInfo entity in encounterDungeonCell.EnemyEntities)
+		{
+			EntityNameplate entityNameplate = enemyEntityNameplateScene.Instantiate<EntityNameplate>();
+			
+			entityNameplate.NameLabel.Text = entity.Name;
+			entityNameplate.Icon.Texture = entity.EntityIcon;
+			enemyNameplateParent.AddChild(entityNameplate);
 		}
 	}
 	

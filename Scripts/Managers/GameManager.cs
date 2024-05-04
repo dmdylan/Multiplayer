@@ -104,7 +104,6 @@ public partial class GameManager : Node
 		
 		// DungeonCell dungeonCell = DungeonManager.Instance.DungeonGrid[gridPosition.X][gridPosition.Y];
 			
-		//FIXME: Need to change to acceptable network variable
 		Rpc(nameof(ChangeSceneRpc), gridPosition);
 	}
 	

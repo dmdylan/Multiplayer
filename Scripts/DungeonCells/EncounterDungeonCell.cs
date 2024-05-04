@@ -11,11 +11,13 @@ public class EncounterDungeonCell : DungeonCell
 	
 	public virtual void SetupEncounterEntities(List<EntityInfo> entities)
 	{
-		int count = (int)GD.Randi() % 5;
+		int count = GD.RandRange(1,5);
 		
 		for (int i = 0; i < count; i++)
 		{
 			EnemyEntities.Add(entities[(int)GD.Randi() % entities.Count]);
 		}
+		
+		GD.Print($"Dungeon Cell {GridLocation} contains {EnemyEntities.Count} enemies");
 	}
 }
