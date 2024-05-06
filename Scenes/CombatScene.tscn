@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmb03q4dd8kjk"]
+[gd_scene load_steps=12 format=3 uid="uid://dmb03q4dd8kjk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2dbo6"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -24,12 +24,23 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="Environment" id="Environment_55vhk"]
-background_mode = 1
+ambient_light_source = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_02keg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxcc3"]
+lightmap_size_hint = Vector2i(14, 21)
+flip_faces = true
+add_uv2 = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ud00e"]
+data = PackedVector3Array(0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [node name="CombatSceneRoot" type="Node"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -51,6 +62,7 @@ shape = SubResource("ConcavePolygonShape3D_ggaup")
 
 [node name="Wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(11, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, -5)
+visible = false
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
@@ -61,6 +73,7 @@ shape = SubResource("ConcavePolygonShape3D_8bgvj")
 
 [node name="Wall4" type="MeshInstance3D" parent="."]
 transform = Transform3D(9, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, 5)
+visible = false
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall4"]
@@ -71,6 +84,7 @@ shape = SubResource("ConcavePolygonShape3D_o2yh3")
 
 [node name="Wall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, -5, 3, 0.5)
+visible = false
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
@@ -81,6 +95,7 @@ shape = SubResource("ConcavePolygonShape3D_ax0dd")
 
 [node name="Wall3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, 5, 3, 0.5)
+visible = false
 mesh = SubResource("BoxMesh_2dbo6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall3"]
@@ -90,29 +105,28 @@ physics_material_override = SubResource("PhysicsMaterial_vs1ni")
 shape = SubResource("ConcavePolygonShape3D_xfgjw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466906, 9.43927, 15.6371, 9.92984)
-visible = false
+transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466905, 10.4028, 20.1202, 10.8637)
 environment = SubResource("Environment_55vhk")
 current = true
 fov = 45.0
-far = 30.15
+far = 65.89
 
 [node name="Camera3D3" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00174539, 0.999999, 0, -0.999999, -0.00174539, 0, 19.637, 0)
+transform = Transform3D(1, 0, 0, 0, -0.00174539, 0.999999, 0, -0.999999, -0.00174539, 0, 22.637, -0.00523617)
+visible = false
 environment = SubResource("Environment_55vhk")
-current = true
 fov = 45.0
 size = 12.321
 far = 30.15
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466906, 8.80285, 17.1202, 9.46365)
+transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466905, 8.26781, 16.4458, 7.94514)
 visible = false
 environment = SubResource("Environment_55vhk")
 projection = 1
 fov = 45.0
-size = 15.554
-far = 30.15
+size = 18.097
+far = 60.15
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.345, 0)
@@ -120,5 +134,32 @@ light_color = Color(1, 0.6, 0.294118, 1)
 light_energy = 3.666
 light_indirect_energy = 5.075
 light_bake_mode = 1
+light_cull_mask = 4294967293
 shadow_enabled = true
+distance_fade_enabled = true
 omni_range = 13.96
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.345, 0)
+light_color = Color(1, 0.6, 0.294118, 1)
+light_energy = 3.666
+light_indirect_energy = 5.075
+light_bake_mode = 1
+light_cull_mask = 4294967294
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 13.96
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(117.715, 0, 0, 0, 1, 0, 0, 0, 117.715, 0, -1, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_02keg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 4, 0)
+mesh = SubResource("BoxMesh_jxcc3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ud00e")
