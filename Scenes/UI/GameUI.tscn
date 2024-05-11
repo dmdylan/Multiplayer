@@ -284,6 +284,7 @@ grow_vertical = 0
 text = "Roll the dice, bitch!"
 
 [node name="Spellbook" parent="." instance=ExtResource("13_as7wb")]
+visible = false
 layout_mode = 1
 anchor_left = 0.286458
 anchor_top = 0.740741

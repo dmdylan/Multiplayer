@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DieFace" load_steps=3 format=3 uid="uid://dq5u6nnmyrlyv"]
+
+[ext_resource type="Texture2D" uid="uid://fqvbdygckvlk" path="res://Textures/DungeonTiles/shoptile.png" id="1_dce0s"]
+[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="2_pm660"]
+
+[resource]
+script = ExtResource("2_pm660")
+Image = ExtResource("1_dce0s")
+Name = "Ice"
+Value = 2

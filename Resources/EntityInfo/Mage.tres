@@ -1,76 +1,17 @@
-[gd_resource type="Resource" script_class="EntityInfo" load_steps=19 format=3 uid="uid://do4wkw82wseei"]
+[gd_resource type="Resource" script_class="EntityInfo" load_steps=10 format=3 uid="uid://do4wkw82wseei"]
 
 [ext_resource type="Resource" uid="uid://bs6wtb13gfir5" path="res://Resources/BaseStatSheets/PlayerEntities/MageStatSheet.tres" id="1_a52fo"]
 [ext_resource type="Script" path="res://Scripts/Resources/BaseDiceLoadout.cs" id="1_i4fjx"]
-[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="1_p26ek"]
+[ext_resource type="Resource" uid="uid://peo4nbmjp7i0" path="res://Resources/DieFaces/Mage/MageFace.tres" id="1_iwb2e"]
 [ext_resource type="Script" path="res://Scripts/Resources/EntityInfo.cs" id="1_xx0b2"]
-[ext_resource type="Script" path="res://Scripts/Resources/DieInfo.cs" id="2_4oud4"]
+[ext_resource type="Resource" uid="uid://dq5u6nnmyrlyv" path="res://Resources/DieFaces/Mage/MageFace2.tres" id="2_h7xqf"]
+[ext_resource type="Resource" uid="uid://bjru6rtlbnene" path="res://Resources/DieFaces/Mage/MageFace3.tres" id="3_ixrtj"]
+[ext_resource type="Resource" uid="uid://cfjx66qhoevir" path="res://Resources/DieInfo/Mage/MageDie.tres" id="4_fqk2r"]
 [ext_resource type="Texture2D" uid="uid://cirnogefyhcq8" path="res://Textures/EntityIcons/mageicon.png" id="5_b1req"]
-
-[sub_resource type="Resource" id="Resource_edenv"]
-script = ExtResource("1_p26ek")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_j0ah6"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_fkiuf"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_kcd6m"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_6ymo7"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_04nl2"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_xgily"]
-script = ExtResource("1_p26ek")
-Image = ExtResource("5_b1req")
-Name = ""
-Value = 0
-
-[sub_resource type="Resource" id="Resource_48e65"]
-script = ExtResource("2_4oud4")
-DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
-DieType = 1
-
-[sub_resource type="Resource" id="Resource_7t1x6"]
-script = ExtResource("2_4oud4")
-DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
-DieType = 1
-
-[sub_resource type="Resource" id="Resource_ollx0"]
-script = ExtResource("2_4oud4")
-DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
-DieType = 1
-
-[sub_resource type="Resource" id="Resource_w6e5k"]
-script = ExtResource("2_4oud4")
-DieFaces = Array[Object]([SubResource("Resource_j0ah6"), SubResource("Resource_fkiuf"), SubResource("Resource_kcd6m"), SubResource("Resource_6ymo7"), SubResource("Resource_04nl2"), SubResource("Resource_xgily")])
-DieType = 1
 
 [sub_resource type="Resource" id="Resource_mltlx"]
 script = ExtResource("1_i4fjx")
-DiceInfo = Array[Object]([SubResource("Resource_48e65"), SubResource("Resource_7t1x6"), SubResource("Resource_ollx0"), SubResource("Resource_w6e5k")])
+DiceInfo = Array[Object]([ExtResource("4_fqk2r"), ExtResource("4_fqk2r"), ExtResource("4_fqk2r"), ExtResource("4_fqk2r")])
 
 [resource]
 script = ExtResource("1_xx0b2")
@@ -78,6 +19,6 @@ Name = "Mage"
 EntityIcon = ExtResource("5_b1req")
 BaseStatSheet = ExtResource("1_a52fo")
 BaseDiceLoadout = SubResource("Resource_mltlx")
-AvailableDieFaces = Array[Object]([SubResource("Resource_edenv"), null, null])
+AvailableDieFaces = Array[Object]([ExtResource("1_iwb2e"), ExtResource("2_h7xqf"), ExtResource("3_ixrtj")])
 Tier = 0
 BaseExpValue = 0

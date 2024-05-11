@@ -1,14 +1,11 @@
-[gd_resource type="Resource" script_class="DieInfo" load_steps=4 format=3 uid="uid://cfjx66qhoevir"]
+[gd_resource type="Resource" script_class="DieInfo" load_steps=5 format=3 uid="uid://cfjx66qhoevir"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/DieInfo.cs" id="1_a6gyi"]
-[ext_resource type="Script" path="res://Scripts/Resources/DieFace.cs" id="1_r10bb"]
-
-[sub_resource type="Resource" id="Resource_vfs70"]
-script = ExtResource("1_r10bb")
-Name = ""
-Value = 0
+[ext_resource type="Resource" uid="uid://peo4nbmjp7i0" path="res://Resources/DieFaces/Mage/MageFace.tres" id="1_xngxq"]
+[ext_resource type="Resource" uid="uid://dq5u6nnmyrlyv" path="res://Resources/DieFaces/Mage/MageFace2.tres" id="2_wo55r"]
+[ext_resource type="Resource" uid="uid://bjru6rtlbnene" path="res://Resources/DieFaces/Mage/MageFace3.tres" id="3_6acml"]
 
 [resource]
 script = ExtResource("1_a6gyi")
-DieFaces = Array[Object]([SubResource("Resource_vfs70"), null, null, null])
+DieFaces = Array[Object]([ExtResource("1_xngxq"), ExtResource("2_wo55r"), ExtResource("1_xngxq"), ExtResource("3_6acml"), ExtResource("2_wo55r"), ExtResource("1_xngxq")])
 DieType = 1

@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://3c2w3uaeu3j" path="res://d6_Cube_001.res" id="2_b1ky4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g03t8"]
-bounce = 1.0
+bounce = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n2m05"]
 
@@ -35,28 +35,35 @@ skeleton = NodePath("")
 [node name="Faces" type="Node3D" parent="MeshInstance3D"]
 
 [node name="0" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(2.58946, 0, 0, 0, 2.58946, 0, 0, 0, 1, 0, 0, 0.915649)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.916493)
 shaded = true
+region_rect = Rect2(6.82, 0, 0, 0)
 
 [node name="1" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(-2.58946, 0, -8.74228e-08, 0, 2.58946, 0, 2.26378e-07, 0, -1, 0, 0, -0.91396)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -0.916)
 shaded = true
+double_sided = false
+region_rect = Rect2(0, 18, 157, 132)
 
 [node name="2" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(2.58946, -9.89529e-15, 1.35762e-29, -1.42109e-14, 1.13189e-07, 1, -2.82945e-14, -2.58946, 4.37114e-08, 0, 0.924587, 0)
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0.924587, 0)
 shaded = true
+double_sided = false
 
 [node name="3" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(-1.13189e-07, 0, 1, 0, 2.58946, 0, -2.58946, 0, -4.37114e-08, 0.926114, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.926114, 0, 0)
 shaded = true
+double_sided = false
 
 [node name="4" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(-1.13189e-07, 0, -1, 0, 2.58946, 0, 2.58946, 0, -4.37114e-08, -0.926719, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.926719, 0, 0)
 shaded = true
+double_sided = false
 
 [node name="5" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(2.58946, 2.26378e-07, 8.74228e-08, 2.26378e-07, -1.13189e-07, -1, -2.26378e-07, 2.58946, -4.37114e-08, 0, -0.921753, 0)
+transform = Transform3D(1, 8.74229e-08, -3.82138e-15, 0, -4.37114e-08, -1, -8.74229e-08, 1, -4.37114e-08, 0, -0.921753, 0)
 shaded = true
+double_sided = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_pibli")

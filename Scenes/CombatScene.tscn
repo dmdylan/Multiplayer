@@ -1,27 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmb03q4dd8kjk"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_2dbo6"]
-lightmap_size_hint = Vector2i(14, 21)
-add_uv2 = true
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vs1ni"]
-bounce = 0.5
-absorbent = true
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ggaup"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8bgvj"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o2yh3"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ax0dd"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xfgjw"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[gd_scene load_steps=5 format=3 uid="uid://dmb03q4dd8kjk"]
 
 [sub_resource type="Environment" id="Environment_55vhk"]
 ambient_light_source = 1
@@ -37,72 +14,6 @@ add_uv2 = true
 data = PackedVector3Array(0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [node name="CombatSceneRoot" type="Node"]
-
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ggaup")
-
-[node name="Floor2" type="MeshInstance3D" parent="."]
-transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, 6, 0)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor2"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ggaup")
-
-[node name="Wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(11, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, -5)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_8bgvj")
-
-[node name="Wall4" type="MeshInstance3D" parent="."]
-transform = Transform3D(9, 0, 0, 0, 5, 0, 0, 0, 1, 0, 3, 5)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall4"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_o2yh3")
-
-[node name="Wall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, -5, 3, 0.5)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ax0dd")
-
-[node name="Wall3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, 5, 3, 0.5)
-visible = false
-mesh = SubResource("BoxMesh_2dbo6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall3"]
-physics_material_override = SubResource("PhysicsMaterial_vs1ni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_xfgjw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.69593, -0.532507, 0.481786, 0, 0.670909, 0.74154, -0.71811, -0.51606, 0.466905, 10.4028, 20.1202, 10.8637)
@@ -140,15 +51,15 @@ distance_fade_enabled = true
 omni_range = 13.96
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.345, 0)
-light_color = Color(1, 0.6, 0.294118, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.355001, 0)
+light_color = Color(0, 0.784314, 0.996078, 1)
 light_energy = 3.666
 light_indirect_energy = 5.075
 light_bake_mode = 1
 light_cull_mask = 4294967294
-shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 13.96
+omni_range = 25.0
+omni_attenuation = 0.637282
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(117.715, 0, 0, 0, 1, 0, 0, 0, 117.715, 0, -1, 0)
@@ -156,7 +67,7 @@ layers = 2
 mesh = SubResource("PlaneMesh_02keg")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 4, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, 0)
 mesh = SubResource("BoxMesh_jxcc3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]

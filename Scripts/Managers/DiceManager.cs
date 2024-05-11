@@ -122,8 +122,8 @@ public partial class DiceManager : Node
 				index = i;
 			}	
 		}
-		
-		GD.Print($"Top face is {die.FaceImages[index].Name}");
+
+		GD.Print($"Top face is {die.DieFaces[index].Name}");
 	}
 
 	private PackedScene GetDieTypeScene(Die die)
