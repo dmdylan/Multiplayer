@@ -108,10 +108,9 @@ public partial class DiceManager : Node
 		currentDice.TrimExcess();
 	}
 
-	//TODO: How to get die top side information for combat?
 	private void CheckDieTopSide(Die die)
 	{
-		float topHeight = 0;
+		float topHeight = float.MinValue;
 		int index = 0;
 
 		for (int i = 0; i < die.FaceImages.Length; i++)
