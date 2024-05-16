@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Godot;
 
-public class SpellBook
+public partial class SpellBook : Node
 {
-    public List<Spell> Spells;
+	public List<SpellInfo> Spells;
+	
 }

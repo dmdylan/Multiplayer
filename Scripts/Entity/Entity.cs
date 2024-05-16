@@ -6,6 +6,7 @@ public partial class Entity : Node
 	[Export] public HealthComponent HealthComponent { get; private set; }
 	[Export] public StatusEffectComponent StatusEffectComponent { get; private set; }
 	[Export] public DiceComponent DiceComponent { get; private set; }
+	[Export] public SpellBook SpellBookComponent { get; private set; }
 	public EntityInfo EntityInfo { get; private set; }
 	public int EntityListID{ get; private set; }
 
