@@ -46,7 +46,7 @@ double_sided = false
 region_rect = Rect2(0, 18, 157, 132)
 
 [node name="2" type="Sprite3D" parent="MeshInstance3D/Faces"]
-transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0.924587, 0)
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, 8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 0, 0.924587, 0)
 shaded = true
 double_sided = false
 

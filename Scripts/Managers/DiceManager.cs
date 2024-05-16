@@ -122,6 +122,7 @@ public partial class DiceManager : Node
 			}	
 		}
 
+		
 		GD.Print($"Top face is {die.DieFaces[index].Name}");
 	}
 
