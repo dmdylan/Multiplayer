@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://blfvueol7rsj3" path="res://Resources/DungeonTiles/RareLoot.tres" id="7_0ajpi"]
 [ext_resource type="Resource" uid="uid://cmptwxwdv7mae" path="res://Resources/DungeonTiles/Shop.tres" id="8_n33i4"]
 [ext_resource type="PackedScene" uid="uid://c8s8c6oew0l5m" path="res://Scenes/UI/EnemyNameplate.tscn" id="11_lmnar"]
-[ext_resource type="PackedScene" uid="uid://boy6hd0d03a73" path="res://Scenes/UI/Spellbook.tscn" id="13_as7wb"]
+[ext_resource type="PackedScene" uid="uid://boy6hd0d03a73" path="res://Scenes/UI/SpellBookUI.tscn" id="13_bgkob"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("diceRollDebugButton", "characterNameplateParent", "enemyNameplateParent", "dungeonGridParent", "dungeonGridContainers")]
 layout_mode = 3
@@ -275,19 +275,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -66.0
-offset_right = 103.0
-offset_bottom = -26.0
+offset_left = -243.0
+offset_top = -200.0
+offset_right = -191.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Roll the dice, bitch!"
+text_overrun_behavior = 3
 
-[node name="Spellbook" parent="." instance=ExtResource("13_as7wb")]
-visible = false
+[node name="Spellbook" parent="." instance=ExtResource("13_bgkob")]
 layout_mode = 1
-anchor_left = 0.286458
-anchor_top = 0.740741
-anchor_right = 0.720486
+anchor_left = 0.338542
+anchor_top = 0.623457
+anchor_right = 0.668403
 anchor_bottom = 0.972222
 offset_top = 3.05176e-05

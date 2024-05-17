@@ -20,3 +20,5 @@ DiceComponent = NodePath("DiceComponent")
 [node name="StatusEffectComponent" parent="." instance=ExtResource("4_i0fp1")]
 
 [node name="DiceComponent" parent="." instance=ExtResource("5_7b5xc")]
+
+[node name="Spellbook" type="Node" parent="."]
