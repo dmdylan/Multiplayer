@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gq0se")
-diceRollDebugButton = NodePath("Button")
+diceRollDebugButton = NodePath("RollButtonsParent/RollButton")
 dungeonTiles = Array[Object]([ExtResource("2_3h7xa"), ExtResource("3_121oj"), ExtResource("4_xmtnl"), ExtResource("5_ok802"), ExtResource("6_odp43"), ExtResource("7_0ajpi"), ExtResource("8_n33i4")])
 playerCharacterNameplateScene = ExtResource("2_6a558")
 enemyEntityNameplateScene = ExtResource("11_lmnar")
@@ -268,22 +268,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -243.0
-offset_top = -200.0
-offset_right = -191.0
-offset_bottom = -68.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Roll the dice, bitch!"
-text_overrun_behavior = 3
-
 [node name="Spellbook" parent="." instance=ExtResource("13_bgkob")]
 layout_mode = 1
 anchor_left = 0.338542
@@ -291,3 +275,36 @@ anchor_top = 0.623457
 anchor_right = 0.668403
 anchor_bottom = 0.972222
 offset_top = 3.05176e-05
+
+[node name="RollButtonsParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 467.0
+offset_top = 572.0
+offset_right = -467.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RollButton" type="Button" parent="RollButtonsParent"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Roll the dice, bitch!"
+text_overrun_behavior = 3
+
+[node name="RerollButton" type="Button" parent="RollButtonsParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reroll the dice, bitch!"
+text_overrun_behavior = 3
